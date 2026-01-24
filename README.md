@@ -64,24 +64,31 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here
 ### 🏃 Run the Benchmark
 
 ```bash
-# Quick test (3 models × 5 shoes) ⚡
-cd bench && bun run vision:quick
+cd bench
 
-# Full benchmark 🔥
-bun run vision
+# 🚀 FULL PIPELINE (recommended) - vision + judge + export
+bun run all              # All 173 models × all shoes 🔥🔥🔥
+bun run quick            # Quick test (3 models × 5 shoes) ⚡
+bun run free             # Free models only (no API cost!) 🆓
 
-# Judge the results ⚖️
-bun run ./run-judge-benchmark.ts
+# 📊 BY TIER - choose your budget
+bun run vision:premium   # 15 best models (GPT-5, Claude Opus, etc.) 👑
+bun run vision:mid       # 16 balanced models (great quality/cost) ⚖️
+bun run vision:budget    # 13 cheapest models 💸
+bun run vision:free      # 8 free models (zero cost!) 🆓
+
+# 🎯 INDIVIDUAL STEPS
+bun run vision           # Run vision benchmark (20 shoes default)
+bun run vision:all       # All 173 models × all 89 shoes
+bun run judge            # Score results with LLM-as-judge
+bun run export           # Export for visualizer
 ```
 
 ### 👀 View Results
 
 ```bash
-# Export results for visualizer 📤
-cd visualizer && bun scripts/export-results.ts
-
 # Start dashboard 🎨
-npm run dev
+cd visualizer && npm run dev
 # Open http://localhost:3000
 ```
 
@@ -141,13 +148,50 @@ The LLM-as-judge evaluates each response with a 4-tier system:
 
 ---
 
-## 🤖 Supported Models
+## 🤖 Supported Models (173 Total!) 🤯
 
-All OpenRouter vision-capable models, including:
-- 🧠 **OpenAI**: GPT-4o, GPT-4o-mini
-- 🟠 **Anthropic**: Claude 3.5 Sonnet, Claude 3 Haiku
-- 🔵 **Google**: Gemini 2.0 Flash, Gemini Pro Vision
-- 🦙 **Meta**: Llama 3.2 Vision
+ShoeBench tests **ALL 173 vision-capable models** on OpenRouter! Here's the full lineup:
+
+### 🧠 OpenAI (40+ models)
+GPT-5.2, GPT-5.2-Pro, GPT-5.1, GPT-5, GPT-5-Pro, GPT-5-Mini, GPT-5-Nano, GPT-4o, GPT-4o-mini, GPT-4.1, GPT-4-Turbo, o4-mini, o3, o3-Pro, o1, o1-Pro, Codex-Mini, and more!
+
+### 🟠 Anthropic (15 models)
+Claude Opus 4.5, Claude Opus 4.1, Claude Opus 4, Claude Sonnet 4.5, Claude Sonnet 4, Claude Haiku 4.5, Claude 3.7 Sonnet, Claude 3.5 Sonnet, Claude 3.5 Haiku, Claude 3 Haiku, Claude 3 Sonnet, Claude 3 Opus
+
+### 🔵 Google (30+ models)
+Gemini 3 Pro, Gemini 3 Flash, Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.0 Flash, Gemini Pro 1.5, Gemma 3 (27B, 12B, 4B, 1B), and experimental versions!
+
+### ⚡ xAI (5 models)
+Grok 4.1 Fast, Grok 4 Fast, Grok 4, Grok 2 Vision, Grok Vision Beta
+
+### 🦙 Meta (5 models)
+Llama 4 Maverick, Llama 4 Scout, Llama Guard 4, Llama 3.2 90B Vision, Llama 3.2 11B Vision
+
+### 🐼 Qwen (14 models)
+Qwen3-VL 235B, Qwen3-VL 32B, Qwen3-VL 8B, Qwen2.5-VL 72B/32B/3B, Qwen-VL Max/Plus
+
+### 🇫🇷 Mistral (11 models)
+Mistral Large, Mistral Medium 3.1/3, Mistral Small 3.2/3.1, Ministral 14B/8B/3B, Pixtral Large/12B
+
+### 🌍 And Many More!
+- **ByteDance**: Seed 1.6, UI-TARS 72B/7B, Seedream 4.5
+- **Amazon**: Nova Premier, Nova Pro, Nova Lite
+- **Perplexity**: Sonar Pro, Sonar, Sonar Reasoning Pro
+- **NVIDIA**: Nemotron Nano 12B
+- **Baidu**: ERNIE 4.5-VL (424B, 28B)
+- **OpenGVLab**: InternVL3 (78B, 14B, 2B)
+- **Microsoft**: Phi-4 Multimodal
+- **Z.AI**: GLM 4.6v, GLM 4.5v
+- **StepFun**: Step3
+- **Arcee**: Spotlight
+- **DeepCogito**: Cogito v2 Preview
+- **01.AI**: Yi Vision
+- **Moonshot**: Kimi-VL
+- **AllenAI**: Molmo 2 8B (FREE!)
+- **NousResearch**: Nous Hermes 2 Vision
+- **Fireworks**: FireLLaVA 13B
+- **LiuHaotian**: LLaVA Yi 34B, LLaVA 13B
+- **OpenRouter Experimental**: Horizon, Optimus, Quasar, Polaris, and more!
 
 ---
 
@@ -157,8 +201,9 @@ All OpenRouter vision-capable models, including:
 # Vision benchmark 👁️
 bun run ./run-vision-benchmark.ts [options]
   --quick           Use 3 fastest models, 5 shoes ⚡
-  --shoes <n>       Number of shoes to test (default: 20)
-  --model <name>    Test specific model only
+  --tier=TIER       Model tier: budget, mid, premium, free 💰
+  --shoes=N         Number of shoes to test (default: 20)
+  --model=NAME      Test specific model only
   --no-cache        Skip cache, force fresh API calls
 
 # Judge benchmark ⚖️
@@ -166,6 +211,15 @@ bun run ./run-judge-benchmark.ts [options]
   --vision <file>   Specific vision results file
   --no-cache        Skip judge cache
 ```
+
+### 🎚️ Model Tiers
+
+| Tier | Models | Use Case |
+|------|--------|----------|
+| 👑 **Premium** | 15 models | Best accuracy (GPT-5, Claude Opus, Gemini Pro) |
+| ⚖️ **Mid** | 16 models | Great balance of quality and cost |
+| 💸 **Budget** | 13 models | Cheapest options for high-volume testing |
+| 🆓 **Free** | 8 models | Zero cost! Perfect for testing |
 
 ---
 
