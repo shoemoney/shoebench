@@ -495,7 +495,7 @@ export default function BenchmarkVisualizer() {
                         Rank
                       </TableHead>
                       <TableHead className="text-neutral-400">Model</TableHead>
-                      <TableHead className="text-neutral-400">Type</TableHead>
+                      <TableHead className="text-neutral-400">Model Type</TableHead>
                       <TableHead className="text-neutral-400 text-right">
                         Accuracy
                       </TableHead>

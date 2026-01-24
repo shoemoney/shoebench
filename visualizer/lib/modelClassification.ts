@@ -62,9 +62,9 @@ export function classifyModel(modelName: string): ModelType {
 export function getModelTypeLabel(type: ModelType): string {
   switch (type) {
     case 'open':
-      return 'Open Source';
+      return 'Open';
     case 'closed':
-      return 'Closed';
+      return 'Proprietary';
     case 'free':
       return 'Free';
   }
