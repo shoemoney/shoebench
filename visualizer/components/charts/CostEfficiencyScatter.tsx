@@ -72,120 +72,203 @@ export function CostEfficiencyScatter({
     ? scatterData.reduce((sum, d) => sum + d.accuracy, 0) / scatterData.length
     : 0;
 
+  // Top 10 by efficiency (accuracy per dollar) - best value models
+  const top10Data = [...scatterData]
+    .sort((a, b) => b.accuracyPerDollar - a.accuracyPerDollar)
+    .slice(0, 10);
+
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const d = payload[0].payload as ScatterDataPoint;
+      return (
+        <div className="rounded-lg border border-white/10 bg-neutral-900/95 p-3 text-neutral-100 shadow-xl">
+          <p className="font-semibold">{d.model}</p>
+          <p className="text-sm text-neutral-300">
+            Accuracy: {d.accuracy.toFixed(1)}%
+          </p>
+          <p className="text-sm text-neutral-300">
+            Total cost: {currency(d.cost)}
+          </p>
+          <p className="text-sm text-green-400 mt-1">
+            Efficiency: {d.accuracyPerDollar.toFixed(0)}% per $1
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
-    <ChartContainer
-      config={{
-        accuracy: {
-          label: "Accuracy",
-          color: "hsl(142, 76%, 36%)",
-        },
-      }}
-      className="h-[420px] sm:h-[520px] w-full"
-      style={isMobile ? { height: 360 } : undefined}
-    >
-      <ScatterChart
-        margin={{
-          top: 10,
-          right: isMobile ? 12 : 120,
-          left: 12,
-          bottom: isMobile ? 16 : 32,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
-        <XAxis
-          type="number"
-          dataKey="cost"
-          name="Total Cost"
-          label={{
-            value: "Total Cost ($)",
-            position: "insideBottom",
-            offset: -20,
-            fill: "#9ca3af",
+    <div className="space-y-8">
+      {/* Top 10 Most Efficient Models */}
+      <div>
+        <h3 className="text-sm font-medium text-neutral-300 mb-3">
+          🏆 Top 10 Best Value (Highest Accuracy per Dollar)
+        </h3>
+        <ChartContainer
+          config={{
+            accuracy: {
+              label: "Accuracy",
+              color: "hsl(142, 76%, 36%)",
+            },
           }}
-          stroke="#9ca3af"
-          domain={[0, "auto"]}
-          tickFormatter={(tick) => tick.toFixed(3)}
-        />
-        <YAxis
-          type="number"
-          dataKey="accuracy"
-          name="Accuracy"
-          unit="%"
-          label={{
-            value: "Accuracy (%)",
-            angle: -90,
-            position: "insideLeft",
-            fill: "#9ca3af",
-          }}
-          stroke="#9ca3af"
-          domain={[0, 100]}
-        />
-        <ReferenceLine
-          y={meanAccuracy}
-          stroke="#6b7280"
-          strokeDasharray="5 5"
-          label={{
-            value: `Mean: ${meanAccuracy.toFixed(1)}%`,
-            position: "right",
-            fill: "#6b7280",
-            fontSize: 11,
-          }}
-        />
-        <ChartTooltip
-          cursor={{ strokeDasharray: "3 3" }}
-          content={({ active, payload }) => {
-            if (active && payload && payload.length) {
-              const d = payload[0].payload as ScatterDataPoint;
-              return (
-                <div className="rounded-lg border border-white/10 bg-neutral-900/95 p-3 text-neutral-100 shadow-xl">
-                  <p className="font-semibold">{d.model}</p>
-                  <p className="text-sm text-neutral-300">
-                    Accuracy: {d.accuracy.toFixed(1)}%
-                  </p>
-                  <p className="text-sm text-neutral-300">
-                    Total cost: {currency(d.cost)}
-                  </p>
-                  <p className="text-sm text-green-400 mt-1">
-                    Efficiency: {d.accuracyPerDollar.toFixed(0)}% per $1
-                  </p>
-                </div>
-              );
-            }
-            return null;
-          }}
-        />
-        <Scatter data={scatterData} isAnimationActive={false}>
-          {scatterData.map((entry) => (
-            <Cell
-              key={entry.fullModel}
-              fill={getModelColor(entry.fullModel)}
+          className="h-[380px] sm:h-[420px] w-full"
+        >
+          <ScatterChart
+            margin={{
+              top: 10,
+              right: isMobile ? 12 : 140,
+              left: 12,
+              bottom: isMobile ? 16 : 32,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
+            <XAxis
+              type="number"
+              dataKey="cost"
+              name="Total Cost"
+              label={{
+                value: "Total Cost ($)",
+                position: "insideBottom",
+                offset: -20,
+                fill: "#9ca3af",
+              }}
+              stroke="#9ca3af"
+              domain={[0, "auto"]}
+              tickFormatter={(tick) => tick.toFixed(3)}
             />
-          ))}
-          {!isMobile && (
-            <LabelList
-              dataKey="model"
-              content={({ x, y, value }: any) => {
-                const nx = (typeof x === "number" ? x : Number(x)) || 0;
-                const ny = (typeof y === "number" ? y : Number(y)) || 0;
-                return (
-                  <text
-                    x={nx + 10}
-                    y={ny}
-                    dy={4}
-                    textAnchor="start"
-                    className="pointer-events-none text-xs font-medium fill-neutral-200"
-                    style={{
-                      textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
-                    }}
-                  >
-                    {String(value)}
-                  </text>
-                );
+            <YAxis
+              type="number"
+              dataKey="accuracy"
+              name="Accuracy"
+              unit="%"
+              label={{
+                value: "Accuracy (%)",
+                angle: -90,
+                position: "insideLeft",
+                fill: "#9ca3af",
+              }}
+              stroke="#9ca3af"
+              domain={[0, 100]}
+            />
+            <ChartTooltip
+              cursor={{ strokeDasharray: "3 3" }}
+              content={CustomTooltip}
+            />
+            <Scatter data={top10Data} isAnimationActive={false}>
+              {top10Data.map((entry) => (
+                <Cell
+                  key={entry.fullModel}
+                  fill={getModelColor(entry.fullModel)}
+                />
+              ))}
+              {!isMobile && (
+                <LabelList
+                  dataKey="model"
+                  content={({ x, y, value }: any) => {
+                    const nx = (typeof x === "number" ? x : Number(x)) || 0;
+                    const ny = (typeof y === "number" ? y : Number(y)) || 0;
+                    return (
+                      <text
+                        x={nx + 10}
+                        y={ny}
+                        dy={4}
+                        textAnchor="start"
+                        className="pointer-events-none text-xs font-medium fill-neutral-200"
+                        style={{
+                          textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
+                        }}
+                      >
+                        {String(value)}
+                      </text>
+                    );
+                  }}
+                />
+              )}
+            </Scatter>
+          </ScatterChart>
+        </ChartContainer>
+      </div>
+
+      {/* All Models with Log Scale */}
+      <div>
+        <h3 className="text-sm font-medium text-neutral-300 mb-3">
+          📊 All Models (Log Scale for Cost)
+        </h3>
+        <ChartContainer
+          config={{
+            accuracy: {
+              label: "Accuracy",
+              color: "hsl(142, 76%, 36%)",
+            },
+          }}
+          className="h-[420px] sm:h-[520px] w-full"
+          style={isMobile ? { height: 360 } : undefined}
+        >
+          <ScatterChart
+            margin={{
+              top: 10,
+              right: isMobile ? 12 : 24,
+              left: 12,
+              bottom: isMobile ? 16 : 32,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
+            <XAxis
+              type="number"
+              dataKey="cost"
+              name="Total Cost"
+              label={{
+                value: "Total Cost ($) - Log Scale",
+                position: "insideBottom",
+                offset: -20,
+                fill: "#9ca3af",
+              }}
+              stroke="#9ca3af"
+              scale="log"
+              domain={["auto", "auto"]}
+              tickFormatter={(tick) => tick < 0.01 ? tick.toExponential(1) : tick.toFixed(3)}
+            />
+            <YAxis
+              type="number"
+              dataKey="accuracy"
+              name="Accuracy"
+              unit="%"
+              label={{
+                value: "Accuracy (%)",
+                angle: -90,
+                position: "insideLeft",
+                fill: "#9ca3af",
+              }}
+              stroke="#9ca3af"
+              domain={[0, 100]}
+            />
+            <ReferenceLine
+              y={meanAccuracy}
+              stroke="#6b7280"
+              strokeDasharray="5 5"
+              label={{
+                value: `Mean: ${meanAccuracy.toFixed(1)}%`,
+                position: "right",
+                fill: "#6b7280",
+                fontSize: 11,
               }}
             />
-          )}
-        </Scatter>
-      </ScatterChart>
-    </ChartContainer>
+            <ChartTooltip
+              cursor={{ strokeDasharray: "3 3" }}
+              content={CustomTooltip}
+            />
+            <Scatter data={scatterData} isAnimationActive={false}>
+              {scatterData.map((entry) => (
+                <Cell
+                  key={entry.fullModel}
+                  fill={getModelColor(entry.fullModel)}
+                />
+              ))}
+            </Scatter>
+          </ScatterChart>
+        </ChartContainer>
+      </div>
+    </div>
   );
 }
