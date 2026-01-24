@@ -15,13 +15,15 @@ export const DifficultyTier = z.enum(["easy", "medium", "hard"]);
 export type DifficultyTier = z.infer<typeof DifficultyTier>;
 
 // Image metadata including dimensions and storage info
+// Note: sizeBytes can be 0 for placeholder entries (images not yet downloaded)
 export const ImageMetadata = z.object({
   url: z.string().url(),
   localPath: z.string(),
   angle: z.enum(["side", "top", "three-quarter", "back"]),
   width: z.number().int().positive(),
   height: z.number().int().positive(),
-  sizeBytes: z.number().int().positive(),
+  sizeBytes: z.number().int().nonnegative(), // 0 = placeholder, >0 = downloaded
+  status: z.enum(["placeholder", "downloaded", "processed"]).default("placeholder"),
 });
 export type ImageMetadata = z.infer<typeof ImageMetadata>;
 
