@@ -7,7 +7,8 @@
  *
  * Options:
  *   --shoes=N      Number of shoes to test (default: 20)
- *   --quick        Use quick test models (3 models instead of full list)
+ *   --quick        Use quick test models (3 fastest models)
+ *   --tier=TIER    Model tier: budget, mid, premium, free (default: all)
  *   --model=NAME   Test specific model only
  *   --no-cache     Disable caching (re-run all tests)
  */
@@ -23,8 +24,16 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 import { runVisionBatch } from './vision-runner';
 import { VisionCache } from './cache';
-import { visionModelsToRun, visionModelsForQuickTest, VISION_CONCURRENCY } from './vision-constants';
-import type { ShoeCatalog, VisionTestResult, Shoe } from './vision-types';
+import {
+  visionModelsToRun,
+  visionModelsForQuickTest,
+  visionModelsForBudgetTest,
+  visionModelsForMidTest,
+  visionModelsForPremiumTest,
+  visionModelsForFreeTest,
+  VISION_CONCURRENCY
+} from './vision-constants';
+import type { ShoeCatalog } from './vision-types';
 
 // Parse CLI args
 const args = process.argv.slice(2);
@@ -67,12 +76,36 @@ async function main() {
   // Select models
   let models: string[];
   const specificModel = getArg('model');
+  const tier = getArg('tier');
+
   if (specificModel) {
     models = [specificModel];
     console.log(`Testing single model: ${specificModel}`);
   } else if (hasFlag('quick')) {
     models = [...visionModelsForQuickTest];
     console.log(`Quick mode: ${models.length} models`);
+  } else if (tier) {
+    switch (tier) {
+      case 'budget':
+        models = [...visionModelsForBudgetTest];
+        console.log(`Budget tier: ${models.length} models (cheapest)`);
+        break;
+      case 'mid':
+        models = [...visionModelsForMidTest];
+        console.log(`Mid tier: ${models.length} models (balanced)`);
+        break;
+      case 'premium':
+        models = [...visionModelsForPremiumTest];
+        console.log(`Premium tier: ${models.length} models (best quality)`);
+        break;
+      case 'free':
+        models = [...visionModelsForFreeTest];
+        console.log(`Free tier: ${models.length} models (no cost)`);
+        break;
+      default:
+        console.error(`ERROR: Unknown tier '${tier}'. Valid options: budget, mid, premium, free`);
+        process.exit(1);
+    }
   } else {
     models = [...visionModelsToRun];
     console.log(`Full mode: ${models.length} models`);

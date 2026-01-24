@@ -10,10 +10,15 @@
     "vision": "bun run ./run-vision-benchmark.ts",
     "vision:quick": "bun run ./run-vision-benchmark.ts --quick",
     "vision:all": "bun run ./run-vision-benchmark.ts --shoes=89",
+    "vision:budget": "bun run ./run-vision-benchmark.ts --tier=budget",
+    "vision:mid": "bun run ./run-vision-benchmark.ts --tier=mid",
+    "vision:premium": "bun run ./run-vision-benchmark.ts --tier=premium",
+    "vision:free": "bun run ./run-vision-benchmark.ts --tier=free",
     "judge": "bun run ./run-judge-benchmark.ts",
     "export": "bun run ../visualizer/scripts/export-results.ts",
     "all": "bun run vision:all && bun run judge && bun run export",
-    "quick": "bun run vision:quick && bun run judge && bun run export"
+    "quick": "bun run vision:quick && bun run judge && bun run export",
+    "free": "bun run vision:free && bun run judge && bun run export"
   },
   "devDependencies": {
     "@types/bun": "latest",
