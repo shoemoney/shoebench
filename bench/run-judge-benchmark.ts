@@ -52,12 +52,30 @@ async function main() {
   }
   console.log('OpenRouter API key loaded from .env');
 
-  // Get input file path
-  const inputFile = getArg('input') || positionalArg;
+  // Get input file path (auto-detect latest if not provided)
+  let inputFile = getArg('input') || positionalArg;
+
   if (!inputFile) {
-    console.error('\nERROR: Missing required --input argument');
+    // Auto-detect latest vision results file
+    const resultsDir = join(__dirname, 'results/vision');
+    if (existsSync(resultsDir)) {
+      const files = (await import('fs')).readdirSync(resultsDir)
+        .filter(f => f.startsWith('vision-results-') && f.endsWith('.json'))
+        .sort()
+        .reverse();
+
+      if (files.length > 0) {
+        inputFile = join(resultsDir, files[0]);
+        console.log(`Auto-detected latest results: ${files[0]}`);
+      }
+    }
+  }
+
+  if (!inputFile) {
+    console.error('\nERROR: No vision results found');
     console.error('Usage: bun bench/run-judge-benchmark.ts --input=<vision-results.json>');
     console.error('   or: bun bench/run-judge-benchmark.ts <vision-results.json>');
+    console.error('   or: run vision benchmark first to generate results');
     process.exit(1);
   }
 
