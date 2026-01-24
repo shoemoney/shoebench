@@ -506,7 +506,7 @@ export default function BenchmarkVisualizer() {
                         Cost
                       </TableHead>
                       <TableHead className="text-neutral-400 text-right">
-                        Latency
+                        Response Time
                       </TableHead>
                     </TableRow>
                   </TableHeader>
