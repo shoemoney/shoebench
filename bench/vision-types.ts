@@ -38,6 +38,7 @@ export type Shoe = {
   model: string;
   difficultyTier: 'easy' | 'medium' | 'hard';
   tierRationale?: string;
+  aliases?: string[];  // Name variants for judge evaluation
   images: ImageData[];
   provenance: Provenance;
   metadata: ShoeMetadata;
