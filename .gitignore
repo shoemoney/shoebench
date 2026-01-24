@@ -176,5 +176,10 @@ dist
 
 results/
 
+# Vision test cache database
+bench/cache/*.db
+bench/cache/*.db-wal
+bench/cache/*.db-shm
+
 # GSD planning docs (local only)
 .planning/
