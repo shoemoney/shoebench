@@ -22,9 +22,9 @@ export function computeCacheKey(model: string, shoeId: string, prompt: string): 
  * Prevents redundant API calls on re-runs
  */
 export class VisionCache {
-  private db: Database;
-  private insertStmt: ReturnType<Database['prepare']>;
-  private getStmt: ReturnType<Database['prepare']>;
+  private db: InstanceType<typeof Database>;
+  private insertStmt: ReturnType<InstanceType<typeof Database>['prepare']>;
+  private getStmt: ReturnType<InstanceType<typeof Database>['prepare']>;
 
   constructor(dbPath: string = 'bench/cache/vision-cache.db') {
     // Ensure cache directory exists
