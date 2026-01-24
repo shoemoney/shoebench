@@ -2461,12 +2461,12 @@
       "tierRationale": "Luxury Gucci piece with minimal visible branding; requires fashion expertise to identify (promoted for distribution balance)",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/19/12/34/56/19123456_41826367_1000.jpg",
+          "url": "https://i.ebayimg.com/images/g/KAMAAeSwkzVpVrdG/s-l1600.webp",
           "localPath": "dataset/images/farfetch/gucci-horsebit-loafers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 35386,
+          "sizeBytes": 134059,
           "status": "downloaded"
         }
       ],
@@ -2489,12 +2489,12 @@
       "tierRationale": "Recognizable Gucci silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/18/57/14/92/18571492_51214131_1000.jpg",
+          "url": "https://i.ebayimg.com/images/g/GBAAAeSwQ1JpV3k4/s-l1600.webp",
           "localPath": "dataset/images/farfetch/gucci-ace-embroidered-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 27294,
+          "sizeBytes": 132513,
           "status": "downloaded"
         }
       ],
@@ -2518,12 +2518,12 @@
       "tierRationale": "Recognizable Gucci silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/16/52/75/63/16527563_33567060_1000.jpg",
+          "url": "https://i.ebayimg.com/images/g/Br8AAeSwqd5pcQAK/s-l1600.webp",
           "localPath": "dataset/images/farfetch/gucci-rhyton-leather-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 28647,
+          "sizeBytes": 149653,
           "status": "downloaded"
         }
       ],
@@ -2575,12 +2575,12 @@
       "tierRationale": "Luxury Gucci piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/18/89/88/19/18898819_41281121_322.jpg",
+          "url": "https://i.ebayimg.com/images/g/uDkAAeSwOVBpbmD8/s-l1600.webp",
           "localPath": "dataset/images/farfetch/gucci-jordaan-leather-loafers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 36608,
+          "sizeBytes": 186588,
           "status": "downloaded"
         }
       ],
@@ -2603,12 +2603,12 @@
       "tierRationale": "Iconic Balenciaga shoe with high cultural recognition and distinctive branding",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/33/23/81/02/33238102_63998758_480.jpg",
+          "url": "https://i.ebayimg.com/images/g/MZgAAeSwIs9pWW5~/s-l1600.webp",
           "localPath": "dataset/images/farfetch/balenciaga-triple-s-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 62074,
+          "sizeBytes": 218876,
           "status": "downloaded"
         }
       ],
@@ -2632,12 +2632,12 @@
       "tierRationale": "Recognizable Balenciaga silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/32/49/92/22/32499222_63656284_480.jpg",
+          "url": "https://i.ebayimg.com/images/g/pHUAAOSwPjdnuo6g/s-l1600.webp",
           "localPath": "dataset/images/farfetch/balenciaga-track-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 83051,
+          "sizeBytes": 89534,
           "status": "downloaded"
         }
       ],
@@ -2661,12 +2661,12 @@
       "tierRationale": "Iconic Balenciaga shoe with high cultural recognition and distinctive branding",
       "images": [
         {
-          "url": "https://cdn-images.farfetch-contents.com/32/19/86/88/32198688_63058777_480.jpg",
+          "url": "https://i.ebayimg.com/images/g/eiEAAeSw0gto9Uwj/s-l1600.webp",
           "localPath": "dataset/images/farfetch/balenciaga-speed-trainer.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 48041,
+          "sizeBytes": 140645,
           "status": "downloaded"
         }
       ],
@@ -2690,12 +2690,12 @@
       "tierRationale": "Recognizable Balenciaga silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/balenciaga-defender-sneakers-item-19123464.aspx",
+          "url": "https://i.ebayimg.com/images/g/HBcAAeSwntRpWIW6/s-l1600.webp",
           "localPath": "dataset/images/farfetch/balenciaga-defender-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 285328,
           "status": "downloaded"
         }
       ],
@@ -2719,12 +2719,12 @@
       "tierRationale": "Luxury Balenciaga piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/balenciaga-knife-boots-item-19123465.aspx",
+          "url": "https://i.ebayimg.com/images/g/a-0AAeSwdBxpW6gr/s-l1600.webp",
           "localPath": "dataset/images/farfetch/balenciaga-knife-boots.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 224598,
           "status": "downloaded"
         }
       ],
@@ -2747,12 +2747,12 @@
       "tierRationale": "Iconic Christian Louboutin shoe with high cultural recognition and distinctive branding",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/christian-louboutin-so-kate-120-pumps-item-19123466.aspx",
+          "url": "https://i.ebayimg.com/images/g/sDoAAeSwjR1pZbul/s-l1600.webp",
           "localPath": "dataset/images/farfetch/christian-louboutin-so-kate-120-pumps.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 172865,
           "status": "downloaded"
         }
       ],
@@ -2776,12 +2776,12 @@
       "tierRationale": "Luxury Christian Louboutin piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/christian-louboutin-pigalle-follies-100-pumps-item-19123467.aspx",
+          "url": "https://i.ebayimg.com/images/g/likAAeSw-y9pcW9h/s-l1600.webp",
           "localPath": "dataset/images/farfetch/christian-louboutin-pigalle-follies-100-pumps.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 124747,
           "status": "downloaded"
         }
       ],
@@ -2804,12 +2804,12 @@
       "tierRationale": "Luxury Christian Louboutin piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/christian-louboutin-louis-junior-spikes-item-19123468.aspx",
+          "url": "https://i.ebayimg.com/images/g/DwAAAeSwAUhpcvvF/s-l1600.webp",
           "localPath": "dataset/images/farfetch/christian-louboutin-louis-junior-spikes.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 126213,
           "status": "downloaded"
         }
       ],
@@ -2832,12 +2832,12 @@
       "tierRationale": "Luxury Christian Louboutin piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/christian-louboutin-kate-85-pumps-item-19123469.aspx",
+          "url": "https://i.ebayimg.com/images/g/xJgAAeSwHyJpYUgK/s-l1600.webp",
           "localPath": "dataset/images/farfetch/christian-louboutin-kate-85-pumps.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 83026,
           "status": "downloaded"
         }
       ],
@@ -2860,12 +2860,12 @@
       "tierRationale": "Luxury Christian Louboutin piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/christian-louboutin-dandelion-loafers-item-19123470.aspx",
+          "url": "https://i.ebayimg.com/images/g/ex8AAOSwhGZoKkDf/s-l1600.webp",
           "localPath": "dataset/images/farfetch/christian-louboutin-dandelion-loafers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 195651,
           "status": "downloaded"
         }
       ],
@@ -2888,12 +2888,12 @@
       "tierRationale": "Luxury Prada piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/prada-brushed-leather-loafers-item-19123471.aspx",
+          "url": "https://i.ebayimg.com/images/g/VmwAAeSwobNo2Zih/s-l1600.webp",
           "localPath": "dataset/images/farfetch/prada-brushed-leather-loafers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 64180,
           "status": "downloaded"
         }
       ],
@@ -2916,12 +2916,12 @@
       "tierRationale": "Recognizable Prada silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/prada-america-cup-sneakers-item-19123472.aspx",
+          "url": "https://i.ebayimg.com/images/g/MZ4AAeSwA89pYpOP/s-l1600.webp",
           "localPath": "dataset/images/farfetch/prada-america-s-cup-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 60389,
           "status": "downloaded"
         }
       ],
@@ -2945,12 +2945,12 @@
       "tierRationale": "Recognizable Prada silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/prada-cloudbust-thunder-sneakers-item-19123473.aspx",
+          "url": "https://i.ebayimg.com/images/g/CXEAAeSw5mlpa5n1/s-l1600.webp",
           "localPath": "dataset/images/farfetch/prada-cloudbust-thunder-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 202869,
           "status": "downloaded"
         }
       ],
@@ -2974,12 +2974,12 @@
       "tierRationale": "Luxury Prada piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/prada-monolith-combat-boots-item-19123474.aspx",
+          "url": "https://i.ebayimg.com/images/g/~jIAAOSwIVBn3cri/s-l1600.webp",
           "localPath": "dataset/images/farfetch/prada-monolith-combat-boots.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 138061,
           "status": "downloaded"
         }
       ],
@@ -3002,12 +3002,12 @@
       "tierRationale": "Recognizable Bottega Veneta silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/bottega-veneta-intrecciato-loafers-item-19123475.aspx",
+          "url": "https://i.ebayimg.com/images/g/EXoAAOSw0rNbMYmS/s-l1600.webp",
           "localPath": "dataset/images/farfetch/bottega-veneta-intrecciato-loafers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 159939,
           "status": "downloaded"
         }
       ],
@@ -3031,12 +3031,12 @@
       "tierRationale": "Luxury Bottega Veneta piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/bottega-veneta-lug-chelsea-boots-item-19123476.aspx",
+          "url": "https://i.ebayimg.com/images/g/9k8AAeSwtpdopqkN/s-l1600.webp",
           "localPath": "dataset/images/farfetch/bottega-veneta-lug-chelsea-boots.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 47597,
           "status": "downloaded"
         }
       ],
@@ -3059,12 +3059,12 @@
       "tierRationale": "Luxury Bottega Veneta piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/bottega-veneta-pillow-sneakers-item-19123477.aspx",
+          "url": "https://i.ebayimg.com/images/g/UuUAAeSwoRFpcwEd/s-l1600.webp",
           "localPath": "dataset/images/farfetch/bottega-veneta-pillow-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 189311,
           "status": "downloaded"
         }
       ],
@@ -3087,12 +3087,12 @@
       "tierRationale": "Iconic Common Projects shoe with high cultural recognition and distinctive branding",
       "images": [
         {
-          "url": "https://cdn-static.farfetch-contents.com/cms-ccloud/caas/v1/media/10582454/data/93120d993415ae29c4ddc011b97fa9ed/3x4_messaging-side/936/2026-01-19-mw-webapp-key-designers-pre-s-multibrand-multicategory-img.jpeg",
+          "url": "https://i.ebayimg.com/images/g/0RkAAeSwacJpbEUJ/s-l1600.webp",
           "localPath": "dataset/images/farfetch/common-projects-achilles-low-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 190963,
+          "sizeBytes": 127307,
           "status": "downloaded"
         }
       ],
@@ -3116,12 +3116,12 @@
       "tierRationale": "Luxury Common Projects piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/common-projects-bball-low-sneakers-item-19123479.aspx",
+          "url": "https://i.ebayimg.com/images/g/heoAAeSwWltoaaSg/s-l1600.webp",
           "localPath": "dataset/images/farfetch/common-projects-bball-low-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 132857,
           "status": "downloaded"
         }
       ],
@@ -3172,12 +3172,12 @@
       "tierRationale": "Iconic Maison Margiela shoe with high cultural recognition and distinctive branding",
       "images": [
         {
-          "url": "https://cdn-static.farfetch-contents.com/PortalContent/cms/login/login_bg_fallback_page.jpg",
+          "url": "https://i.ebayimg.com/images/g/8u4AAeSwnBZpZCQS/s-l1600.webp",
           "localPath": "dataset/images/farfetch/maison-margiela-replica-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 113908,
+          "sizeBytes": 118091,
           "status": "downloaded"
         }
       ],
@@ -3201,12 +3201,12 @@
       "tierRationale": "Recognizable Maison Margiela silhouette but luxury positioning limits mainstream awareness",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/women/maison-margiela-tabi-boots-item-19123482.aspx",
+          "url": "https://i.ebayimg.com/images/g/83IAAeSwh21pM-jB/s-l1600.webp",
           "localPath": "dataset/images/farfetch/maison-margiela-tabi-boots.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 115858,
           "status": "downloaded"
         }
       ],
@@ -3230,12 +3230,12 @@
       "tierRationale": "Luxury Maison Margiela piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/maison-margiela-fusion-sneakers-item-19123483.aspx",
+          "url": "https://i.ebayimg.com/images/g/dGYAAeSw1lVpcjMV/s-l1600.webp",
           "localPath": "dataset/images/farfetch/maison-margiela-fusion-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 97788,
           "status": "downloaded"
         }
       ],
@@ -3258,12 +3258,12 @@
       "tierRationale": "Iconic Rick Owens shoe with high cultural recognition and distinctive branding",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/rick-owens-geobasket-sneakers-item-19123484.aspx",
+          "url": "https://i.ebayimg.com/images/g/aIMAAeSw4rBpcTNr/s-l1600.webp",
           "localPath": "dataset/images/farfetch/rick-owens-geobasket-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 138773,
           "status": "downloaded"
         }
       ],
@@ -3287,12 +3287,12 @@
       "tierRationale": "Luxury Rick Owens piece with minimal visible branding; requires fashion expertise to identify",
       "images": [
         {
-          "url": "https://www.farfetch.com/shopping/men/rick-owens-drkshdw-ramones-sneakers-item-19123485.aspx",
+          "url": "https://i.ebayimg.com/images/g/1RwAAeSw4cVpWa8r/s-l1600.webp",
           "localPath": "dataset/images/farfetch/rick-owens-drkshdw-ramones-sneakers.jpg",
           "angle": "side",
           "width": 1024,
           "height": 1024,
-          "sizeBytes": 34998,
+          "sizeBytes": 100620,
           "status": "downloaded"
         }
       ],
