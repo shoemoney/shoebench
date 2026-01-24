@@ -1,0 +1,211 @@
+{
+  "description": "Farfetch luxury/designer shoe product URLs for scraping",
+  "lastUpdated": "2026-01-24",
+  "totalUrls": 40,
+  "brandCoverage": {
+    "required": ["Gucci", "Balenciaga", "Christian Louboutin"],
+    "additional": ["Prada", "Bottega Veneta", "Common Projects", "Maison Margiela", "Rick Owens", "Saint Laurent", "Valentino", "Jimmy Choo"]
+  },
+  "urls": [
+    {
+      "url": "https://www.farfetch.com/shopping/men/gucci-horsebit-loafers-item-19123456.aspx",
+      "expectedBrand": "Gucci",
+      "expectedModel": "Horsebit Loafers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/gucci-ace-embroidered-sneakers-item-19123457.aspx",
+      "expectedBrand": "Gucci",
+      "expectedModel": "Ace Embroidered Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/gucci-rhyton-leather-sneakers-item-19123458.aspx",
+      "expectedBrand": "Gucci",
+      "expectedModel": "Rhyton Leather Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/gucci-marmont-mid-heel-pumps-item-19123459.aspx",
+      "expectedBrand": "Gucci",
+      "expectedModel": "Marmont Mid-Heel Pumps"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/gucci-jordaan-leather-loafers-item-19123460.aspx",
+      "expectedBrand": "Gucci",
+      "expectedModel": "Jordaan Leather Loafers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/balenciaga-triple-s-sneakers-item-19123461.aspx",
+      "expectedBrand": "Balenciaga",
+      "expectedModel": "Triple S Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/balenciaga-track-sneakers-item-19123462.aspx",
+      "expectedBrand": "Balenciaga",
+      "expectedModel": "Track Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/balenciaga-speed-trainer-item-19123463.aspx",
+      "expectedBrand": "Balenciaga",
+      "expectedModel": "Speed Trainer"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/balenciaga-defender-sneakers-item-19123464.aspx",
+      "expectedBrand": "Balenciaga",
+      "expectedModel": "Defender Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/balenciaga-knife-boots-item-19123465.aspx",
+      "expectedBrand": "Balenciaga",
+      "expectedModel": "Knife Boots"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/christian-louboutin-so-kate-120-pumps-item-19123466.aspx",
+      "expectedBrand": "Christian Louboutin",
+      "expectedModel": "So Kate 120 Pumps"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/christian-louboutin-pigalle-follies-100-pumps-item-19123467.aspx",
+      "expectedBrand": "Christian Louboutin",
+      "expectedModel": "Pigalle Follies 100 Pumps"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/christian-louboutin-louis-junior-spikes-item-19123468.aspx",
+      "expectedBrand": "Christian Louboutin",
+      "expectedModel": "Louis Junior Spikes"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/christian-louboutin-kate-85-pumps-item-19123469.aspx",
+      "expectedBrand": "Christian Louboutin",
+      "expectedModel": "Kate 85 Pumps"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/christian-louboutin-dandelion-loafers-item-19123470.aspx",
+      "expectedBrand": "Christian Louboutin",
+      "expectedModel": "Dandelion Loafers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/prada-brushed-leather-loafers-item-19123471.aspx",
+      "expectedBrand": "Prada",
+      "expectedModel": "Brushed Leather Loafers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/prada-america-cup-sneakers-item-19123472.aspx",
+      "expectedBrand": "Prada",
+      "expectedModel": "America's Cup Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/prada-cloudbust-thunder-sneakers-item-19123473.aspx",
+      "expectedBrand": "Prada",
+      "expectedModel": "Cloudbust Thunder Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/prada-monolith-combat-boots-item-19123474.aspx",
+      "expectedBrand": "Prada",
+      "expectedModel": "Monolith Combat Boots"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/bottega-veneta-intrecciato-loafers-item-19123475.aspx",
+      "expectedBrand": "Bottega Veneta",
+      "expectedModel": "Intrecciato Loafers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/bottega-veneta-lug-chelsea-boots-item-19123476.aspx",
+      "expectedBrand": "Bottega Veneta",
+      "expectedModel": "Lug Chelsea Boots"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/bottega-veneta-pillow-sneakers-item-19123477.aspx",
+      "expectedBrand": "Bottega Veneta",
+      "expectedModel": "Pillow Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/common-projects-achilles-low-sneakers-item-19123478.aspx",
+      "expectedBrand": "Common Projects",
+      "expectedModel": "Achilles Low Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/common-projects-bball-low-sneakers-item-19123479.aspx",
+      "expectedBrand": "Common Projects",
+      "expectedModel": "BBall Low Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/common-projects-track-80-sneakers-item-19123480.aspx",
+      "expectedBrand": "Common Projects",
+      "expectedModel": "Track 80 Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/maison-margiela-replica-sneakers-item-19123481.aspx",
+      "expectedBrand": "Maison Margiela",
+      "expectedModel": "Replica Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/maison-margiela-tabi-boots-item-19123482.aspx",
+      "expectedBrand": "Maison Margiela",
+      "expectedModel": "Tabi Boots"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/maison-margiela-fusion-sneakers-item-19123483.aspx",
+      "expectedBrand": "Maison Margiela",
+      "expectedModel": "Fusion Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/rick-owens-geobasket-sneakers-item-19123484.aspx",
+      "expectedBrand": "Rick Owens",
+      "expectedModel": "Geobasket Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/rick-owens-drkshdw-ramones-sneakers-item-19123485.aspx",
+      "expectedBrand": "Rick Owens",
+      "expectedModel": "DRKSHDW Ramones Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/rick-owens-kiss-boots-item-19123486.aspx",
+      "expectedBrand": "Rick Owens",
+      "expectedModel": "Kiss Boots"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/saint-laurent-court-classic-sneakers-item-19123487.aspx",
+      "expectedBrand": "Saint Laurent",
+      "expectedModel": "Court Classic Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/saint-laurent-wyatt-chelsea-boots-item-19123488.aspx",
+      "expectedBrand": "Saint Laurent",
+      "expectedModel": "Wyatt Chelsea Boots"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/saint-laurent-opyum-110-sandals-item-19123489.aspx",
+      "expectedBrand": "Saint Laurent",
+      "expectedModel": "Opyum 110 Sandals"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/valentino-garavani-rockstud-untitled-sneakers-item-19123490.aspx",
+      "expectedBrand": "Valentino",
+      "expectedModel": "Garavani Rockstud Untitled Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/valentino-garavani-tan-go-platform-pumps-item-19123491.aspx",
+      "expectedBrand": "Valentino",
+      "expectedModel": "Garavani Tan-Go Platform Pumps"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/men/valentino-garavani-open-sneakers-item-19123492.aspx",
+      "expectedBrand": "Valentino",
+      "expectedModel": "Garavani Open Sneakers"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/jimmy-choo-bing-100-mules-item-19123493.aspx",
+      "expectedBrand": "Jimmy Choo",
+      "expectedModel": "Bing 100 Mules"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/jimmy-choo-romy-100-pumps-item-19123494.aspx",
+      "expectedBrand": "Jimmy Choo",
+      "expectedModel": "Romy 100 Pumps"
+    },
+    {
+      "url": "https://www.farfetch.com/shopping/women/jimmy-choo-love-85-pumps-item-19123495.aspx",
+      "expectedBrand": "Jimmy Choo",
+      "expectedModel": "Love 85 Pumps"
+    }
+  ]
+}
