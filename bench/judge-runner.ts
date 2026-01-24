@@ -1,9 +1,9 @@
 /**
  * Judge runner for LLM-based shoe identification evaluation
- * Uses AI SDK structured output with Claude 3.5 Haiku
+ * Uses AI SDK generateObject with Claude 3.5 Haiku
  */
 
-import { generateText, Output } from 'ai';
+import { generateObject } from 'ai';
 import { openrouter } from '@openrouter/ai-sdk-provider';
 import { z } from 'zod';
 import { type JudgeEvaluation } from './judge-types';
@@ -13,14 +13,15 @@ import { JUDGE_SYSTEM_PROMPT, buildJudgePrompt, JUDGE_PROMPT_VERSION, SCORING_RU
 
 /**
  * Zod schema for structured judge output
+ * No extended reasoning - judge decision is straightforward for local evaluation
  */
 export const JudgeResultSchema = z.object({
-  reasoning: z.string().describe('Step-by-step analysis of match quality. Consider brand accuracy, model name matching including variants/abbreviations. 2-3 sentences.'),
   brandMatch: z.boolean().describe('Does the response correctly identify the brand?'),
   modelMatch: z.boolean().describe('Does the response correctly identify the model name or use an acceptable variant?'),
   tier: z.enum(['exact', 'variant', 'brand_only', 'wrong']).describe('Match quality tier'),
   score: z.number().describe('Numeric score: 100 (exact), 75 (variant), 50 (brand_only), 0 (wrong)'),
-  confidence: z.enum(['high', 'medium', 'low']).describe('Confidence in this judgment')
+  confidence: z.enum(['high', 'medium', 'low']).describe('Confidence in this judgment'),
+  reasoning: z.string().describe('Brief explanation (1 sentence)')
 });
 
 /**
@@ -66,23 +67,18 @@ export async function runJudge(params: {
 
     const startTime = Date.now();
 
-    // Call judge model with structured output
-    const result = await generateText({
+    // Call judge model with structured output (generateObject)
+    const result = await generateObject({
       model: openrouter(JUDGE_MODEL, { usage: { include: true } }),
       system: JUDGE_SYSTEM_PROMPT,
-      output: Output.object({
-        schema: JudgeResultSchema,
-        name: 'shoe_identification_judgment'
-      }),
-      messages: [
-        { role: 'user', content: judgePrompt }
-      ]
+      schema: JudgeResultSchema,
+      prompt: judgePrompt
     });
 
     const latencyMs = Date.now() - startTime;
 
     // Extract structured output
-    const judgment = result.output;
+    const judgment = result.object;
 
     // Extract metrics
     const cost = extractCost(result.providerMetadata);
