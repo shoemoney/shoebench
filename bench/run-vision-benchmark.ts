@@ -12,6 +12,12 @@
  *   --no-cache     Disable caching (re-run all tests)
  */
 
+import { config } from 'dotenv';
+import { resolve } from 'path';
+
+// Load .env from project root
+config({ path: resolve(__dirname, '../.env') });
+
 import { readFile, writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join } from 'path';
@@ -32,15 +38,30 @@ async function main() {
   console.log('Vision Benchmark Runner');
   console.log('=======================\n');
 
+  // Check for API key
+  if (!process.env.OPENROUTER_API_KEY) {
+    console.error('ERROR: OPENROUTER_API_KEY not set');
+    console.error('Please set it in .env file or environment');
+    process.exit(1);
+  }
+  console.log('OpenRouter API key loaded from .env');
+
   // Load catalog
   const catalogPath = join(__dirname, '../dataset/catalog.json');
   const catalogRaw = await readFile(catalogPath, 'utf-8');
   const catalog: ShoeCatalog = JSON.parse(catalogRaw);
   console.log(`Loaded catalog: ${catalog.totalShoes} shoes`);
 
+  // Filter to shoes with existing images
+  const shoesWithImages = catalog.shoes.filter(shoe => {
+    const imagePath = join(__dirname, '..', shoe.images[0].localPath);
+    return existsSync(imagePath);
+  });
+  console.log(`Shoes with images: ${shoesWithImages.length}/${catalog.totalShoes}`);
+
   // Select shoes (default 20, or specified via --shoes=N)
   const shoeCount = parseInt(getArg('shoes') || '20');
-  const selectedShoes = catalog.shoes.slice(0, shoeCount);
+  const selectedShoes = shoesWithImages.slice(0, shoeCount);
   console.log(`Selected ${selectedShoes.length} shoes for testing`);
 
   // Select models

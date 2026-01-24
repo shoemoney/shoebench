@@ -175,8 +175,14 @@ async function main() {
   // Load catalog
   const catalog: Catalog = JSON.parse(readFileSync(CATALOG_PATH, 'utf-8'));
 
-  // Filter to entries that need images
-  let shoesToProcess = catalog.shoes.filter(s => s.images[0].status === 'placeholder');
+  // Filter to entries that need images (placeholder or missing file)
+  // localPath is "dataset/images/...", script is in dataset/scripts/
+  const projectRoot = dirname(dirname(import.meta.dir));
+  let shoesToProcess = catalog.shoes.filter(s => {
+    const imagePath = join(projectRoot, s.images[0].localPath);
+    const isMissing = !existsSync(imagePath);
+    return s.images[0].status === 'placeholder' || isMissing;
+  });
 
   if (source) {
     shoesToProcess = shoesToProcess.filter(s => s.provenance.source === source);
