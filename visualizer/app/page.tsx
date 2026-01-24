@@ -9,10 +9,10 @@ import {
   TrendingUp,
   Filter,
   ChevronDown,
-  Sparkles,
   Calendar,
+  Footprints,
 } from "lucide-react";
-import benchmarkData from "../data/benchmark-results.json";
+import benchmarkData from "../data/shoebench-results.json";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -50,39 +50,52 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const SkateboardSVG = ({
-  className,
-  ...props
-}: ComponentPropsWithoutRef<"svg">) => (
-  <svg
-    viewBox="0 0 1200 1200"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-    aria-hidden="true"
-    {...props}
-  >
-    <path
-      d="m1115.3 454.92c86.906-103.12 81.844-257.9-15.234-354.98-97.125-97.031-251.86-102.14-354.98-15.234l-18.75-18.703c-8.8125-8.8125-23.062-8.8125-31.875 0l-135.89 135.89c-8.8125 8.8125-8.8125 23.062 0 31.875l18.047 18.047-324.79 324.79-18.047-18.047c-8.8125-8.8125-23.062-8.8125-31.875 0l-135.89 135.89c-8.8125 8.8125-8.8125 23.062 0 31.875l18.703 18.703c-86.906 103.17-81.797 257.9 15.281 354.98 97.078 97.078 251.86 102.14 354.98 15.234l18.703 18.703c8.8125 8.8125 23.062 8.8125 31.875 0l135.89-135.89c8.8125-8.8125 8.8125-23.062 0-31.875l-18.047-18.047 324.84-324.84 18.047 18.047c8.8125 8.8125 23.062 8.8125 31.875 0l135.89-135.89c8.8125-8.8125 8.8125-23.062 0-31.875zm-321-321-17.203-17.203c85.406-69.422 211.6-64.359 291.1 15.094 79.5 79.5 84.516 205.69 15.094 291.1l-17.203-17.203c-8.8125-8.8125-23.062-8.8125-31.875 0l-18.047 18.047-239.9-239.9 18.047-18.047c8.8125-8.8125 8.8125-23.062 0-31.875zm-85.969 117.89 36.047-36.047 239.9 239.9-36.047 36.047zm123.1 186.84-18.047 18.047c-19.312 19.312-50.719 19.312-70.031 0s-19.312-50.719 0-70.031l18.047-18.047zm-121.03-324.84 36.047 36.047-104.02 104.02-36.047-36.047zm-492.56 492.56 36.047 36.047-54 54 0.046875-0.046875-50.109 50.109-36.047-36.047zm273.84 341.81-36.047 36.047-239.9-239.86 36.047-36.047zm-123.1-186.84 18.047-18.047c19.312-19.312 50.719-19.312 70.031 0s19.312 50.719 0 70.031l-18.047 18.047zm37.125 304.74 17.203 17.203c-85.406 69.422-211.6 64.359-291.1-15.094-79.5-79.5-84.516-205.69-15.094-291.1l17.203 17.203c8.8125 8.8125 23.062 8.8125 31.875 0l18.047-18.047 239.9 239.9-18.047 18.047c-8.8125 8.8125-8.7656 23.062 0 31.875zm83.906 20.109-36.094-36.094c79.828-79.828 100.41-100.41 104.02-104.02l0.14062 0.14062c0.79688 0.79688 6.1875 6.1875 35.906 35.906zm408.71-512.72 18.047 18.047-324.84 324.79-18.047-18.047c-8.8125-8.8125-23.062-8.8125-31.875 0l-18.047 18.047-53.062-53.062 18.047-18.047c36.891-36.891 36.891-96.891 0-133.78-36.891-36.891-96.891-36.891-133.78 0l-18.047 18.047-53.062-53.062 18.047-18.047c8.8125-8.8125 8.8125-23.062 0-31.875l-18.047-18.047 324.84-324.84 18.047 18.047c8.8125 8.8125 23.062 8.8125 31.875 0l18.047-18.047 53.062 53.062-18.047 18.047c-36.891 36.891-36.891 96.891 0 133.78 36.891 36.891 96.891 36.891 133.78 0l18.047-18.047 53.062 53.062-18.047 18.047c-8.8125 8.8594-8.8125 23.109 0 31.922zm83.859 20.156-36.047-36.047 104.02-104.02 36.047 36.047z"
-      fill="currentColor"
-      stroke="inherit"
-    />
-  </svg>
-);
+import type { BenchmarkData, ModelMetrics } from "@/lib/types";
 
-interface ModelData {
+// Type-safe data access
+const typedBenchmarkData = benchmarkData as BenchmarkData;
+const { modelMetrics, metadata } = typedBenchmarkData;
+
+// Leaderboard data derived from modelMetrics
+interface LeaderboardEntry {
   model: string;
-  correct: number;
-  incorrect: number;
-  errors: number;
-  totalTests: number;
-  successRate: number;
-  errorRate: number;
-  averageDuration: number;
+  fullModel: string;
+  accuracy: number;
+  avgScore: number;
   totalCost: number;
-  averageCostPerTest: number;
+  avgLatency: number;
+  exactMatches: number;
+  variantMatches: number;
+  totalTests: number;
 }
+
+const leaderboardData: LeaderboardEntry[] = modelMetrics
+  .map((m: ModelMetrics) => ({
+    model: m.modelName
+      .replace("openai/", "")
+      .replace("anthropic/", "")
+      .replace("google/", "")
+      .replace("meta-llama/", ""),
+    fullModel: m.modelName,
+    accuracy: m.overallAccuracy,
+    avgScore: m.avgScore,
+    totalCost: m.totalCost,
+    avgLatency: m.avgLatency,
+    exactMatches: m.exactMatches,
+    variantMatches: m.variantMatches,
+    totalTests: m.totalTests,
+  }))
+  .sort((a, b) => b.accuracy - a.accuracy);
 
 function withAlpha(color: string, alpha: number) {
   if (color.startsWith("hsl("))
@@ -97,7 +110,7 @@ function getGradientId(prefix: string, model: string) {
 }
 
 function currency(n: number) {
-  return `$${n.toFixed(2)}`;
+  return `$${n.toFixed(4)}`;
 }
 
 function barValueLabel(suffix: string, decimals: number) {
@@ -122,30 +135,6 @@ function barValueLabel(suffix: string, decimals: number) {
   };
 }
 
-function barValueLabelHorizontal(suffix: string, decimals: number) {
-  return (props: any) => {
-    const x = Number(props?.x ?? 0);
-    const y = Number(props?.y ?? 0);
-    const width = Number(props?.width ?? 0);
-    const height = Number(props?.height ?? 0);
-    const value = Number(props?.value ?? 0);
-    const cx = x + width + 6;
-    const cy = y + height / 2;
-    return (
-      <text
-        x={cx}
-        y={cy}
-        dy={3}
-        textAnchor="start"
-        className="pointer-events-none text-xs font-medium fill-neutral-300"
-      >
-        {value.toFixed(decimals)}
-        {suffix}
-      </text>
-    );
-  };
-}
-
 function barValueLabelHorizontalSmart(
   suffix: string,
   decimals: number,
@@ -158,7 +147,7 @@ function barValueLabelHorizontalSmart(
     const height = Number(props?.height ?? 0);
     const value = Number(props?.value ?? 0);
     const ratio = maxValue > 0 ? value / maxValue : 0;
-    const inside = ratio >= 0.75; // place inside for longer bars
+    const inside = ratio >= 0.75;
     const tx = inside ? x + width - 6 : x + width + 6;
     const anchor: any = inside ? "end" : "start";
     const cls = inside
@@ -182,58 +171,56 @@ function barValueLabelHorizontalSmart(
 function truncateLabel(input: unknown, max = 14) {
   const label = String(input ?? "");
   if (label.length <= max) return label;
-  return label.slice(0, Math.max(1, max - 1)) + "…";
+  return label.slice(0, Math.max(1, max - 1)) + "...";
 }
 
 export default function BenchmarkVisualizer() {
-  const { rankings, metadata } = benchmarkData as {
-    rankings: ModelData[];
-    metadata: any;
-  };
-
   const [selectedModels, setSelectedModels] = useState<string[]>(
-    rankings.map((m) => m.model)
+    leaderboardData.map((m) => m.fullModel)
   );
 
-  const filteredRankings = rankings.filter((m) =>
-    selectedModels.includes(m.model)
+  const filteredLeaderboard = leaderboardData.filter((m) =>
+    selectedModels.includes(m.fullModel)
   );
 
   const isMobile = useIsMobile();
-  const mobileBarHeight = Math.max(320, filteredRankings.length * 36 + 120);
+  const mobileBarHeight = Math.max(320, filteredLeaderboard.length * 36 + 120);
 
-  const totalTestsPerModel = rankings[0]?.totalTests ?? 0;
+  const totalTestsPerModel = leaderboardData[0]?.totalTests ?? 0;
 
-  const successRateData = filteredRankings
+  const successRateData = filteredLeaderboard
     .map((m) => ({
       model: m.model,
-      successRate: Number(m.successRate.toFixed(1)),
-      correct: m.correct,
+      fullModel: m.fullModel,
+      successRate: Number(m.accuracy.toFixed(1)),
+      correct: m.exactMatches + m.variantMatches,
       total: m.totalTests,
     }))
     .sort((a, b) => b.successRate - a.successRate);
 
-  const costData = filteredRankings
+  const costData = filteredLeaderboard
     .map((m) => ({
       model: m.model,
-      totalCost: Number(m.totalCost.toFixed(4)),
+      fullModel: m.fullModel,
+      totalCost: Number(m.totalCost.toFixed(6)),
     }))
     .sort((a, b) => a.totalCost - b.totalCost);
 
-  const speedData = filteredRankings
+  const speedData = filteredLeaderboard
     .map((m) => ({
       model: m.model,
-      duration: Number((m.averageDuration / 1000).toFixed(2)),
-      durationMs: m.averageDuration,
+      fullModel: m.fullModel,
+      duration: Number((m.avgLatency / 1000).toFixed(2)),
+      durationMs: m.avgLatency,
     }))
     .sort((a, b) => a.duration - b.duration);
 
-  const performanceData = filteredRankings.map((m) => ({
+  const performanceData = filteredLeaderboard.map((m) => ({
     model: m.model.replace(/-/g, " "),
-    originalModel: m.model,
-    successRate: m.successRate,
+    originalModel: m.fullModel,
+    successRate: m.accuracy,
     totalCost: m.totalCost,
-    duration: m.averageDuration / 1000,
+    duration: m.avgLatency / 1000,
   }));
 
   const getModelColor = (modelName: string) => {
@@ -251,7 +238,7 @@ export default function BenchmarkVisualizer() {
       "hsl(330, 70%, 60%)",
       "hsl(280, 60%, 62%)",
     ];
-    const index = rankings.findIndex((r) => r.model === modelName);
+    const index = leaderboardData.findIndex((r) => r.fullModel === modelName);
     return colors[(index + colors.length) % colors.length];
   };
 
@@ -262,7 +249,8 @@ export default function BenchmarkVisualizer() {
         : [...prev, modelName]
     );
   };
-  const handleSelectAll = () => setSelectedModels(rankings.map((m) => m.model));
+  const handleSelectAll = () =>
+    setSelectedModels(leaderboardData.map((m) => m.fullModel));
   const handleDeselectAll = () => setSelectedModels([]);
 
   const costMax = Math.max(0, ...costData.map((d) => d.totalCost));
@@ -275,13 +263,13 @@ export default function BenchmarkVisualizer() {
       <header className="relative mx-auto max-w-7xl px-4 pt-6 pb-2">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <SkateboardSVG className="h-10 w-10 stroke-neutral-100" />
+            <Footprints className="h-10 w-10 text-neutral-100" />
             <div>
               <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
-                SkateBench
+                ShoeBench
               </h1>
               <p className="mt-1 max-w-prose text-xs text-neutral-300 sm:text-sm">
-                {metadata?.testSuite || "Benchmark"}
+                Vision Model Shoe Identification Benchmark
               </p>
             </div>
           </div>
@@ -290,7 +278,13 @@ export default function BenchmarkVisualizer() {
               variant="secondary"
               className="bg-neutral-800/60 text-neutral-200"
             >
-              {metadata?.totalModels ?? rankings.length} models
+              {metadata?.totalModels ?? leaderboardData.length} models
+            </Badge>
+            <Badge
+              variant="secondary"
+              className="bg-neutral-800/60 text-neutral-200"
+            >
+              {metadata?.totalShoes ?? 0} shoes
             </Badge>
             {metadata?.timestamp ? (
               <Badge
@@ -306,14 +300,14 @@ export default function BenchmarkVisualizer() {
       </header>
 
       <main className="relative mx-auto max-w-7xl px-4 pb-16">
-        <Tabs defaultValue="accuracy" className="space-y-6">
+        <Tabs defaultValue="leaderboard" className="space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <TabsList className="max-w-full overflow-x-auto overflow-y-hidden whitespace-nowrap rounded-xl border border-neutral-800 bg-neutral-900/70 p-1">
               <TabsTrigger
-                value="accuracy"
+                value="leaderboard"
                 className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-green-600 data-[state=active]:text-white"
               >
-                <Target className="h-4 w-4" /> Accuracy
+                <Trophy className="h-4 w-4" /> Leaderboard
               </TabsTrigger>
               <TabsTrigger
                 value="cost"
@@ -331,7 +325,7 @@ export default function BenchmarkVisualizer() {
                 value="combined"
                 className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-orange-600 data-[state=active]:text-white"
               >
-                <TrendingUp className="h-4 w-4" /> Combined
+                <TrendingUp className="h-4 w-4" /> Cost vs Accuracy
               </TabsTrigger>
             </TabsList>
 
@@ -342,7 +336,7 @@ export default function BenchmarkVisualizer() {
                   className="w-full border-neutral-700 bg-neutral-900/60 text-white hover:bg-neutral-800 sm:w-auto"
                 >
                   <Filter className="mr-2 h-4 w-4" /> Models (
-                  {selectedModels.length}/{rankings.length})
+                  {selectedModels.length}/{leaderboardData.length})
                   <ChevronDown className="ml-2 h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -371,32 +365,32 @@ export default function BenchmarkVisualizer() {
                 </div>
                 <DropdownMenuSeparator className="bg-neutral-700" />
                 <ScrollArea className="h-80">
-                  {rankings.map((m) => (
+                  {leaderboardData.map((m) => (
                     <DropdownMenuItem
-                      key={m.model}
+                      key={m.fullModel}
                       className="group flex items-center gap-3 py-2 hover:bg-neutral-800 focus:bg-neutral-800"
                       onSelect={(e) => e.preventDefault()}
                     >
                       <Checkbox
-                        id={m.model}
-                        checked={selectedModels.includes(m.model)}
-                        onCheckedChange={() => handleModelToggle(m.model)}
+                        id={m.fullModel}
+                        checked={selectedModels.includes(m.fullModel)}
+                        onCheckedChange={() => handleModelToggle(m.fullModel)}
                         className="border-neutral-600 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
                       />
                       <div className="flex min-w-0 flex-1 items-center gap-2">
                         <div
                           className="h-3 w-3 shrink-0 rounded-full"
-                          style={{ backgroundColor: getModelColor(m.model) }}
+                          style={{ backgroundColor: getModelColor(m.fullModel) }}
                         />
                         <label
-                          htmlFor={m.model}
+                          htmlFor={m.fullModel}
                           className="cursor-pointer truncate text-sm text-neutral-200"
                         >
                           {m.model}
                         </label>
                       </div>
                       <Badge className="ml-auto bg-neutral-800 text-neutral-200">
-                        {m.successRate.toFixed(1)}%
+                        {m.accuracy.toFixed(1)}%
                       </Badge>
                     </DropdownMenuItem>
                   ))}
@@ -405,139 +399,110 @@ export default function BenchmarkVisualizer() {
             </DropdownMenu>
           </div>
 
-          <TabsContent value="accuracy">
+          {/* Leaderboard Tab */}
+          <TabsContent value="leaderboard">
             <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-white">
-                  <Trophy className="h-5 w-5 text-green-400" /> Success rate by
-                  model
+                  <Trophy className="h-5 w-5 text-green-400" /> Model Rankings
                 </CardTitle>
                 <CardDescription className="text-neutral-400">
-                  Percentage of correct answers out of {totalTestsPerModel}{" "}
-                  tests per model
+                  Vision models ranked by overall accuracy (exact + variant
+                  matches) out of {totalTestsPerModel} tests per model
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer
-                  config={{
-                    successRate: {
-                      label: "Success Rate",
-                      color: "hsl(142, 76%, 36%)",
-                    },
-                  }}
-                  className="h-[420px] sm:h-[520px] w-full"
-                  style={isMobile ? { height: mobileBarHeight } : undefined}
-                >
-                  <BarChart
-                    data={successRateData}
-                    layout={isMobile ? "vertical" : "horizontal"}
-                    margin={
-                      isMobile
-                        ? { top: 10, right: 24, left: 140, bottom: 24 }
-                        : { top: 10, right: 24, left: 12, bottom: 64 }
-                    }
-                  >
-                    <defs>
-                      {successRateData.map((d) => {
-                        const base = getModelColor(d.model);
-                        const id = getGradientId("sr", d.model);
-                        return (
-                          <linearGradient
-                            key={id}
-                            id={id}
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
+                <Table>
+                  <TableHeader>
+                    <TableRow className="border-neutral-800 hover:bg-transparent">
+                      <TableHead className="text-neutral-400 w-16">
+                        Rank
+                      </TableHead>
+                      <TableHead className="text-neutral-400">Model</TableHead>
+                      <TableHead className="text-neutral-400 text-right">
+                        Accuracy
+                      </TableHead>
+                      <TableHead className="text-neutral-400 text-right">
+                        Avg Score
+                      </TableHead>
+                      <TableHead className="text-neutral-400 text-right">
+                        Cost
+                      </TableHead>
+                      <TableHead className="text-neutral-400 text-right">
+                        Latency
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredLeaderboard.map((entry, index) => (
+                      <TableRow
+                        key={entry.fullModel}
+                        className="border-neutral-800 hover:bg-neutral-800/50"
+                      >
+                        <TableCell className="font-medium text-neutral-300">
+                          <div className="flex items-center gap-2">
+                            {index === 0 && (
+                              <Trophy className="h-4 w-4 text-yellow-500" />
+                            )}
+                            {index === 1 && (
+                              <span className="text-neutral-400">#2</span>
+                            )}
+                            {index === 2 && (
+                              <span className="text-neutral-400">#3</span>
+                            )}
+                            {index > 2 && (
+                              <span className="text-neutral-500">
+                                #{index + 1}
+                              </span>
+                            )}
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-2">
+                            <div
+                              className="h-3 w-3 shrink-0 rounded-full"
+                              style={{
+                                backgroundColor: getModelColor(entry.fullModel),
+                              }}
+                            />
+                            <span className="font-medium text-neutral-100">
+                              {entry.model}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <span
+                            className={`font-semibold ${
+                              entry.accuracy >= 80
+                                ? "text-green-400"
+                                : entry.accuracy >= 60
+                                  ? "text-yellow-400"
+                                  : "text-red-400"
+                            }`}
                           >
-                            <stop
-                              offset="0%"
-                              stopColor={withAlpha(base, 0.95)}
-                            />
-                            <stop
-                              offset="100%"
-                              stopColor={withAlpha(base, 0.55)}
-                            />
-                          </linearGradient>
-                        );
-                      })}
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
-                    {isMobile ? (
-                      <>
-                        <XAxis
-                          type="number"
-                          domain={[0, 100]}
-                          label={{
-                            value: "Success Rate (%)",
-                            position: "insideBottom",
-                            offset: -10,
-                            fill: "#9ca3af",
-                          }}
-                          stroke="#9ca3af"
-                        />
-                        <YAxis
-                          type="category"
-                          dataKey="model"
-                          width={12}
-                          tick={{ fontSize: 12, fill: "#9ca3af" }}
-                          tickFormatter={(v: string) => truncateLabel(v)}
-                          stroke="#9ca3af"
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <XAxis
-                          dataKey="model"
-                          angle={-45}
-                          textAnchor="end"
-                          height={100}
-                          fontSize={12}
-                          stroke="#9ca3af"
-                        />
-                        <YAxis
-                          label={{
-                            value: "Success Rate (%)",
-                            angle: -90,
-                            position: "insideLeft",
-                            fill: "#9ca3af",
-                          }}
-                          domain={[0, 100]}
-                          stroke="#9ca3af"
-                        />
-                      </>
-                    )}
-                    <ChartTooltip
-                      content={<ChartTooltipContent />}
-                      formatter={(value: any) => [`${value}% Success Rate`]}
-                      labelFormatter={(label: string) => `Model: ${label}`}
-                    />
-                    <Bar
-                      dataKey="successRate"
-                      radius={isMobile ? [0, 6, 6, 0] : [6, 6, 0, 0]}
-                    >
-                      <LabelList
-                        dataKey="successRate"
-                        position={isMobile ? "right" : "top"}
-                        content={
-                          isMobile
-                            ? barValueLabelHorizontalSmart("%", 1, 100)
-                            : barValueLabel("%", 1)
-                        }
-                      />
-                      {successRateData.map((entry) => (
-                        <Cell
-                          key={entry.model}
-                          fill={`url(#${getGradientId("sr", entry.model)})`}
-                        />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ChartContainer>
+                            {entry.accuracy.toFixed(1)}%
+                          </span>
+                        </TableCell>
+                        <TableCell className="text-right text-neutral-300">
+                          {entry.avgScore.toFixed(0)}
+                        </TableCell>
+                        <TableCell className="text-right text-neutral-300">
+                          {currency(entry.totalCost)}
+                        </TableCell>
+                        <TableCell className="text-right text-neutral-300">
+                          {entry.avgLatency > 0
+                            ? `${(entry.avgLatency / 1000).toFixed(1)}s`
+                            : "-"}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
               </CardContent>
             </Card>
           </TabsContent>
 
+          {/* Cost Tab */}
           <TabsContent value="cost">
             <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <CardHeader className="pb-2">
@@ -546,14 +511,14 @@ export default function BenchmarkVisualizer() {
                   efficiency by model
                 </CardTitle>
                 <CardDescription className="text-neutral-400">
-                  Average cost per test in cents (lower is better)
+                  Total cost to run {totalTestsPerModel} tests (lower is better)
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ChartContainer
                   config={{
                     totalCost: {
-                      label: "Cost per Test",
+                      label: "Total Cost",
                       color: "hsl(217, 91%, 60%)",
                     },
                   }}
@@ -571,7 +536,7 @@ export default function BenchmarkVisualizer() {
                   >
                     <defs>
                       {costData.map((d) => {
-                        const base = getModelColor(d.model);
+                        const base = getModelColor(d.fullModel);
                         const id = getGradientId("ct", d.model);
                         return (
                           <linearGradient
@@ -600,7 +565,7 @@ export default function BenchmarkVisualizer() {
                         <XAxis
                           type="number"
                           label={{
-                            value: "Cost to run tests",
+                            value: "Cost ($)",
                             position: "insideBottom",
                             offset: -10,
                             fill: "#9ca3af",
@@ -628,7 +593,7 @@ export default function BenchmarkVisualizer() {
                         />
                         <YAxis
                           label={{
-                            value: "Cost per Test (¢)",
+                            value: "Total Cost ($)",
                             angle: -90,
                             position: "insideLeft",
                             fill: "#9ca3af",
@@ -639,9 +604,7 @@ export default function BenchmarkVisualizer() {
                     )}
                     <ChartTooltip
                       content={<ChartTooltipContent />}
-                      formatter={(value: any) => [
-                        `Avg cost: \$${value} per test`,
-                      ]}
+                      formatter={(value: any) => [`Total cost: $${value}`]}
                       labelFormatter={(label: string) => `Model: ${label}`}
                     />
                     <Bar
@@ -653,8 +616,8 @@ export default function BenchmarkVisualizer() {
                         position={isMobile ? "right" : "top"}
                         content={
                           isMobile
-                            ? barValueLabelHorizontalSmart("", 2, costMax || 1)
-                            : barValueLabel("", 2)
+                            ? barValueLabelHorizontalSmart("", 4, costMax || 1)
+                            : barValueLabel("", 4)
                         }
                       />
                       {costData.map((entry) => (
@@ -670,6 +633,7 @@ export default function BenchmarkVisualizer() {
             </Card>
           </TabsContent>
 
+          {/* Speed Tab */}
           <TabsContent value="speed">
             <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <CardHeader className="pb-2">
@@ -703,7 +667,7 @@ export default function BenchmarkVisualizer() {
                   >
                     <defs>
                       {speedData.map((d) => {
-                        const base = getModelColor(d.model);
+                        const base = getModelColor(d.fullModel);
                         const id = getGradientId("sp", d.model);
                         return (
                           <linearGradient
@@ -806,22 +770,23 @@ export default function BenchmarkVisualizer() {
             </Card>
           </TabsContent>
 
+          {/* Cost vs Accuracy Tab */}
           <TabsContent value="combined">
             <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-white">
                   <TrendingUp className="h-5 w-5 text-orange-400" /> Performance
-                  vs total cost
+                  vs Cost
                 </CardTitle>
                 <CardDescription className="text-neutral-400">
-                  Top‑left is ideal: higher accuracy, lower total cost
+                  Top-left is ideal: higher accuracy, lower total cost
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ChartContainer
                   config={{
                     successRate: {
-                      label: "Success Rate",
+                      label: "Accuracy",
                       color: "hsl(142, 76%, 36%)",
                     },
                   }}
@@ -849,15 +814,15 @@ export default function BenchmarkVisualizer() {
                       }}
                       stroke="#9ca3af"
                       domain={[0, "auto"]}
-                      tickFormatter={(tick) => tick.toFixed(2)}
+                      tickFormatter={(tick) => tick.toFixed(3)}
                     />
                     <YAxis
                       type="number"
                       dataKey="successRate"
-                      name="Success Rate"
+                      name="Accuracy"
                       unit="%"
                       label={{
-                        value: "Success Rate (%)",
+                        value: "Accuracy (%)",
                         angle: -90,
                         position: "insideLeft",
                         fill: "#9ca3af",
@@ -874,14 +839,16 @@ export default function BenchmarkVisualizer() {
                             <div className="rounded-lg border border-white/10 bg-neutral-900/95 p-3 text-neutral-100 shadow-xl">
                               <p className="font-semibold">{d.model}</p>
                               <p className="text-sm text-neutral-300">
-                                Success: {d.successRate.toFixed(1)}%
+                                Accuracy: {d.successRate.toFixed(1)}%
                               </p>
                               <p className="text-sm text-neutral-300">
                                 Total cost: {currency(d.totalCost)}
                               </p>
-                              <p className="text-sm text-neutral-300">
-                                Time: {d.duration.toFixed(2)}s
-                              </p>
+                              {d.duration > 0 && (
+                                <p className="text-sm text-neutral-300">
+                                  Time: {d.duration.toFixed(2)}s
+                                </p>
+                              )}
                             </div>
                           );
                         }
