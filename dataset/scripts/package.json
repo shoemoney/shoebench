@@ -8,7 +8,8 @@
     "download:farfetch": "node download-images.mjs --source farfetch"
   },
   "dependencies": {
+    "playwright": "^1.58.0",
     "puppeteer": "^22.0.0",
-    "sharp": "^0.33.0"
+    "sharp": "^0.34.5"
   }
 }

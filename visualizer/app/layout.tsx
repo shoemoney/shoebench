@@ -4,9 +4,9 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SkateBench - Ranking Models By Skateboarding Knowledge",
+  title: "ShoeBench - Vision Model Shoe Identification Benchmark",
   description:
-    "A fun benchmark of LLMs by how well they can name skateboarding tricks",
+    "An open source benchmark for vision-capable LLMs that tests shoe brand and model identification ability",
 };
 
 export default function RootLayout({
