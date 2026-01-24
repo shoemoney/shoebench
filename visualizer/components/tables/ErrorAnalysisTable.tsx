@@ -76,7 +76,7 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
       header: 'Brand',
       enableSorting: true,
       cell: ({ row }) => (
-        <span className="text-neutral-100">{row.original.shoeBrand}</span>
+        <span className="text-white">{row.original.shoeBrand}</span>
       ),
     },
     {
@@ -84,7 +84,7 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
       header: 'Model',
       enableSorting: true,
       cell: ({ row }) => (
-        <div className="max-w-[200px] truncate text-neutral-100" title={row.original.shoeModel}>
+        <div className="max-w-[200px] truncate text-white" title={row.original.shoeModel}>
           {row.original.shoeModel}
         </div>
       ),
@@ -106,7 +106,7 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
       accessorKey: 'modelName',
       header: 'Vision Model',
       cell: ({ row }) => (
-        <span className="text-sm text-neutral-100">
+        <span className="text-sm text-white">
           {row.original.modelName.split('/').pop()}
         </span>
       ),
@@ -127,11 +127,11 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="max-w-[200px] text-sm text-neutral-200 truncate cursor-help">
+              <div className="max-w-[200px] text-sm text-white truncate cursor-help">
                 {row.original.visionResponse}
               </div>
             </TooltipTrigger>
-            <TooltipContent side="left" className="max-w-[400px] whitespace-pre-wrap bg-neutral-800 text-neutral-100 border-neutral-700">
+            <TooltipContent side="left" className="max-w-[400px] whitespace-pre-wrap bg-neutral-800 text-white border-neutral-700">
               <p className="text-sm">{row.original.visionResponse}</p>
             </TooltipContent>
           </Tooltip>
