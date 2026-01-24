@@ -1,0 +1,767 @@
+{
+  "checkedAt": "2026-01-24T05:41:54.947Z",
+  "totalImages": 126,
+  "checked": 0,
+  "clean": 0,
+  "potential": 0,
+  "contaminated": 0,
+  "unchecked": 126,
+  "results": [
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-chicago",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-chicago.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-bred-toe",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-bred-toe.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-royal-toe",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-royal-toe.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-unc-toe",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-unc-toe.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-4-retro-white-oreo",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-4-retro-white-oreo.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-11-retro-cherry",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-11-retro-cherry.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-3-retro-white-cement-reimagined",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-3-retro-white-cement-reimagined.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-dunk-low-retro-white-black-panda",
+      "imagePath": "dataset/images/stockx/nike-dunk-low-retro-white-black-panda.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-dunk-low-unc",
+      "imagePath": "dataset/images/stockx/nike-dunk-low-unc.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-dunk-low-grey-fog",
+      "imagePath": "dataset/images/stockx/nike-dunk-low-grey-fog.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-dunk-low-rose-whisper",
+      "imagePath": "dataset/images/stockx/nike-dunk-low-rose-whisper.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-air-force-1-low-white",
+      "imagePath": "dataset/images/stockx/nike-air-force-1-low-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-air-force-1-low-stussy-fossil",
+      "imagePath": "dataset/images/stockx/nike-air-force-1-low-stussy-fossil.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-air-max-1-patta-waves-monarch",
+      "imagePath": "dataset/images/stockx/nike-air-max-1-patta-waves-monarch.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-air-max-90-bacon",
+      "imagePath": "dataset/images/stockx/nike-air-max-90-bacon.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-air-max-97-silver-bullet",
+      "imagePath": "dataset/images/stockx/nike-air-max-97-silver-bullet.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-yeezy-boost-350-v2-zebra",
+      "imagePath": "dataset/images/stockx/adidas-yeezy-boost-350-v2-zebra.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-yeezy-boost-350-v2-beluga-reflective",
+      "imagePath": "dataset/images/stockx/adidas-yeezy-boost-350-v2-beluga-reflective.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-yeezy-boost-350-v2-onyx",
+      "imagePath": "dataset/images/stockx/adidas-yeezy-boost-350-v2-onyx.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-yeezy-slide-onyx",
+      "imagePath": "dataset/images/stockx/adidas-yeezy-slide-onyx.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-stan-smith-white-green",
+      "imagePath": "dataset/images/stockx/adidas-stan-smith-white-green.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-superstar-white-black",
+      "imagePath": "dataset/images/stockx/adidas-superstar-white-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-forum-low-white-green",
+      "imagePath": "dataset/images/stockx/adidas-forum-low-white-green.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-samba-og-white-black-gum",
+      "imagePath": "dataset/images/stockx/adidas-samba-og-white-black-gum.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-gazelle-indoor-green-lucid-pink",
+      "imagePath": "dataset/images/stockx/adidas-gazelle-indoor-green-lucid-pink.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-adidas-campus-00s-grey-white",
+      "imagePath": "dataset/images/stockx/adidas-campus-00s-grey-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-new-balance-550-white-green",
+      "imagePath": "dataset/images/stockx/new-balance-550-white-green.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-new-balance-550-white-grey",
+      "imagePath": "dataset/images/stockx/new-balance-550-white-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-new-balance-990v3-grey",
+      "imagePath": "dataset/images/stockx/new-balance-990v3-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-new-balance-2002r-protection-pack-rain-cloud",
+      "imagePath": "dataset/images/stockx/new-balance-2002r-protection-pack-rain-cloud.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-new-balance-327-white-black",
+      "imagePath": "dataset/images/stockx/new-balance-327-white-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-converse-chuck-taylor-all-star-70-hi-black",
+      "imagePath": "dataset/images/stockx/converse-chuck-taylor-all-star-70-hi-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-converse-chuck-taylor-all-star-low-white",
+      "imagePath": "dataset/images/stockx/converse-chuck-taylor-all-star-low-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-converse-chuck-taylor-all-star-70-cdg-play-black",
+      "imagePath": "dataset/images/stockx/converse-chuck-taylor-all-star-70-cdg-play-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-converse-one-star-pro-black-white",
+      "imagePath": "dataset/images/stockx/converse-one-star-pro-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-converse-run-star-hike-high-black",
+      "imagePath": "dataset/images/stockx/converse-run-star-hike-high-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-vans-old-skool-black-white",
+      "imagePath": "dataset/images/stockx/vans-old-skool-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-vans-sk8-hi-black-white",
+      "imagePath": "dataset/images/stockx/vans-sk8-hi-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-vans-authentic-black",
+      "imagePath": "dataset/images/stockx/vans-authentic-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-vans-era-black-white",
+      "imagePath": "dataset/images/stockx/vans-era-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-vans-slip-on-checkerboard-black-white",
+      "imagePath": "dataset/images/stockx/vans-slip-on-checkerboard-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-puma-suede-classic-black-white",
+      "imagePath": "dataset/images/stockx/puma-suede-classic-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-puma-rs-x-white-grey",
+      "imagePath": "dataset/images/stockx/puma-rs-x-white-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-reebok-club-c-85-white-green",
+      "imagePath": "dataset/images/stockx/reebok-club-c-85-white-green.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-reebok-classic-leather-white-gum",
+      "imagePath": "dataset/images/stockx/reebok-classic-leather-white-gum.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-asics-gel-kayano-14-white-midnight",
+      "imagePath": "dataset/images/stockx/asics-gel-kayano-14-white-midnight.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-asics-gel-1130-white-clay-grey",
+      "imagePath": "dataset/images/stockx/asics-gel-1130-white-clay-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-sb-dunk-low-panda-pigeon",
+      "imagePath": "dataset/images/stockx/nike-sb-dunk-low-panda-pigeon.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-blazer-mid-77-white-black",
+      "imagePath": "dataset/images/stockx/nike-blazer-mid-77-white-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "stockx-nike-cortez-white-varsity-red",
+      "imagePath": "dataset/images/stockx/nike-cortez-white-varsity-red.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-dunk-low-sb-court-purple",
+      "imagePath": "dataset/images/goat/nike-dunk-low-sb-court-purple.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-dunk-low-sb-chlorophyll",
+      "imagePath": "dataset/images/goat/nike-dunk-low-sb-chlorophyll.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-dunk-low-sb-laser-orange",
+      "imagePath": "dataset/images/goat/nike-dunk-low-sb-laser-orange.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-dunk-low-sb-mummy",
+      "imagePath": "dataset/images/goat/nike-dunk-low-sb-mummy.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-dunk-low-sb-blue-raspberry",
+      "imagePath": "dataset/images/goat/nike-dunk-low-sb-blue-raspberry.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-blazer-low-77-vintage",
+      "imagePath": "dataset/images/goat/nike-blazer-low-77-vintage.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-nike-dunk-low-sb-pro-acg-caldera",
+      "imagePath": "dataset/images/goat/nike-dunk-low-sb-pro-acg-caldera.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-4-retro-midnight-navy",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-4-retro-midnight-navy.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-11-retro-low-cement-grey",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-11-retro-low-cement-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-5-retro-burgundy",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-5-retro-burgundy.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-3-retro-fear",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-3-retro-fear.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-1-low-black-toe",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-1-low-black-toe.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-6-retro-mint-foam",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-6-retro-mint-foam.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-jordan-air-jordan-12-retro-black-taxi",
+      "imagePath": "dataset/images/goat/jordan-air-jordan-12-retro-black-taxi.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-asics-gel-lyte-iii-og-white-sage",
+      "imagePath": "dataset/images/goat/asics-gel-lyte-iii-og-white-sage.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-asics-gel-nyc-cream-oyster-grey",
+      "imagePath": "dataset/images/goat/asics-gel-nyc-cream-oyster-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-asics-gel-1130-white-clay-canyon",
+      "imagePath": "dataset/images/goat/asics-gel-1130-white-clay-canyon.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-asics-gel-venture-6-smoke-grey",
+      "imagePath": "dataset/images/goat/asics-gel-venture-6-smoke-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-puma-suede-classic-xxi-peacoat",
+      "imagePath": "dataset/images/goat/puma-suede-classic-xxi-peacoat.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-puma-rs-x-efekt-white-black",
+      "imagePath": "dataset/images/goat/puma-rs-x-efekt-white-black.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-puma-palermo-leather-white",
+      "imagePath": "dataset/images/goat/puma-palermo-leather-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-puma-speedcat-og-black-white",
+      "imagePath": "dataset/images/goat/puma-speedcat-og-black-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-puma-clyde-base-white-frosted-ivory",
+      "imagePath": "dataset/images/goat/puma-clyde-base-white-frosted-ivory.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-saucony-shadow-6000-white-grey",
+      "imagePath": "dataset/images/goat/saucony-shadow-6000-white-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-saucony-jazz-81-grey-white",
+      "imagePath": "dataset/images/goat/saucony-jazz-81-grey-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-saucony-progrid-omni-9-white-silver",
+      "imagePath": "dataset/images/goat/saucony-progrid-omni-9-white-silver.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-saucony-shadow-5000-tan-brown",
+      "imagePath": "dataset/images/goat/saucony-shadow-5000-tan-brown.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-reebok-club-c-85-white-grey",
+      "imagePath": "dataset/images/goat/reebok-club-c-85-white-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-reebok-bb-4000-ii-white-chalk",
+      "imagePath": "dataset/images/goat/reebok-bb-4000-ii-white-chalk.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-reebok-question-mid-why-not-us",
+      "imagePath": "dataset/images/goat/reebok-question-mid-why-not-us.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-reebok-kamikaze-ii-og-purple-white",
+      "imagePath": "dataset/images/goat/reebok-kamikaze-ii-og-purple-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-on-cloud-x-4-white-undyed",
+      "imagePath": "dataset/images/goat/on-cloud-x-4-white-undyed.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-on-cloudmonster-frost-surf",
+      "imagePath": "dataset/images/goat/on-cloudmonster-frost-surf.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-under-armour-curry-flow-10-wolf-grey",
+      "imagePath": "dataset/images/goat/under-armour-curry-flow-10-wolf-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-under-armour-ua-slipspeed-mega-white",
+      "imagePath": "dataset/images/goat/under-armour-ua-slipspeed-mega-white.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "goat-under-armour-project-rock-6-white-grey",
+      "imagePath": "dataset/images/goat/under-armour-project-rock-6-white-grey.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-gucci-horsebit-loafers",
+      "imagePath": "dataset/images/farfetch/gucci-horsebit-loafers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-gucci-ace-embroidered-sneakers",
+      "imagePath": "dataset/images/farfetch/gucci-ace-embroidered-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-gucci-rhyton-leather-sneakers",
+      "imagePath": "dataset/images/farfetch/gucci-rhyton-leather-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-gucci-marmont-mid-heel-pumps",
+      "imagePath": "dataset/images/farfetch/gucci-marmont-mid-heel-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-gucci-jordaan-leather-loafers",
+      "imagePath": "dataset/images/farfetch/gucci-jordaan-leather-loafers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-balenciaga-triple-s-sneakers",
+      "imagePath": "dataset/images/farfetch/balenciaga-triple-s-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-balenciaga-track-sneakers",
+      "imagePath": "dataset/images/farfetch/balenciaga-track-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-balenciaga-speed-trainer",
+      "imagePath": "dataset/images/farfetch/balenciaga-speed-trainer.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-balenciaga-defender-sneakers",
+      "imagePath": "dataset/images/farfetch/balenciaga-defender-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-balenciaga-knife-boots",
+      "imagePath": "dataset/images/farfetch/balenciaga-knife-boots.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-christian-louboutin-so-kate-120-pumps",
+      "imagePath": "dataset/images/farfetch/christian-louboutin-so-kate-120-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-christian-louboutin-pigalle-follies-100-pumps",
+      "imagePath": "dataset/images/farfetch/christian-louboutin-pigalle-follies-100-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-christian-louboutin-louis-junior-spikes",
+      "imagePath": "dataset/images/farfetch/christian-louboutin-louis-junior-spikes.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-christian-louboutin-kate-85-pumps",
+      "imagePath": "dataset/images/farfetch/christian-louboutin-kate-85-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-christian-louboutin-dandelion-loafers",
+      "imagePath": "dataset/images/farfetch/christian-louboutin-dandelion-loafers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-prada-brushed-leather-loafers",
+      "imagePath": "dataset/images/farfetch/prada-brushed-leather-loafers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-prada-america-s-cup-sneakers",
+      "imagePath": "dataset/images/farfetch/prada-america-s-cup-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-prada-cloudbust-thunder-sneakers",
+      "imagePath": "dataset/images/farfetch/prada-cloudbust-thunder-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-prada-monolith-combat-boots",
+      "imagePath": "dataset/images/farfetch/prada-monolith-combat-boots.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-bottega-veneta-intrecciato-loafers",
+      "imagePath": "dataset/images/farfetch/bottega-veneta-intrecciato-loafers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-bottega-veneta-lug-chelsea-boots",
+      "imagePath": "dataset/images/farfetch/bottega-veneta-lug-chelsea-boots.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-bottega-veneta-pillow-sneakers",
+      "imagePath": "dataset/images/farfetch/bottega-veneta-pillow-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-common-projects-achilles-low-sneakers",
+      "imagePath": "dataset/images/farfetch/common-projects-achilles-low-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-common-projects-bball-low-sneakers",
+      "imagePath": "dataset/images/farfetch/common-projects-bball-low-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-common-projects-track-80-sneakers",
+      "imagePath": "dataset/images/farfetch/common-projects-track-80-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-maison-margiela-replica-sneakers",
+      "imagePath": "dataset/images/farfetch/maison-margiela-replica-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-maison-margiela-tabi-boots",
+      "imagePath": "dataset/images/farfetch/maison-margiela-tabi-boots.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-maison-margiela-fusion-sneakers",
+      "imagePath": "dataset/images/farfetch/maison-margiela-fusion-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-rick-owens-geobasket-sneakers",
+      "imagePath": "dataset/images/farfetch/rick-owens-geobasket-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-rick-owens-drkshdw-ramones-sneakers",
+      "imagePath": "dataset/images/farfetch/rick-owens-drkshdw-ramones-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-rick-owens-kiss-boots",
+      "imagePath": "dataset/images/farfetch/rick-owens-kiss-boots.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-saint-laurent-court-classic-sneakers",
+      "imagePath": "dataset/images/farfetch/saint-laurent-court-classic-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-saint-laurent-wyatt-chelsea-boots",
+      "imagePath": "dataset/images/farfetch/saint-laurent-wyatt-chelsea-boots.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-saint-laurent-opyum-110-sandals",
+      "imagePath": "dataset/images/farfetch/saint-laurent-opyum-110-sandals.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-valentino-garavani-rockstud-untitled-sneakers",
+      "imagePath": "dataset/images/farfetch/valentino-garavani-rockstud-untitled-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-valentino-garavani-tan-go-platform-pumps",
+      "imagePath": "dataset/images/farfetch/valentino-garavani-tan-go-platform-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-valentino-garavani-open-sneakers",
+      "imagePath": "dataset/images/farfetch/valentino-garavani-open-sneakers.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-jimmy-choo-bing-100-mules",
+      "imagePath": "dataset/images/farfetch/jimmy-choo-bing-100-mules.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-jimmy-choo-romy-100-pumps",
+      "imagePath": "dataset/images/farfetch/jimmy-choo-romy-100-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    },
+    {
+      "shoeId": "farfetch-jimmy-choo-love-85-pumps",
+      "imagePath": "dataset/images/farfetch/jimmy-choo-love-85-pumps.jpg",
+      "status": "unchecked",
+      "notes": "No TinEye API key provided"
+    }
+  ]
+}
