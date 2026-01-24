@@ -275,7 +275,15 @@ export default function BenchmarkVisualizer() {
                 ShoeBench
               </h1>
               <p className="mt-1 max-w-prose text-xs text-neutral-300 sm:text-sm">
-                Vision Model Shoe Identification Benchmark
+                Vision Model Shoe Identification Benchmark — A fork of{" "}
+                <a
+                  href="https://skatebench.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  Theo Browne's Skatebench
+                </a>
               </p>
             </div>
           </div>
