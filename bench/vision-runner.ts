@@ -190,11 +190,13 @@ export async function runVisionTestWithCache(params: {
   // Check cache first
   const cached = cache.get(cacheKey);
   if (cached) {
+    // Check if this was a cached error (prefixed with __ERROR__:)
+    const isError = cached.response_text.startsWith('__ERROR__:');
     return {
       shoeId: shoe.id,
       model,
-      status: 'success', // Only successful responses are cached
-      responseText: cached.response_text,
+      status: isError ? 'error' : 'success',
+      responseText: isError ? cached.response_text.slice(10) : cached.response_text,
       inputTokens: cached.input_tokens,
       outputTokens: cached.output_tokens,
       totalTokens: cached.total_tokens,
@@ -213,15 +215,19 @@ export async function runVisionTestWithCache(params: {
     runVisionTest({ model, shoe, imagePath, systemPrompt, userPrompt })
   );
 
-  // Cache only successful responses (not errors or refusals)
-  if (result.status === 'success') {
+  // Cache successful responses and errors (so errors don't retry endlessly)
+  // Errors are prefixed with __ERROR__: to distinguish them
+  if (result.status === 'success' || result.status === 'error') {
     const promptHash = cacheKey.split(':')[2];
+    const responseText = result.status === 'error'
+      ? `__ERROR__:${result.responseText}`
+      : result.responseText;
     cache.set({
       cache_key: cacheKey,
       model,
       shoe_id: shoe.id,
       prompt_hash: promptHash,
-      response_text: result.responseText,
+      response_text: responseText,
       input_tokens: result.inputTokens,
       output_tokens: result.outputTokens,
       total_tokens: result.totalTokens,
