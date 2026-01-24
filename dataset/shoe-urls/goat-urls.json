@@ -1,0 +1,207 @@
+{
+  "source": "goat",
+  "description": "GOAT sneaker URLs for shoebench dataset. Focus on streetwear brands and releases not covered by StockX list.",
+  "lastUpdated": "2026-01-24",
+  "urls": [
+    {
+      "url": "https://www.goat.com/sneakers/dunk-low-sb-court-purple-bq6817-500",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low SB Court Purple"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/dunk-low-sb-chlorophyll-bq6817-300",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low SB Chlorophyll"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/dunk-low-sb-laser-orange-bq6817-101",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low SB Laser Orange"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/blazer-mid-77-white-black-cz1055-100",
+      "expectedBrand": "Nike",
+      "expectedModel": "Blazer Mid 77 White Black"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/dunk-low-sb-mummy-dm0774-111",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low SB Mummy"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/dunk-low-sb-blue-raspberry-dm0807-400",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low SB Blue Raspberry"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/blazer-low-77-vintage-white-sail-da6364-101",
+      "expectedBrand": "Nike",
+      "expectedModel": "Blazer Low 77 Vintage"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/dunk-low-sb-pro-acg-caldera-fd2629-200",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low SB Pro ACG Caldera"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-1-retro-high-og-unc-toe-dz5485-400",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 1 Retro High OG UNC Toe"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-4-retro-midnight-navy-dh6927-140",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 4 Retro Midnight Navy"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-11-retro-low-cement-grey-av2187-140",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 11 Retro Low Cement Grey"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-5-retro-burgundy-dz4131-600",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 5 Retro Burgundy"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-3-retro-fear-ct8532-080",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 3 Retro Fear"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-1-low-black-toe-553558-116",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 1 Low Black Toe"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-6-retro-mint-foam-dv3528-300",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 6 Retro Mint Foam"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/air-jordan-12-retro-black-taxi-ct8013-071",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 12 Retro Black Taxi"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/gel-lyte-iii-og-white-sage-1201a762-100",
+      "expectedBrand": "Asics",
+      "expectedModel": "Gel-Lyte III OG White Sage"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/gel-kayano-14-white-midnight-1201a019-108",
+      "expectedBrand": "Asics",
+      "expectedModel": "Gel-Kayano 14 White Midnight"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/gel-nyc-cream-oyster-grey-1203a372-103",
+      "expectedBrand": "Asics",
+      "expectedModel": "Gel-NYC Cream Oyster Grey"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/gel-1130-white-clay-canyon-1201a256-113",
+      "expectedBrand": "Asics",
+      "expectedModel": "Gel-1130 White Clay Canyon"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/gel-venture-6-smoke-grey-1203a297-021",
+      "expectedBrand": "Asics",
+      "expectedModel": "Gel-Venture 6 Smoke Grey"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/suede-classic-xxi-peacoat-white-374915-04",
+      "expectedBrand": "Puma",
+      "expectedModel": "Suede Classic XXI Peacoat"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/rs-x-efekt-white-black-392549-01",
+      "expectedBrand": "Puma",
+      "expectedModel": "RS-X Efekt White Black"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/palermo-leather-white-vapor-grey-396464-02",
+      "expectedBrand": "Puma",
+      "expectedModel": "Palermo Leather White"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/speedcat-og-black-white-398846-02",
+      "expectedBrand": "Puma",
+      "expectedModel": "Speedcat OG Black White"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/clyde-base-white-frosted-ivory-390091-01",
+      "expectedBrand": "Puma",
+      "expectedModel": "Clyde Base White Frosted Ivory"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/shadow-6000-white-grey-s70662-3",
+      "expectedBrand": "Saucony",
+      "expectedModel": "Shadow 6000 White Grey"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/jazz-81-grey-white-s70685-3",
+      "expectedBrand": "Saucony",
+      "expectedModel": "Jazz 81 Grey White"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/progrid-omni-9-white-silver-s70740-2",
+      "expectedBrand": "Saucony",
+      "expectedModel": "ProGrid Omni 9 White Silver"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/shadow-5000-tan-brown-s70665-24",
+      "expectedBrand": "Saucony",
+      "expectedModel": "Shadow 5000 Tan Brown"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/club-c-85-white-grey-ar0456",
+      "expectedBrand": "Reebok",
+      "expectedModel": "Club C 85 White Grey"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/classic-leather-white-gum-49799",
+      "expectedBrand": "Reebok",
+      "expectedModel": "Classic Leather White Gum"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/bb-4000-ii-white-chalk-100033771",
+      "expectedBrand": "Reebok",
+      "expectedModel": "BB 4000 II White Chalk"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/question-mid-why-not-us-gz0327",
+      "expectedBrand": "Reebok",
+      "expectedModel": "Question Mid Why Not Us"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/kamikaze-ii-og-purple-white-fv2969",
+      "expectedBrand": "Reebok",
+      "expectedModel": "Kamikaze II OG Purple White"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/cloud-x-4-white-undyed-3we42640000",
+      "expectedBrand": "On",
+      "expectedModel": "Cloud X 4 White Undyed"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/cloudmonster-frost-surf-61-98437",
+      "expectedBrand": "On",
+      "expectedModel": "Cloudmonster Frost Surf"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/curry-flow-10-wolf-grey-3026624-100",
+      "expectedBrand": "Under Armour",
+      "expectedModel": "Curry Flow 10 Wolf Grey"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/ua-slipspeed-mega-white-3027474-100",
+      "expectedBrand": "Under Armour",
+      "expectedModel": "UA SlipSpeed Mega White"
+    },
+    {
+      "url": "https://www.goat.com/sneakers/project-rock-6-white-grey-3026534-101",
+      "expectedBrand": "Under Armour",
+      "expectedModel": "Project Rock 6 White Grey"
+    }
+  ]
+}
