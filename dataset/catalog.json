@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "createdAt": "2026-01-24T05:40:11.989Z",
+  "createdAt": "2026-01-24T05:44:54.629Z",
   "totalShoes": 126,
   "brandDistribution": {
     "Jordan": 14,
@@ -47,7 +47,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-1-retro-high-og-chicago-reimagined-2022",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -76,7 +76,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-1-retro-high-og-bred-toe",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -105,7 +105,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-1-retro-high-og-royal-toe",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -134,7 +134,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-1-retro-high-og-unc-toe",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -163,7 +163,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-4-retro-white-oreo-2021",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -192,7 +192,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-11-retro-cherry-2022",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -221,7 +221,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/air-jordan-3-retro-white-cement-reimagined",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -250,7 +250,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-dunk-low-retro-white-black-panda",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -279,7 +279,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-dunk-low-unc-2021",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -308,7 +308,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-dunk-low-grey-fog",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -337,7 +337,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-dunk-low-rose-whisper-w",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -366,7 +366,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-air-force-1-low-white-07",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -395,7 +395,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-air-force-1-low-stussy-fossil",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -424,7 +424,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-air-max-1-patta-waves-monarch",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -453,7 +453,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-air-max-90-bacon-2021",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -482,7 +482,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-air-max-97-silver-bullet-2022",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -511,7 +511,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-yeezy-boost-350-v2-zebra",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -540,7 +540,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-yeezy-boost-350-v2-beluga-reflective",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -569,7 +569,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-yeezy-boost-350-v2-onyx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -598,7 +598,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-yeezy-slide-onyx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -627,7 +627,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-stan-smith-white-green",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -656,7 +656,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-superstar-white-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -685,7 +685,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-forum-low-white-green",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -714,7 +714,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-samba-og-white-black-gum",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -743,7 +743,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-gazelle-indoor-green-lucid-pink-w",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -772,7 +772,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/adidas-campus-00s-grey-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -801,7 +801,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/new-balance-550-white-green",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -829,7 +829,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/new-balance-550-white-grey",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -857,7 +857,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/new-balance-990v3-grey-2023",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -885,7 +885,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/new-balance-2002r-protection-pack-rain-cloud",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -913,7 +913,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/new-balance-327-white-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -941,7 +941,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/converse-chuck-taylor-all-star-70-hi-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -970,7 +970,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/converse-chuck-taylor-all-star-low-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -999,7 +999,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/converse-chuck-taylor-all-star-70-comme-des-garcons-play-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1028,7 +1028,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/converse-one-star-pro-black-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1056,7 +1056,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/converse-run-star-hike-high-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1084,7 +1084,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/vans-old-skool-black-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1113,7 +1113,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/vans-sk8-hi-black-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1142,7 +1142,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/vans-authentic-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1170,7 +1170,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/vans-era-black-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1198,7 +1198,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/vans-slip-on-checkerboard-black-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1226,7 +1226,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/puma-suede-classic-black-white",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1254,7 +1254,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/puma-rs-x-white-grey",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1282,7 +1282,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/reebok-club-c-85-white-green",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1310,7 +1310,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/reebok-classic-leather-white-gum",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1338,7 +1338,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/asics-gel-kayano-14-white-midnight",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1366,7 +1366,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/asics-gel-1130-white-clay-grey",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1394,7 +1394,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-sb-dunk-low-panda-pigeon",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1423,7 +1423,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-blazer-mid-77-white-black",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1451,7 +1451,7 @@
       ],
       "provenance": {
         "source": "stockx",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://stockx.com/nike-cortez-white-varsity-red",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1480,7 +1480,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/dunk-low-sb-court-purple-bq6817-500",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1509,7 +1509,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/dunk-low-sb-chlorophyll-bq6817-300",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1538,7 +1538,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/dunk-low-sb-laser-orange-bq6817-101",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1567,7 +1567,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/dunk-low-sb-mummy-dm0774-111",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1596,7 +1596,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/dunk-low-sb-blue-raspberry-dm0807-400",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1625,7 +1625,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/blazer-low-77-vintage-white-sail-da6364-101",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1653,7 +1653,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/dunk-low-sb-pro-acg-caldera-fd2629-200",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1682,7 +1682,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-4-retro-midnight-navy-dh6927-140",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1711,7 +1711,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-11-retro-low-cement-grey-av2187-140",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1740,7 +1740,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-5-retro-burgundy-dz4131-600",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1769,7 +1769,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-3-retro-fear-ct8532-080",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1798,7 +1798,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-1-low-black-toe-553558-116",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1827,7 +1827,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-6-retro-mint-foam-dv3528-300",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1856,7 +1856,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/air-jordan-12-retro-black-taxi-ct8013-071",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1885,7 +1885,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/gel-lyte-iii-og-white-sage-1201a762-100",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1913,7 +1913,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/gel-nyc-cream-oyster-grey-1203a372-103",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1941,7 +1941,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/gel-1130-white-clay-canyon-1201a256-113",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1969,7 +1969,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/gel-venture-6-smoke-grey-1203a297-021",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -1997,7 +1997,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/suede-classic-xxi-peacoat-white-374915-04",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2025,7 +2025,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/rs-x-efekt-white-black-392549-01",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2053,7 +2053,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/palermo-leather-white-vapor-grey-396464-02",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2081,7 +2081,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/speedcat-og-black-white-398846-02",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2109,7 +2109,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/clyde-base-white-frosted-ivory-390091-01",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2137,7 +2137,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/shadow-6000-white-grey-s70662-3",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2165,7 +2165,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/jazz-81-grey-white-s70685-3",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2193,7 +2193,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/progrid-omni-9-white-silver-s70740-2",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2221,7 +2221,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/shadow-5000-tan-brown-s70665-24",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2249,7 +2249,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/club-c-85-white-grey-ar0456",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2277,7 +2277,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/bb-4000-ii-white-chalk-100033771",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2305,7 +2305,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/question-mid-why-not-us-gz0327",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2333,7 +2333,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/kamikaze-ii-og-purple-white-fv2969",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2361,7 +2361,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/cloud-x-4-white-undyed-3we42640000",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2389,7 +2389,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/cloudmonster-frost-surf-61-98437",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2417,7 +2417,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/curry-flow-10-wolf-grey-3026624-100",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2445,7 +2445,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/ua-slipspeed-mega-white-3027474-100",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2473,7 +2473,7 @@
       ],
       "provenance": {
         "source": "goat",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.goat.com/sneakers/project-rock-6-white-grey-3026534-101",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2501,7 +2501,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/gucci-horsebit-loafers-item-19123456.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2529,7 +2529,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/gucci-ace-embroidered-sneakers-item-19123457.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2558,7 +2558,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/gucci-rhyton-leather-sneakers-item-19123458.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2587,7 +2587,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/gucci-marmont-mid-heel-pumps-item-19123459.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2615,7 +2615,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/gucci-jordaan-leather-loafers-item-19123460.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2643,7 +2643,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/balenciaga-triple-s-sneakers-item-19123461.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2672,7 +2672,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/balenciaga-track-sneakers-item-19123462.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2701,7 +2701,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/balenciaga-speed-trainer-item-19123463.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2730,7 +2730,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/balenciaga-defender-sneakers-item-19123464.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2759,7 +2759,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/balenciaga-knife-boots-item-19123465.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2787,7 +2787,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/christian-louboutin-so-kate-120-pumps-item-19123466.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2816,7 +2816,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/christian-louboutin-pigalle-follies-100-pumps-item-19123467.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2844,7 +2844,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/christian-louboutin-louis-junior-spikes-item-19123468.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2872,7 +2872,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/christian-louboutin-kate-85-pumps-item-19123469.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2900,7 +2900,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/christian-louboutin-dandelion-loafers-item-19123470.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2928,7 +2928,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/prada-brushed-leather-loafers-item-19123471.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2956,7 +2956,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/prada-america-cup-sneakers-item-19123472.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -2985,7 +2985,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/prada-cloudbust-thunder-sneakers-item-19123473.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3014,7 +3014,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/prada-monolith-combat-boots-item-19123474.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3042,7 +3042,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/bottega-veneta-intrecciato-loafers-item-19123475.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3071,7 +3071,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/bottega-veneta-lug-chelsea-boots-item-19123476.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3099,7 +3099,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/bottega-veneta-pillow-sneakers-item-19123477.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3127,7 +3127,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/common-projects-achilles-low-sneakers-item-19123478.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3156,7 +3156,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/common-projects-bball-low-sneakers-item-19123479.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3184,7 +3184,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/common-projects-track-80-sneakers-item-19123480.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3212,7 +3212,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/maison-margiela-replica-sneakers-item-19123481.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3241,7 +3241,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/maison-margiela-tabi-boots-item-19123482.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3270,7 +3270,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/maison-margiela-fusion-sneakers-item-19123483.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3298,7 +3298,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/rick-owens-geobasket-sneakers-item-19123484.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3327,7 +3327,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/rick-owens-drkshdw-ramones-sneakers-item-19123485.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3355,7 +3355,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/rick-owens-kiss-boots-item-19123486.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3383,7 +3383,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/saint-laurent-court-classic-sneakers-item-19123487.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3412,7 +3412,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/saint-laurent-wyatt-chelsea-boots-item-19123488.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3441,7 +3441,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/saint-laurent-opyum-110-sandals-item-19123489.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3469,7 +3469,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/valentino-garavani-rockstud-untitled-sneakers-item-19123490.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3498,7 +3498,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/valentino-garavani-tan-go-platform-pumps-item-19123491.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3526,7 +3526,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/men/valentino-garavani-open-sneakers-item-19123492.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3554,7 +3554,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/jimmy-choo-bing-100-mules-item-19123493.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3582,7 +3582,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/jimmy-choo-romy-100-pumps-item-19123494.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
@@ -3610,7 +3610,7 @@
       ],
       "provenance": {
         "source": "farfetch",
-        "scrapedAt": "2026-01-24T05:40:11.989Z",
+        "scrapedAt": "2026-01-24T05:44:54.629Z",
         "sourceUrl": "https://www.farfetch.com/shopping/women/jimmy-choo-love-85-pumps-item-19123495.aspx",
         "scraperVersion": "url-list-v1.0.0"
       },
