@@ -11,6 +11,7 @@ import {
   Calendar,
   Footprints,
   Layers,
+  AlertCircle,
 } from "lucide-react";
 import benchmarkData from "../data/shoebench-results.json";
 
@@ -60,12 +61,13 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 import { TierAccuracyChart } from "@/components/charts/TierAccuracyChart";
 import { CostEfficiencyScatter } from "@/components/charts/CostEfficiencyScatter";
+import { ErrorAnalysisTable } from "@/components/tables/ErrorAnalysisTable";
 
 import type { BenchmarkData, ModelMetrics } from "@/lib/types";
 
 // Type-safe data access
 const typedBenchmarkData = benchmarkData as BenchmarkData;
-const { modelMetrics, tierAccuracy, metadata } = typedBenchmarkData;
+const { modelMetrics, tierAccuracy, errors, metadata } = typedBenchmarkData;
 
 // Leaderboard data derived from modelMetrics
 interface LeaderboardEntry {
@@ -315,6 +317,12 @@ export default function BenchmarkVisualizer() {
                 className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-orange-600 data-[state=active]:text-white"
               >
                 <TrendingUp className="h-4 w-4" /> Cost vs Accuracy
+              </TabsTrigger>
+              <TabsTrigger
+                value="errors"
+                className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-red-600 data-[state=active]:text-white"
+              >
+                <AlertCircle className="h-4 w-4" /> Errors
               </TabsTrigger>
             </TabsList>
 
@@ -796,6 +804,26 @@ export default function BenchmarkVisualizer() {
                   data={modelMetrics}
                   selectedModels={selectedModels}
                   getModelColor={getModelColor}
+                />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Errors Tab */}
+          <TabsContent value="errors">
+            <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+              <CardHeader className="pb-2">
+                <CardTitle className="flex items-center gap-2 text-white">
+                  <AlertCircle className="h-5 w-5 text-red-400" /> Error Analysis
+                </CardTitle>
+                <CardDescription className="text-neutral-400">
+                  Shoes that models misidentified (brand_only or wrong)
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ErrorAnalysisTable
+                  errors={errors}
+                  models={Array.from(new Set(modelMetrics.map(m => m.modelName)))}
                 />
               </CardContent>
             </Card>
