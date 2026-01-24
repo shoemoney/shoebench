@@ -253,6 +253,7 @@ export type VisionBatchOptions = {
   concurrency?: number; // default 5
   cache?: VisionCache;
   onProgress?: (result: VisionTestResult, completed: number, total: number) => void;
+  errorThreshold?: number; // default 0.5 - skip models with error rate above this
 };
 
 /**
@@ -265,7 +266,8 @@ export async function runVisionBatch(options: VisionBatchOptions): Promise<Visio
     projectRoot,
     concurrency = 5,
     cache,
-    onProgress
+    onProgress,
+    errorThreshold = 0.5
   } = options;
 
   const limit = pLimit(concurrency);
@@ -273,8 +275,23 @@ export async function runVisionBatch(options: VisionBatchOptions): Promise<Visio
   let completed = 0;
   const total = models.length * shoes.length;
 
+  // Get list of models to skip (high error rate from previous runs)
+  const skippedModels = cache ? cache.getSkippedModels(errorThreshold) : [];
+  if (skippedModels.length > 0) {
+    console.log(`\nSkipping ${skippedModels.length} models with >${errorThreshold * 100}% error rate:`);
+    skippedModels.forEach(m => console.log(`  - ${m}`));
+    console.log('');
+  }
+
   // Process one model at a time (per CONTEXT.md decision)
   for (const model of models) {
+    // Skip models with high error rate
+    if (skippedModels.includes(model)) {
+      console.log(`Skipping model (high error rate): ${model}`);
+      completed += shoes.length;
+      continue;
+    }
+
     console.log(`Starting model: ${model}`);
 
     const modelResults = await Promise.all(
@@ -316,7 +333,41 @@ export async function runVisionBatch(options: VisionBatchOptions): Promise<Visio
     );
 
     results.push(...modelResults);
-    console.log(`Completed model: ${model}`);
+
+    // Check error rate for this model and purge if too high
+    const errorCount = modelResults.filter(r => r.status === 'error').length;
+    const errorRate = errorCount / modelResults.length;
+
+    if (errorRate >= errorThreshold && cache) {
+      console.log(`⚠️  Model ${model} has ${Math.round(errorRate * 100)}% error rate - purging from cache`);
+      const purged = cache.purgeModel(model);
+      console.log(`   Purged ${purged} entries. Model will be skipped on future runs.`);
+
+      // Re-cache with error markers so it stays skipped
+      for (const result of modelResults.filter(r => r.status === 'error')) {
+        const fullPrompt = SYSTEM_PROMPT + USER_PROMPT;
+        const cacheKey = computeCacheKey(model, result.shoeId, fullPrompt);
+        const promptHash = cacheKey.split(':')[2];
+        cache.set({
+          cache_key: cacheKey,
+          model,
+          shoe_id: result.shoeId,
+          prompt_hash: promptHash,
+          response_text: `__ERROR__:${result.responseText}`,
+          input_tokens: 0,
+          output_tokens: 0,
+          total_tokens: 0,
+          cost: 0,
+          latency_ms: 0,
+          created_at: Date.now(),
+          image_width: result.imageWidth,
+          image_height: result.imageHeight,
+          image_size_bytes: result.imageSizeBytes
+        });
+      }
+    } else {
+      console.log(`Completed model: ${model}`);
+    }
   }
 
   return results;

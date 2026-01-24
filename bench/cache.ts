@@ -120,6 +120,61 @@ export class VisionCache {
   }
 
   /**
+   * Purge all cached entries for a specific model
+   */
+  purgeModel(model: string): number {
+    try {
+      const result = this.db.prepare('DELETE FROM vision_responses WHERE model = ?').run(model);
+      return result.changes;
+    } catch (error) {
+      console.error('Cache purge error:', error);
+      return 0;
+    }
+  }
+
+  /**
+   * Get error rate for a model (returns ratio of errors to total)
+   */
+  getModelErrorRate(model: string): { total: number; errors: number; rate: number } {
+    try {
+      const row = this.db.prepare(`
+        SELECT
+          COUNT(*) as total,
+          SUM(CASE WHEN response_text LIKE '__ERROR__%' THEN 1 ELSE 0 END) as errors
+        FROM vision_responses
+        WHERE model = ?
+      `).get(model) as { total: number; errors: number } | undefined;
+
+      if (!row || row.total === 0) return { total: 0, errors: 0, rate: 0 };
+      return { total: row.total, errors: row.errors, rate: row.errors / row.total };
+    } catch (error) {
+      console.error('Cache error rate check error:', error);
+      return { total: 0, errors: 0, rate: 0 };
+    }
+  }
+
+  /**
+   * Get list of models that should be skipped (high error rate)
+   */
+  getSkippedModels(errorThreshold: number = 0.5): string[] {
+    try {
+      const rows = this.db.prepare(`
+        SELECT model,
+               COUNT(*) as total,
+               SUM(CASE WHEN response_text LIKE '__ERROR__%' THEN 1 ELSE 0 END) as errors
+        FROM vision_responses
+        GROUP BY model
+        HAVING CAST(errors AS REAL) / total >= ?
+      `).all(errorThreshold) as { model: string; total: number; errors: number }[];
+
+      return rows.map(r => r.model);
+    } catch (error) {
+      console.error('Cache skip list error:', error);
+      return [];
+    }
+  }
+
+  /**
    * Close database connection
    */
   close(): void {
