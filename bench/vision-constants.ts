@@ -4,7 +4,7 @@
  * Updated: 2026-01-24 from OpenRouter model list (173 models)
  */
 
-export const VISION_CONCURRENCY = 25; // 25 concurrent requests per model
+export const VISION_CONCURRENCY = 50; // 50 concurrent requests per model
 
 // ALL vision-capable models for comprehensive benchmarking
 export const visionModelsToRun = [
