@@ -1,0 +1,257 @@
+{
+  "description": "StockX sneaker URLs for benchmark dataset - 50 shoes covering major brands",
+  "lastUpdated": "2026-01-24",
+  "urls": [
+    {
+      "url": "https://stockx.com/air-jordan-1-retro-high-og-chicago-reimagined-2022",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 1 Retro High OG Chicago",
+      "notes": "REQUIRED - Iconic Air Jordan 1, anchor shoe"
+    },
+    {
+      "url": "https://stockx.com/air-jordan-1-retro-high-og-bred-toe",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 1 Retro High OG Bred Toe"
+    },
+    {
+      "url": "https://stockx.com/air-jordan-1-retro-high-og-royal-toe",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 1 Retro High OG Royal Toe"
+    },
+    {
+      "url": "https://stockx.com/air-jordan-1-retro-high-og-unc-toe",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 1 Retro High OG UNC Toe"
+    },
+    {
+      "url": "https://stockx.com/air-jordan-4-retro-white-oreo-2021",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 4 Retro White Oreo"
+    },
+    {
+      "url": "https://stockx.com/air-jordan-11-retro-cherry-2022",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 11 Retro Cherry"
+    },
+    {
+      "url": "https://stockx.com/air-jordan-3-retro-white-cement-reimagined",
+      "expectedBrand": "Jordan",
+      "expectedModel": "Air Jordan 3 Retro White Cement Reimagined"
+    },
+    {
+      "url": "https://stockx.com/nike-dunk-low-retro-white-black-panda",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low Retro White Black Panda"
+    },
+    {
+      "url": "https://stockx.com/nike-dunk-low-unc-2021",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low UNC"
+    },
+    {
+      "url": "https://stockx.com/nike-dunk-low-grey-fog",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low Grey Fog"
+    },
+    {
+      "url": "https://stockx.com/nike-dunk-low-rose-whisper-w",
+      "expectedBrand": "Nike",
+      "expectedModel": "Dunk Low Rose Whisper"
+    },
+    {
+      "url": "https://stockx.com/nike-air-force-1-low-white-07",
+      "expectedBrand": "Nike",
+      "expectedModel": "Air Force 1 Low White"
+    },
+    {
+      "url": "https://stockx.com/nike-air-force-1-low-stussy-fossil",
+      "expectedBrand": "Nike",
+      "expectedModel": "Air Force 1 Low Stussy Fossil"
+    },
+    {
+      "url": "https://stockx.com/nike-air-max-1-patta-waves-monarch",
+      "expectedBrand": "Nike",
+      "expectedModel": "Air Max 1 Patta Waves Monarch"
+    },
+    {
+      "url": "https://stockx.com/nike-air-max-90-bacon-2021",
+      "expectedBrand": "Nike",
+      "expectedModel": "Air Max 90 Bacon"
+    },
+    {
+      "url": "https://stockx.com/nike-air-max-97-silver-bullet-2022",
+      "expectedBrand": "Nike",
+      "expectedModel": "Air Max 97 Silver Bullet"
+    },
+    {
+      "url": "https://stockx.com/adidas-yeezy-boost-350-v2-zebra",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Yeezy Boost 350 V2 Zebra"
+    },
+    {
+      "url": "https://stockx.com/adidas-yeezy-boost-350-v2-beluga-reflective",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Yeezy Boost 350 V2 Beluga Reflective"
+    },
+    {
+      "url": "https://stockx.com/adidas-yeezy-boost-350-v2-onyx",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Yeezy Boost 350 V2 Onyx"
+    },
+    {
+      "url": "https://stockx.com/adidas-yeezy-slide-onyx",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Yeezy Slide Onyx"
+    },
+    {
+      "url": "https://stockx.com/adidas-stan-smith-white-green",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Stan Smith White Green"
+    },
+    {
+      "url": "https://stockx.com/adidas-superstar-white-black",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Superstar White Black"
+    },
+    {
+      "url": "https://stockx.com/adidas-forum-low-white-green",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Forum Low White Green"
+    },
+    {
+      "url": "https://stockx.com/adidas-samba-og-white-black-gum",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Samba OG White Black Gum"
+    },
+    {
+      "url": "https://stockx.com/adidas-gazelle-indoor-green-lucid-pink-w",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Gazelle Indoor Green Lucid Pink"
+    },
+    {
+      "url": "https://stockx.com/adidas-campus-00s-grey-white",
+      "expectedBrand": "Adidas",
+      "expectedModel": "Campus 00s Grey White"
+    },
+    {
+      "url": "https://stockx.com/new-balance-550-white-green",
+      "expectedBrand": "New Balance",
+      "expectedModel": "550 White Green"
+    },
+    {
+      "url": "https://stockx.com/new-balance-550-white-grey",
+      "expectedBrand": "New Balance",
+      "expectedModel": "550 White Grey"
+    },
+    {
+      "url": "https://stockx.com/new-balance-990v3-grey-2023",
+      "expectedBrand": "New Balance",
+      "expectedModel": "990v3 Grey"
+    },
+    {
+      "url": "https://stockx.com/new-balance-2002r-protection-pack-rain-cloud",
+      "expectedBrand": "New Balance",
+      "expectedModel": "2002R Protection Pack Rain Cloud"
+    },
+    {
+      "url": "https://stockx.com/new-balance-327-white-black",
+      "expectedBrand": "New Balance",
+      "expectedModel": "327 White Black"
+    },
+    {
+      "url": "https://stockx.com/converse-chuck-taylor-all-star-70-hi-black",
+      "expectedBrand": "Converse",
+      "expectedModel": "Chuck Taylor All Star 70 Hi Black"
+    },
+    {
+      "url": "https://stockx.com/converse-chuck-taylor-all-star-low-white",
+      "expectedBrand": "Converse",
+      "expectedModel": "Chuck Taylor All Star Low White"
+    },
+    {
+      "url": "https://stockx.com/converse-chuck-taylor-all-star-70-comme-des-garcons-play-black",
+      "expectedBrand": "Converse",
+      "expectedModel": "Chuck Taylor All Star 70 CDG Play Black"
+    },
+    {
+      "url": "https://stockx.com/converse-one-star-pro-black-white",
+      "expectedBrand": "Converse",
+      "expectedModel": "One Star Pro Black White"
+    },
+    {
+      "url": "https://stockx.com/converse-run-star-hike-high-black",
+      "expectedBrand": "Converse",
+      "expectedModel": "Run Star Hike High Black"
+    },
+    {
+      "url": "https://stockx.com/vans-old-skool-black-white",
+      "expectedBrand": "Vans",
+      "expectedModel": "Old Skool Black White"
+    },
+    {
+      "url": "https://stockx.com/vans-sk8-hi-black-white",
+      "expectedBrand": "Vans",
+      "expectedModel": "Sk8-Hi Black White"
+    },
+    {
+      "url": "https://stockx.com/vans-authentic-black",
+      "expectedBrand": "Vans",
+      "expectedModel": "Authentic Black"
+    },
+    {
+      "url": "https://stockx.com/vans-era-black-white",
+      "expectedBrand": "Vans",
+      "expectedModel": "Era Black White"
+    },
+    {
+      "url": "https://stockx.com/vans-slip-on-checkerboard-black-white",
+      "expectedBrand": "Vans",
+      "expectedModel": "Slip-On Checkerboard Black White"
+    },
+    {
+      "url": "https://stockx.com/puma-suede-classic-black-white",
+      "expectedBrand": "Puma",
+      "expectedModel": "Suede Classic Black White"
+    },
+    {
+      "url": "https://stockx.com/puma-rs-x-white-grey",
+      "expectedBrand": "Puma",
+      "expectedModel": "RS-X White Grey"
+    },
+    {
+      "url": "https://stockx.com/reebok-club-c-85-white-green",
+      "expectedBrand": "Reebok",
+      "expectedModel": "Club C 85 White Green"
+    },
+    {
+      "url": "https://stockx.com/reebok-classic-leather-white-gum",
+      "expectedBrand": "Reebok",
+      "expectedModel": "Classic Leather White Gum"
+    },
+    {
+      "url": "https://stockx.com/asics-gel-kayano-14-white-midnight",
+      "expectedBrand": "ASICS",
+      "expectedModel": "Gel-Kayano 14 White Midnight"
+    },
+    {
+      "url": "https://stockx.com/asics-gel-1130-white-clay-grey",
+      "expectedBrand": "ASICS",
+      "expectedModel": "Gel-1130 White Clay Grey"
+    },
+    {
+      "url": "https://stockx.com/nike-sb-dunk-low-panda-pigeon",
+      "expectedBrand": "Nike",
+      "expectedModel": "SB Dunk Low Panda Pigeon"
+    },
+    {
+      "url": "https://stockx.com/nike-blazer-mid-77-white-black",
+      "expectedBrand": "Nike",
+      "expectedModel": "Blazer Mid 77 White Black"
+    },
+    {
+      "url": "https://stockx.com/nike-cortez-white-varsity-red",
+      "expectedBrand": "Nike",
+      "expectedModel": "Cortez White Varsity Red"
+    }
+  ]
+}
