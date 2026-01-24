@@ -11,7 +11,7 @@
  * Options:
  *   --input=FILE        Path to vision results JSON file (required)
  *   --no-cache          Skip cache, re-judge all results
- *   --concurrency=N     Parallel judge calls (default: 5)
+ *   --concurrency=N     Parallel judge calls (default: 50)
  */
 
 import { config } from 'dotenv';
@@ -110,7 +110,7 @@ async function main() {
   const shoeMap = new Map(catalog.shoes.map(shoe => [shoe.id, shoe]));
 
   // Get concurrency setting
-  const concurrency = parseInt(getArg('concurrency') || '5');
+  const concurrency = parseInt(getArg('concurrency') || '50');
   console.log(`Concurrency: ${concurrency}`);
 
   // Initialize cache (unless --no-cache)
