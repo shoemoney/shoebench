@@ -10,6 +10,7 @@ import {
   ChevronDown,
   Calendar,
   Footprints,
+  Layers,
 } from "lucide-react";
 import benchmarkData from "../data/shoebench-results.json";
 
@@ -39,8 +40,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  ScatterChart,
-  Scatter,
   Cell,
   LabelList,
 } from "recharts";
@@ -59,11 +58,14 @@ import {
 } from "@/components/ui/table";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+import { TierAccuracyChart } from "@/components/charts/TierAccuracyChart";
+import { CostEfficiencyScatter } from "@/components/charts/CostEfficiencyScatter";
+
 import type { BenchmarkData, ModelMetrics } from "@/lib/types";
 
 // Type-safe data access
 const typedBenchmarkData = benchmarkData as BenchmarkData;
-const { modelMetrics, metadata } = typedBenchmarkData;
+const { modelMetrics, tierAccuracy, metadata } = typedBenchmarkData;
 
 // Leaderboard data derived from modelMetrics
 interface LeaderboardEntry {
@@ -204,14 +206,6 @@ export default function BenchmarkVisualizer() {
     }))
     .sort((a, b) => a.duration - b.duration);
 
-  const performanceData = filteredLeaderboard.map((m) => ({
-    model: m.model.replace(/-/g, " "),
-    originalModel: m.fullModel,
-    successRate: m.accuracy,
-    totalCost: m.totalCost,
-    duration: m.avgLatency / 1000,
-  }));
-
   const getModelColor = (modelName: string) => {
     const colors = [
       "hsl(0, 75%, 60%)",
@@ -297,6 +291,12 @@ export default function BenchmarkVisualizer() {
                 className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-green-600 data-[state=active]:text-white"
               >
                 <Trophy className="h-4 w-4" /> Leaderboard
+              </TabsTrigger>
+              <TabsTrigger
+                value="tiers"
+                className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-amber-600 data-[state=active]:text-white"
+              >
+                <Layers className="h-4 w-4" /> Tiers
               </TabsTrigger>
               <TabsTrigger
                 value="cost"
@@ -487,6 +487,27 @@ export default function BenchmarkVisualizer() {
                     ))}
                   </TableBody>
                 </Table>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Tiers Tab */}
+          <TabsContent value="tiers">
+            <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+              <CardHeader className="pb-2">
+                <CardTitle className="flex items-center gap-2 text-white">
+                  <Layers className="h-5 w-5 text-amber-400" /> Accuracy by Difficulty Tier
+                </CardTitle>
+                <CardDescription className="text-neutral-400">
+                  How models perform on Easy, Medium, and Hard shoes
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <TierAccuracyChart
+                  data={tierAccuracy}
+                  selectedModels={selectedModels}
+                  getModelColor={getModelColor}
+                />
               </CardContent>
             </Card>
           </TabsContent>
@@ -764,121 +785,18 @@ export default function BenchmarkVisualizer() {
             <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center gap-2 text-white">
-                  <TrendingUp className="h-5 w-5 text-orange-400" /> Performance
-                  vs Cost
+                  <TrendingUp className="h-5 w-5 text-orange-400" /> Cost Efficiency
                 </CardTitle>
                 <CardDescription className="text-neutral-400">
-                  Top-left is ideal: higher accuracy, lower total cost
+                  Top-left is ideal: higher accuracy, lower total cost. Tooltip shows accuracy-per-dollar.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ChartContainer
-                  config={{
-                    successRate: {
-                      label: "Accuracy",
-                      color: "hsl(142, 76%, 36%)",
-                    },
-                  }}
-                  className="h-[420px] sm:h-[520px] w-full"
-                  style={isMobile ? { height: 360 } : undefined}
-                >
-                  <ScatterChart
-                    margin={{
-                      top: 10,
-                      right: isMobile ? 12 : 120,
-                      left: 12,
-                      bottom: isMobile ? 16 : 32,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
-                    <XAxis
-                      type="number"
-                      dataKey="totalCost"
-                      name="Total Cost"
-                      label={{
-                        value: "Total Cost ($)",
-                        position: "insideBottom",
-                        offset: -20,
-                        fill: "#9ca3af",
-                      }}
-                      stroke="#9ca3af"
-                      domain={[0, "auto"]}
-                      tickFormatter={(tick) => tick.toFixed(3)}
-                    />
-                    <YAxis
-                      type="number"
-                      dataKey="successRate"
-                      name="Accuracy"
-                      unit="%"
-                      label={{
-                        value: "Accuracy (%)",
-                        angle: -90,
-                        position: "insideLeft",
-                        fill: "#9ca3af",
-                      }}
-                      stroke="#9ca3af"
-                      domain={[0, 100]}
-                    />
-                    <ChartTooltip
-                      cursor={{ strokeDasharray: "3 3" }}
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          const d = payload[0].payload as any;
-                          return (
-                            <div className="rounded-lg border border-white/10 bg-neutral-900/95 p-3 text-neutral-100 shadow-xl">
-                              <p className="font-semibold">{d.model}</p>
-                              <p className="text-sm text-neutral-300">
-                                Accuracy: {d.successRate.toFixed(1)}%
-                              </p>
-                              <p className="text-sm text-neutral-300">
-                                Total cost: {currency(d.totalCost)}
-                              </p>
-                              {d.duration > 0 && (
-                                <p className="text-sm text-neutral-300">
-                                  Time: {d.duration.toFixed(2)}s
-                                </p>
-                              )}
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-                    <Scatter data={performanceData} isAnimationActive={false}>
-                      {performanceData.map((entry) => (
-                        <Cell
-                          key={entry.originalModel}
-                          fill={getModelColor(entry.originalModel)}
-                        />
-                      ))}
-                      {!isMobile ? (
-                        <LabelList
-                          dataKey="model"
-                          content={({ x, y, value }: any) => {
-                            const nx =
-                              (typeof x === "number" ? x : Number(x)) || 0;
-                            const ny =
-                              (typeof y === "number" ? y : Number(y)) || 0;
-                            return (
-                              <text
-                                x={nx + 10}
-                                y={ny}
-                                dy={4}
-                                textAnchor="start"
-                                className="pointer-events-none text-xs font-medium fill-neutral-200"
-                                style={{
-                                  textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
-                                }}
-                              >
-                                {String(value)}
-                              </text>
-                            );
-                          }}
-                        />
-                      ) : null}
-                    </Scatter>
-                  </ScatterChart>
-                </ChartContainer>
+                <CostEfficiencyScatter
+                  data={modelMetrics}
+                  selectedModels={selectedModels}
+                  getModelColor={getModelColor}
+                />
               </CardContent>
             </Card>
           </TabsContent>
