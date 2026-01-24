@@ -139,11 +139,10 @@ async function main() {
         cacheHits++;
       }
 
-      const evaluation = await runJudgeWithCache({
-        visionResult,
-        shoe,
-        cache: cache!,
-      });
+      // Use cache if available, otherwise call judge directly
+      const evaluation = cache
+        ? await runJudgeWithCache({ visionResult, shoe, cache })
+        : await require('./judge-runner').runJudge({ visionResult, shoe });
 
       evaluations.push(evaluation);
       completed++;

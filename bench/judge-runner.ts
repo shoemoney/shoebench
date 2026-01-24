@@ -1,9 +1,9 @@
 /**
  * Judge runner for LLM-based shoe identification evaluation
- * Uses AI SDK generateObject with Claude 3.5 Haiku
+ * Uses AI SDK generateText with manual JSON parsing (OpenRouter doesn't reliably proxy structured output)
  */
 
-import { generateObject } from 'ai';
+import { generateText } from 'ai';
 import { openrouter } from '@openrouter/ai-sdk-provider';
 import { z } from 'zod';
 import { type JudgeEvaluation } from './judge-types';
@@ -23,6 +23,43 @@ export const JudgeResultSchema = z.object({
   confidence: z.enum(['high', 'medium', 'low']).describe('Confidence in this judgment'),
   reasoning: z.string().describe('Brief explanation (1 sentence)')
 });
+
+/**
+ * JSON output instruction to append to judge prompt
+ */
+const JSON_OUTPUT_INSTRUCTION = `
+
+IMPORTANT: You must respond ONLY with a valid JSON object in this exact format, no other text:
+{
+  "brandMatch": true or false,
+  "modelMatch": true or false,
+  "tier": "exact" or "variant" or "brand_only" or "wrong",
+  "score": 100 or 75 or 50 or 0,
+  "confidence": "high" or "medium" or "low",
+  "reasoning": "Brief 1-sentence explanation"
+}
+
+Do not include any text before or after the JSON. Only output the JSON object.`;
+
+/**
+ * Extract JSON from text response (handles markdown code blocks)
+ */
+function extractJSON(text: string): any {
+  // Try to find JSON in markdown code block first
+  const codeBlockMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (codeBlockMatch) {
+    return JSON.parse(codeBlockMatch[1].trim());
+  }
+
+  // Try to find raw JSON object
+  const jsonMatch = text.match(/\{[\s\S]*\}/);
+  if (jsonMatch) {
+    return JSON.parse(jsonMatch[0]);
+  }
+
+  // Try parsing the whole text as JSON
+  return JSON.parse(text.trim());
+}
 
 /**
  * Judge model (Claude 3.5 Haiku via OpenRouter)
@@ -54,7 +91,7 @@ export async function runJudge(params: {
   const { visionResult, shoe } = params;
 
   try {
-    // Build judge prompt with position randomization
+    // Build judge prompt with position randomization + JSON instruction
     const judgePrompt = buildJudgePrompt({
       visionResponse: visionResult.responseText,
       groundTruth: {
@@ -63,22 +100,30 @@ export async function runJudge(params: {
         aliases: shoe.aliases
       },
       randomize: true
-    });
+    }) + JSON_OUTPUT_INSTRUCTION;
 
     const startTime = Date.now();
 
-    // Call judge model with structured output (generateObject)
-    const result = await generateObject({
+    // Call judge model with generateText (OpenRouter doesn't reliably proxy structured output)
+    const result = await generateText({
       model: openrouter(JUDGE_MODEL, { usage: { include: true } }),
       system: JUDGE_SYSTEM_PROMPT,
-      schema: JudgeResultSchema,
       prompt: judgePrompt
     });
 
     const latencyMs = Date.now() - startTime;
 
-    // Extract structured output
-    const judgment = result.object;
+    // Parse JSON from text response
+    const rawResponse = result.text;
+    let judgment: z.infer<typeof JudgeResultSchema>;
+
+    try {
+      const parsed = extractJSON(rawResponse);
+      judgment = JudgeResultSchema.parse(parsed);
+    } catch (parseError: any) {
+      console.error('Failed to parse judge response:', rawResponse);
+      throw new Error(`JSON parse failed: ${parseError.message}`);
+    }
 
     // Extract metrics
     const cost = extractCost(result.providerMetadata);
