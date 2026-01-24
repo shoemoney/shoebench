@@ -75,13 +75,16 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
       accessorKey: 'shoeBrand',
       header: 'Brand',
       enableSorting: true,
+      cell: ({ row }) => (
+        <span className="text-neutral-100">{row.original.shoeBrand}</span>
+      ),
     },
     {
       accessorKey: 'shoeModel',
       header: 'Model',
       enableSorting: true,
       cell: ({ row }) => (
-        <div className="max-w-[200px] truncate" title={row.original.shoeModel}>
+        <div className="max-w-[200px] truncate text-neutral-100" title={row.original.shoeModel}>
           {row.original.shoeModel}
         </div>
       ),
@@ -103,7 +106,7 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
       accessorKey: 'modelName',
       header: 'Vision Model',
       cell: ({ row }) => (
-        <span className="text-sm">
+        <span className="text-sm text-neutral-100">
           {row.original.modelName.split('/').pop()}
         </span>
       ),
@@ -124,7 +127,7 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="max-w-[200px] text-sm text-neutral-400 truncate cursor-help">
+              <div className="max-w-[200px] text-sm text-neutral-200 truncate cursor-help">
                 {row.original.visionResponse}
               </div>
             </TooltipTrigger>
@@ -205,7 +208,7 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
                   <TableHead
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className={header.column.getCanSort() ? 'cursor-pointer hover:bg-neutral-800' : ''}
+                    className={`text-neutral-300 ${header.column.getCanSort() ? 'cursor-pointer hover:bg-neutral-800' : ''}`}
                   >
                     {flexRender(header.column.columnDef.header, header.getContext())}
                     {header.column.getIsSorted() && (
