@@ -55,7 +55,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1",
+        "Air Jordan 1 High"
+      ]
     },
     {
       "id": "stockx-jordan-air-jordan-1-retro-high-og-bred-toe",
@@ -84,7 +89,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1",
+        "Air Jordan 1 High"
+      ]
     },
     {
       "id": "stockx-jordan-air-jordan-1-retro-high-og-royal-toe",
@@ -113,7 +123,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1",
+        "Air Jordan 1 High"
+      ]
     },
     {
       "id": "stockx-jordan-air-jordan-1-retro-high-og-unc-toe",
@@ -142,7 +157,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1",
+        "Air Jordan 1 High"
+      ]
     },
     {
       "id": "stockx-jordan-air-jordan-4-retro-white-oreo",
@@ -171,7 +191,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Jordan 4",
+        "AJ4",
+        "Air Jordan 4"
+      ]
     },
     {
       "id": "stockx-jordan-air-jordan-11-retro-cherry",
@@ -200,7 +225,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1"
+      ]
     },
     {
       "id": "stockx-jordan-air-jordan-3-retro-white-cement-reimagined",
@@ -229,7 +258,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Jordan 3",
+        "AJ3",
+        "Air Jordan 3"
+      ]
     },
     {
       "id": "stockx-nike-dunk-low-retro-white-black-panda",
@@ -258,7 +292,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "stockx-nike-dunk-low-unc",
@@ -287,7 +325,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "stockx-nike-dunk-low-grey-fog",
@@ -316,7 +358,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "stockx-nike-dunk-low-rose-whisper",
@@ -345,7 +391,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "stockx-nike-air-force-1-low-white",
@@ -374,7 +424,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "AF1",
+        "Air Force 1",
+        "AF1 Low"
+      ]
     },
     {
       "id": "stockx-nike-air-force-1-low-stussy-fossil",
@@ -403,7 +458,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "AF1",
+        "Air Force 1",
+        "AF1 Low"
+      ]
     },
     {
       "id": "stockx-nike-air-max-1-patta-waves-monarch",
@@ -432,7 +492,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "AM1",
+        "Air Max 1"
+      ]
     },
     {
       "id": "stockx-nike-air-max-90-bacon",
@@ -461,7 +525,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "AM90",
+        "Air Max 90"
+      ]
     },
     {
       "id": "stockx-nike-air-max-97-silver-bullet",
@@ -490,7 +558,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "AM97",
+        "Air Max 97"
+      ]
     },
     {
       "id": "stockx-adidas-yeezy-boost-350-v2-zebra",
@@ -519,7 +591,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Yeezy 350",
+        "Yeezys",
+        "350 V2"
+      ]
     },
     {
       "id": "stockx-adidas-yeezy-boost-350-v2-beluga-reflective",
@@ -548,7 +625,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Yeezy 350",
+        "Yeezys",
+        "350 V2"
+      ]
     },
     {
       "id": "stockx-adidas-yeezy-boost-350-v2-onyx",
@@ -577,7 +659,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Yeezy 350",
+        "Yeezys",
+        "350 V2"
+      ]
     },
     {
       "id": "stockx-adidas-yeezy-slide-onyx",
@@ -606,7 +693,10 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Yeezys"
+      ]
     },
     {
       "id": "stockx-adidas-stan-smith-white-green",
@@ -635,7 +725,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Stan Smith",
+        "Adidas Stan Smith"
+      ]
     },
     {
       "id": "stockx-adidas-superstar-white-black",
@@ -664,7 +758,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Adidas Superstar",
+        "Superstars"
+      ]
     },
     {
       "id": "stockx-adidas-forum-low-white-green",
@@ -693,7 +791,8 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "stockx-adidas-samba-og-white-black-gum",
@@ -722,7 +821,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Adidas Samba",
+        "Samba"
+      ]
     },
     {
       "id": "stockx-adidas-gazelle-indoor-green-lucid-pink",
@@ -751,7 +854,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Adidas Gazelle",
+        "Gazelle"
+      ]
     },
     {
       "id": "stockx-adidas-campus-00s-grey-white",
@@ -780,7 +887,8 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "stockx-new-balance-550-white-green",
@@ -808,7 +916,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "NB 550",
+        "550"
+      ]
     },
     {
       "id": "stockx-new-balance-550-white-grey",
@@ -836,7 +948,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "NB 550",
+        "550"
+      ]
     },
     {
       "id": "stockx-new-balance-990v3-grey",
@@ -864,7 +980,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "NB 990",
+        "990"
+      ]
     },
     {
       "id": "stockx-new-balance-2002r-protection-pack-rain-cloud",
@@ -892,7 +1012,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "NB 2002R",
+        "2002R"
+      ]
     },
     {
       "id": "stockx-new-balance-327-white-black",
@@ -920,7 +1044,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "NB 327",
+        "327"
+      ]
     },
     {
       "id": "stockx-converse-chuck-taylor-all-star-70-hi-black",
@@ -949,7 +1077,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Chucks",
+        "Converse"
+      ]
     },
     {
       "id": "stockx-converse-chuck-taylor-all-star-low-white",
@@ -978,7 +1110,12 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Chucks",
+        "Converse",
+        "Chuck Taylor Low"
+      ]
     },
     {
       "id": "stockx-converse-chuck-taylor-all-star-70-cdg-play-black",
@@ -1007,7 +1144,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Chucks",
+        "Converse"
+      ]
     },
     {
       "id": "stockx-converse-one-star-pro-black-white",
@@ -1035,7 +1176,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Converse One Star"
+      ]
     },
     {
       "id": "stockx-converse-run-star-hike-high-black",
@@ -1063,7 +1207,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "stockx-vans-old-skool-black-white",
@@ -1092,7 +1237,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Old Skool",
+        "Vans Old Skool"
+      ]
     },
     {
       "id": "stockx-vans-sk8-hi-black-white",
@@ -1121,7 +1270,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Sk8 Hi",
+        "Vans Sk8-Hi"
+      ]
     },
     {
       "id": "stockx-vans-authentic-black",
@@ -1149,7 +1302,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Vans Authentic"
+      ]
     },
     {
       "id": "stockx-vans-era-black-white",
@@ -1177,7 +1333,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Vans Era"
+      ]
     },
     {
       "id": "stockx-vans-slip-on-checkerboard-black-white",
@@ -1205,7 +1364,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "stockx-puma-suede-classic-black-white",
@@ -1233,7 +1393,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Puma Suede"
+      ]
     },
     {
       "id": "stockx-puma-rs-x-white-grey",
@@ -1261,7 +1424,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "RS-X",
+        "Puma RS-X"
+      ]
     },
     {
       "id": "stockx-reebok-club-c-85-white-green",
@@ -1289,7 +1456,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Club C",
+        "Reebok Club C"
+      ]
     },
     {
       "id": "stockx-reebok-classic-leather-white-gum",
@@ -1317,7 +1488,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Reebok Classic",
+        "Classic Leather"
+      ]
     },
     {
       "id": "stockx-asics-gel-kayano-14-white-midnight",
@@ -1345,7 +1520,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Kayano",
+        "ASICS Gel-Kayano"
+      ]
     },
     {
       "id": "stockx-asics-gel-1130-white-clay-grey",
@@ -1373,7 +1552,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "stockx-nike-blazer-mid-77-white-black",
@@ -1401,7 +1581,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Nike Blazer",
+        "Blazer Mid"
+      ]
     },
     {
       "id": "stockx-nike-cortez-white-varsity-red",
@@ -1430,7 +1614,11 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": [
+        "Nike Cortez",
+        "Cortez"
+      ]
     },
     {
       "id": "goat-nike-dunk-low-sb-court-purple",
@@ -1459,7 +1647,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "goat-nike-dunk-low-sb-chlorophyll",
@@ -1488,7 +1680,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "goat-nike-dunk-low-sb-laser-orange",
@@ -1517,7 +1713,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "goat-nike-dunk-low-sb-mummy",
@@ -1546,7 +1746,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "goat-nike-dunk-low-sb-blue-raspberry",
@@ -1575,7 +1779,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "goat-nike-blazer-low-77-vintage",
@@ -1603,7 +1811,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Nike Blazer"
+      ]
     },
     {
       "id": "goat-nike-dunk-low-sb-pro-acg-caldera",
@@ -1632,7 +1843,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Dunk Low",
+        "Nike Dunk Low"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-4-retro-midnight-navy",
@@ -1661,7 +1876,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 4",
+        "AJ4",
+        "Air Jordan 4"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-11-retro-low-cement-grey",
@@ -1690,7 +1910,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1",
+        "Air Jordan 1 Low"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-5-retro-burgundy",
@@ -1719,7 +1944,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 5",
+        "AJ5",
+        "Air Jordan 5"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-3-retro-fear",
@@ -1748,7 +1978,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 3",
+        "AJ3",
+        "Air Jordan 3"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-1-low-black-toe",
@@ -1777,7 +2012,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1",
+        "Air Jordan 1 Low"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-6-retro-mint-foam",
@@ -1806,7 +2046,12 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 6",
+        "AJ6",
+        "Air Jordan 6"
+      ]
     },
     {
       "id": "goat-jordan-air-jordan-12-retro-black-taxi",
@@ -1835,7 +2080,11 @@
         "isIconic": false,
         "culturalSignificance": "Popular model line",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Jordan 1",
+        "AJ1"
+      ]
     },
     {
       "id": "goat-asics-gel-lyte-iii-og-white-sage",
@@ -1863,7 +2112,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Gel-Lyte 3",
+        "ASICS Gel-Lyte III"
+      ]
     },
     {
       "id": "goat-asics-gel-nyc-cream-oyster-grey",
@@ -1891,7 +2144,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-asics-gel-1130-white-clay-canyon",
@@ -1919,7 +2173,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-asics-gel-venture-6-smoke-grey",
@@ -1947,7 +2202,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-puma-suede-classic-xxi-peacoat",
@@ -1975,7 +2231,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Puma Suede"
+      ]
     },
     {
       "id": "goat-puma-rs-x-efekt-white-black",
@@ -2003,7 +2262,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "RS-X",
+        "Puma RS-X"
+      ]
     },
     {
       "id": "goat-puma-palermo-leather-white",
@@ -2031,7 +2294,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-puma-speedcat-og-black-white",
@@ -2059,7 +2323,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-puma-clyde-base-white-frosted-ivory",
@@ -2087,7 +2352,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Puma Clyde"
+      ]
     },
     {
       "id": "goat-saucony-shadow-6000-white-grey",
@@ -2115,7 +2383,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Saucony Shadow"
+      ]
     },
     {
       "id": "goat-saucony-jazz-81-grey-white",
@@ -2143,7 +2414,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Saucony Jazz"
+      ]
     },
     {
       "id": "goat-saucony-progrid-omni-9-white-silver",
@@ -2171,7 +2445,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-saucony-shadow-5000-tan-brown",
@@ -2199,7 +2474,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Saucony Shadow"
+      ]
     },
     {
       "id": "goat-reebok-club-c-85-white-grey",
@@ -2227,7 +2505,11 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": [
+        "Club C",
+        "Reebok Club C"
+      ]
     },
     {
       "id": "goat-reebok-bb-4000-ii-white-chalk",
@@ -2255,7 +2537,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-reebok-question-mid-why-not-us",
@@ -2283,7 +2566,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "Reebok Question"
+      ]
     },
     {
       "id": "goat-reebok-kamikaze-ii-og-purple-white",
@@ -2311,7 +2597,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-on-cloud-x-4-white-undyed",
@@ -2339,7 +2626,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "On Cloud"
+      ]
     },
     {
       "id": "goat-on-cloudmonster-frost-surf",
@@ -2367,7 +2657,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "On Cloud"
+      ]
     },
     {
       "id": "goat-under-armour-curry-flow-10-wolf-grey",
@@ -2395,7 +2688,10 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": [
+        "UA Curry"
+      ]
     },
     {
       "id": "goat-under-armour-ua-slipspeed-mega-white",
@@ -2423,7 +2719,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "goat-under-armour-project-rock-6-white-grey",
@@ -2451,7 +2748,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-gucci-horsebit-loafers",
@@ -2479,7 +2777,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-gucci-ace-embroidered-sneakers",
@@ -2508,7 +2807,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-gucci-rhyton-leather-sneakers",
@@ -2537,7 +2837,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-gucci-marmont-mid-heel-pumps",
@@ -2565,7 +2866,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-gucci-jordaan-leather-loafers",
@@ -2593,7 +2895,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-balenciaga-triple-s-sneakers",
@@ -2622,7 +2925,8 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-balenciaga-track-sneakers",
@@ -2651,7 +2955,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-balenciaga-speed-trainer",
@@ -2680,7 +2985,8 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-balenciaga-defender-sneakers",
@@ -2709,7 +3015,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-balenciaga-knife-boots",
@@ -2737,7 +3044,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-christian-louboutin-so-kate-120-pumps",
@@ -2766,7 +3074,8 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-christian-louboutin-pigalle-follies-100-pumps",
@@ -2794,7 +3103,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-christian-louboutin-louis-junior-spikes",
@@ -2822,7 +3132,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-christian-louboutin-kate-85-pumps",
@@ -2850,7 +3161,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-christian-louboutin-dandelion-loafers",
@@ -2878,7 +3190,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-prada-brushed-leather-loafers",
@@ -2906,7 +3219,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-prada-america-s-cup-sneakers",
@@ -2935,7 +3249,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-prada-cloudbust-thunder-sneakers",
@@ -2964,7 +3279,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-prada-monolith-combat-boots",
@@ -2992,7 +3308,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-bottega-veneta-intrecciato-loafers",
@@ -3021,7 +3338,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-bottega-veneta-lug-chelsea-boots",
@@ -3049,7 +3367,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-bottega-veneta-pillow-sneakers",
@@ -3077,7 +3396,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-common-projects-achilles-low-sneakers",
@@ -3106,7 +3426,8 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-common-projects-bball-low-sneakers",
@@ -3134,7 +3455,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-common-projects-track-80-sneakers",
@@ -3162,7 +3484,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-maison-margiela-replica-sneakers",
@@ -3191,7 +3514,8 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-maison-margiela-tabi-boots",
@@ -3220,7 +3544,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-maison-margiela-fusion-sneakers",
@@ -3248,7 +3573,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-rick-owens-geobasket-sneakers",
@@ -3277,7 +3603,8 @@
         "isIconic": true,
         "culturalSignificance": "Highly recognizable cultural icon",
         "brandingVisibility": "high"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-rick-owens-drkshdw-ramones-sneakers",
@@ -3305,7 +3632,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-rick-owens-kiss-boots",
@@ -3333,7 +3661,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-saint-laurent-court-classic-sneakers",
@@ -3362,7 +3691,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-saint-laurent-wyatt-chelsea-boots",
@@ -3391,7 +3721,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-saint-laurent-opyum-110-sandals",
@@ -3419,7 +3750,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-valentino-garavani-rockstud-untitled-sneakers",
@@ -3448,7 +3780,8 @@
         "isIconic": false,
         "culturalSignificance": "Known in fashion circles",
         "brandingVisibility": "medium"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-valentino-garavani-tan-go-platform-pumps",
@@ -3476,7 +3809,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-valentino-garavani-open-sneakers",
@@ -3504,7 +3838,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-jimmy-choo-bing-100-mules",
@@ -3532,7 +3867,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-jimmy-choo-romy-100-pumps",
@@ -3560,7 +3896,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     },
     {
       "id": "farfetch-jimmy-choo-love-85-pumps",
@@ -3588,7 +3925,8 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
+      },
+      "aliases": []
     }
   ]
 }
