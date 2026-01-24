@@ -27,6 +27,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import type { ErrorCase } from '@/lib/types';
 
 interface ErrorAnalysisTableProps {
@@ -115,9 +121,18 @@ export function ErrorAnalysisTable({ errors, models }: ErrorAnalysisTableProps) 
       accessorKey: 'visionResponse',
       header: 'Model Said',
       cell: ({ row }) => (
-        <div className="max-w-[200px] text-sm text-neutral-400 truncate" title={row.original.visionResponse}>
-          {row.original.visionResponse}
-        </div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="max-w-[200px] text-sm text-neutral-400 truncate cursor-help">
+                {row.original.visionResponse}
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="left" className="max-w-[400px] whitespace-pre-wrap bg-neutral-800 text-neutral-100 border-neutral-700">
+              <p className="text-sm">{row.original.visionResponse}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       ),
     },
   ];
