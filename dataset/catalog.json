@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
   "createdAt": "2026-01-24T05:44:54.629Z",
-  "totalShoes": 126,
+  "totalShoes": 125,
   "brandDistribution": {
     "Jordan": 14,
-    "Nike": 19,
+    "Nike": 18,
     "Adidas": 10,
     "New Balance": 5,
     "Converse": 5,
@@ -1373,35 +1373,6 @@
       "metadata": {
         "isIconic": false,
         "brandingVisibility": "low"
-      }
-    },
-    {
-      "id": "stockx-nike-sb-dunk-low-panda-pigeon",
-      "brand": "Nike",
-      "model": "SB Dunk Low Panda Pigeon",
-      "difficultyTier": "medium",
-      "tierRationale": "Nike shoe from popular line with recognizable design elements",
-      "images": [
-        {
-          "url": "https://stockx.com/nike-sb-dunk-low-panda-pigeon",
-          "localPath": "dataset/images/stockx/nike-sb-dunk-low-panda-pigeon.jpg",
-          "angle": "side",
-          "width": 1024,
-          "height": 1024,
-          "sizeBytes": 0,
-          "status": "placeholder"
-        }
-      ],
-      "provenance": {
-        "source": "stockx",
-        "scrapedAt": "2026-01-24T05:44:54.629Z",
-        "sourceUrl": "https://stockx.com/nike-sb-dunk-low-panda-pigeon",
-        "scraperVersion": "url-list-v1.0.0"
-      },
-      "metadata": {
-        "isIconic": false,
-        "culturalSignificance": "Popular model line",
-        "brandingVisibility": "medium"
       }
     },
     {
