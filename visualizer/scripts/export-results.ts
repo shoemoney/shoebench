@@ -15,6 +15,7 @@ import { fileURLToPath } from 'url';
 import { aggregateTierAccuracy } from '../lib/aggregation/tierMetrics';
 import { calculateModelMetrics } from '../lib/aggregation/costMetrics';
 import { aggregateErrors } from '../lib/aggregation/errorMetrics';
+import { calculateShoeMetrics } from '../lib/aggregation/shoeMetrics';
 import type {
   BenchmarkData,
   VisionResultsFile,
@@ -103,11 +104,29 @@ async function main() {
     await readFile(join(projectRoot, 'dataset/catalog.json'), 'utf-8')
   );
 
-  const visionResults = visionData.results;
+  // Models to exclude (not actually vision models or broken)
+  const excludedModels = [
+    'black-forest-labs/flux.2-flex',
+    'black-forest-labs/flux.2-pro',
+    'black-forest-labs/flux.2-max',
+    'black-forest-labs/flux.2-klein-4b',
+    'meta-llama/llama-guard-4-12b',
+    'openai/gpt-4o:extended', // Errors on all requests
+    'openai/gpt-4-vision-preview', // Deprecated, 100% error rate
+    'openai/gpt-4.5-preview', // 100% error rate
+    'openai/codex-mini', // No endpoints found
+  ];
+
+  // Filter out non-vision models
+  const visionResults = visionData.results.filter(
+    (r) => !excludedModels.includes(r.model)
+  );
   const judgeEvaluations = judgeData.evaluations;
   const catalog = catalogData.shoes;
 
-  console.log(`Loaded ${visionResults.length} vision results`);
+  console.log(`Loaded ${visionData.results.length} vision results`);
+  console.log(`Excluded ${visionData.results.length - visionResults.length} non-vision model results`);
+  console.log(`Using ${visionResults.length} vision results`);
   console.log(`Loaded ${judgeEvaluations.length} judge evaluations`);
   console.log(`Loaded ${catalog.length} catalog shoes`);
   console.log('');
@@ -125,6 +144,11 @@ async function main() {
     catalog
   );
   const errors = aggregateErrors(visionResults, judgeEvaluations, catalog);
+  const shoeMetrics = calculateShoeMetrics(
+    visionResults,
+    judgeEvaluations,
+    catalog
+  );
 
   // Build output
   const output: BenchmarkData = {
@@ -139,6 +163,7 @@ async function main() {
     modelMetrics,
     tierAccuracy,
     errors,
+    shoeMetrics,
   };
 
   // Ensure output directory exists

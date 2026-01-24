@@ -23,11 +23,12 @@ This project is **heavily inspired by** and built on top of the incredible work 
 
 ## ✨ Features
 
-- 👟 **125-shoe dataset** with ground truth labels and difficulty tiers (Easy/Medium/Hard)
-- 👁️ **Vision model testing** via OpenRouter (GPT-4o, Claude 3.5, Gemini, etc.)
+- 👟 **89-shoe dataset** with ground truth labels and difficulty tiers (Easy/Medium/Hard)
+- 👁️ **Vision model testing** via OpenRouter (120+ models auto-updated from API)
 - ⚖️ **LLM-as-judge scoring** with 4-tier evaluation (Exact, Variant, Brand Only, Wrong)
 - 💾 **Result caching** to reduce API costs on re-runs
 - 📈 **Interactive dashboard** with leaderboard, charts, and error analysis
+- 🏷️ **Model classification** filtering by Open Source / Closed / Free
 
 ---
 
@@ -67,7 +68,7 @@ OPENROUTER_API_KEY=your_openrouter_api_key_here
 cd bench
 
 # 🚀 FULL PIPELINE (recommended) - vision + judge + export
-bun run all              # All 173 models × all shoes 🔥🔥🔥
+bun run all              # All models × all shoes 🔥🔥🔥
 bun run quick            # Quick test (3 models × 5 shoes) ⚡
 bun run free             # Free models only (no API cost!) 🆓
 
@@ -79,9 +80,13 @@ bun run vision:free      # 8 free models (zero cost!) 🆓
 
 # 🎯 INDIVIDUAL STEPS
 bun run vision           # Run vision benchmark (20 shoes default)
-bun run vision:all       # All 173 models × all 89 shoes
+bun run vision:all       # All models × all 89 shoes
 bun run judge            # Score results with LLM-as-judge
 bun run export           # Export for visualizer
+
+# 🔄 MODEL UPDATES
+bun run update-models    # Fetch latest vision models from OpenRouter API
+bun run update-models:dry # Preview changes without writing
 ```
 
 ### 👀 View Results
@@ -101,14 +106,18 @@ shoebench/
 ├── 🧪 bench/                    # Benchmark runner
 │   ├── vision-runner.ts         # Vision model testing
 │   ├── judge-runner.ts          # LLM-as-judge evaluation
+│   ├── vision-constants.ts      # Auto-generated model list
 │   ├── cache.ts                 # SQLite caching layer
+│   ├── scripts/
+│   │   └── update-vision-models.ts  # OpenRouter API model fetcher
 │   └── results/                 # Raw benchmark results
 ├── 📁 dataset/
-│   ├── catalog.json             # 125 shoes with metadata
+│   ├── catalog.json             # 89 shoes with metadata
 │   └── images/                  # Downloaded shoe images
 └── 🎨 visualizer/               # Next.js dashboard
-    ├── app/page.tsx             # 6-tab dashboard
+    ├── app/page.tsx             # 7-tab dashboard
     ├── lib/aggregation/         # Metrics calculations
+    ├── lib/modelClassification.ts  # Open/Closed/Free classification
     └── data/                    # Aggregated results JSON
 ```
 
@@ -118,11 +127,12 @@ shoebench/
 
 | Tab | Description |
 |-----|-------------|
-| 🏆 **Leaderboard** | Models ranked by overall accuracy |
+| 🏆 **Leaderboard** | Models ranked by overall accuracy (filter by Open/Closed/Free) |
 | 📊 **Tiers** | Accuracy breakdown by difficulty (Easy/Medium/Hard) |
 | 💰 **Cost** | Total cost comparison per model |
 | ⚡ **Speed** | Average latency comparison |
 | 📈 **Cost vs Accuracy** | Scatter plot with efficiency metric |
+| 👟 **Shoes** | Per-shoe difficulty analysis (hardest/easiest to identify) |
 | ❌ **Errors** | Error analysis table with inline shoe images |
 
 ---
@@ -148,50 +158,32 @@ The LLM-as-judge evaluates each response with a 4-tier system:
 
 ---
 
-## 🤖 Supported Models (173 Total!) 🤯
+## 🤖 Supported Models (120+ and Growing!)
 
-ShoeBench tests **ALL 173 vision-capable models** on OpenRouter! Here's the full lineup:
+ShoeBench tests **all vision-capable models** on OpenRouter, auto-updated via `bun run update-models`.
 
-### 🧠 OpenAI (40+ models)
-GPT-5.2, GPT-5.2-Pro, GPT-5.1, GPT-5, GPT-5-Pro, GPT-5-Mini, GPT-5-Nano, GPT-4o, GPT-4o-mini, GPT-4.1, GPT-4-Turbo, o4-mini, o3, o3-Pro, o1, o1-Pro, Codex-Mini, and more!
+### Model Categories
 
-### 🟠 Anthropic (15 models)
-Claude Opus 4.5, Claude Opus 4.1, Claude Opus 4, Claude Sonnet 4.5, Claude Sonnet 4, Claude Haiku 4.5, Claude 3.7 Sonnet, Claude 3.5 Sonnet, Claude 3.5 Haiku, Claude 3 Haiku, Claude 3 Sonnet, Claude 3 Opus
+| Type | Description | Examples |
+|------|-------------|----------|
+| 🔒 **Closed** | Proprietary APIs | GPT-5, Claude Opus, Gemini Pro, Grok |
+| 🌐 **Open Source** | Open-weight models | Llama, Qwen, Mistral, NVIDIA Nemotron |
+| 🆓 **Free** | Zero-cost tier | Gemma 3, Molmo 2, Qwen-VL (free versions) |
 
-### 🔵 Google (30+ models)
-Gemini 3 Pro, Gemini 3 Flash, Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.0 Flash, Gemini Pro 1.5, Gemma 3 (27B, 12B, 4B, 1B), and experimental versions!
+### Providers Include
 
-### ⚡ xAI (5 models)
-Grok 4.1 Fast, Grok 4 Fast, Grok 4, Grok 2 Vision, Grok Vision Beta
+- **OpenAI**: GPT-5.x, GPT-4o, o3, o4-mini series
+- **Anthropic**: Claude Opus 4.5, Sonnet 4.5, Haiku 4.5
+- **Google**: Gemini 3 Pro/Flash, Gemini 2.5, Gemma 3
+- **xAI**: Grok 4, Grok 4.1 Fast
+- **Meta**: Llama 4 Maverick/Scout, Llama 3.2 Vision
+- **Qwen**: Qwen3-VL 235B, Qwen2.5-VL series
+- **Mistral**: Mistral Large, Pixtral, Ministral
+- **ByteDance**: Seed 1.6, UI-TARS
+- **Amazon**: Nova Premier/Pro/Lite
+- **And 15+ more providers...**
 
-### 🦙 Meta (5 models)
-Llama 4 Maverick, Llama 4 Scout, Llama Guard 4, Llama 3.2 90B Vision, Llama 3.2 11B Vision
-
-### 🐼 Qwen (14 models)
-Qwen3-VL 235B, Qwen3-VL 32B, Qwen3-VL 8B, Qwen2.5-VL 72B/32B/3B, Qwen-VL Max/Plus
-
-### 🇫🇷 Mistral (11 models)
-Mistral Large, Mistral Medium 3.1/3, Mistral Small 3.2/3.1, Ministral 14B/8B/3B, Pixtral Large/12B
-
-### 🌍 And Many More!
-- **ByteDance**: Seed 1.6, UI-TARS 72B/7B, Seedream 4.5
-- **Amazon**: Nova Premier, Nova Pro, Nova Lite
-- **Perplexity**: Sonar Pro, Sonar, Sonar Reasoning Pro
-- **NVIDIA**: Nemotron Nano 12B
-- **Baidu**: ERNIE 4.5-VL (424B, 28B)
-- **OpenGVLab**: InternVL3 (78B, 14B, 2B)
-- **Microsoft**: Phi-4 Multimodal
-- **Z.AI**: GLM 4.6v, GLM 4.5v
-- **StepFun**: Step3
-- **Arcee**: Spotlight
-- **DeepCogito**: Cogito v2 Preview
-- **01.AI**: Yi Vision
-- **Moonshot**: Kimi-VL
-- **AllenAI**: Molmo 2 8B (FREE!)
-- **NousResearch**: Nous Hermes 2 Vision
-- **Fireworks**: FireLLaVA 13B
-- **LiuHaotian**: LLaVA Yi 34B, LLaVA 13B
-- **OpenRouter Experimental**: Horizon, Optimus, Quasar, Polaris, and more!
+Run `bun run update-models` to fetch the latest model list from OpenRouter.
 
 ---
 
@@ -214,12 +206,12 @@ bun run ./run-judge-benchmark.ts [options]
 
 ### 🎚️ Model Tiers
 
-| Tier | Models | Use Case |
-|------|--------|----------|
-| 👑 **Premium** | 15 models | Best accuracy (GPT-5, Claude Opus, Gemini Pro) |
-| ⚖️ **Mid** | 16 models | Great balance of quality and cost |
-| 💸 **Budget** | 13 models | Cheapest options for high-volume testing |
-| 🆓 **Free** | 8 models | Zero cost! Perfect for testing |
+| Tier | Use Case |
+|------|----------|
+| 👑 **Premium** | Best accuracy (GPT-5, Claude Opus, Gemini Pro) |
+| ⚖️ **Mid** | Great balance of quality and cost |
+| 💸 **Budget** | Cheapest options for high-volume testing |
+| 🆓 **Free** | Zero cost! Perfect for testing |
 
 ---
 
@@ -231,6 +223,12 @@ cd bench && bun run typecheck
 
 # Build visualizer 🏗️
 cd visualizer && npm run build
+
+# Update vision models from OpenRouter API 🔄
+cd bench && bun run update-models
+
+# Preview model changes without writing 👀
+cd bench && bun run update-models:dry
 ```
 
 ---

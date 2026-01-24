@@ -18,7 +18,9 @@
     "export": "bun run ../visualizer/scripts/export-results.ts",
     "all": "bun run vision:all && bun run judge && bun run export",
     "quick": "bun run vision:quick && bun run judge && bun run export",
-    "free": "bun run vision:free && bun run judge && bun run export"
+    "free": "bun run vision:free && bun run judge && bun run export",
+    "update-models": "bun run ./scripts/update-vision-models.ts",
+    "update-models:dry": "bun run ./scripts/update-vision-models.ts --dry-run"
   },
   "devDependencies": {
     "@types/bun": "latest",

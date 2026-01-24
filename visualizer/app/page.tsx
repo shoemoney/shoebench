@@ -64,10 +64,16 @@ import { CostEfficiencyScatter } from "@/components/charts/CostEfficiencyScatter
 import { ErrorAnalysisTable } from "@/components/tables/ErrorAnalysisTable";
 
 import type { BenchmarkData, ModelMetrics } from "@/lib/types";
+import {
+  classifyModel,
+  getModelTypeLabel,
+  getModelTypeColor,
+  type ModelType,
+} from "@/lib/modelClassification";
 
 // Type-safe data access
 const typedBenchmarkData = benchmarkData as BenchmarkData;
-const { modelMetrics, tierAccuracy, errors, metadata } = typedBenchmarkData;
+const { modelMetrics, tierAccuracy, errors, metadata, shoeMetrics } = typedBenchmarkData;
 
 // Leaderboard data derived from modelMetrics
 interface LeaderboardEntry {
@@ -80,6 +86,7 @@ interface LeaderboardEntry {
   exactMatches: number;
   variantMatches: number;
   totalTests: number;
+  modelType: ModelType;
 }
 
 const leaderboardData: LeaderboardEntry[] = modelMetrics
@@ -97,8 +104,17 @@ const leaderboardData: LeaderboardEntry[] = modelMetrics
     exactMatches: m.exactMatches,
     variantMatches: m.variantMatches,
     totalTests: m.totalTests,
+    modelType: classifyModel(m.modelName),
   }))
   .sort((a, b) => b.accuracy - a.accuracy);
+
+// Count models by type
+const modelTypeCounts = {
+  all: leaderboardData.length,
+  open: leaderboardData.filter((m) => m.modelType === "open").length,
+  closed: leaderboardData.filter((m) => m.modelType === "closed").length,
+  free: leaderboardData.filter((m) => m.modelType === "free").length,
+};
 
 function withAlpha(color: string, alpha: number) {
   if (color.startsWith("hsl("))
@@ -181,9 +197,14 @@ export default function BenchmarkVisualizer() {
   const [selectedModels, setSelectedModels] = useState<string[]>(
     leaderboardData.map((m) => m.fullModel)
   );
+  const [modelTypeFilter, setModelTypeFilter] = useState<ModelType | "all">(
+    "all"
+  );
 
-  const filteredLeaderboard = leaderboardData.filter((m) =>
-    selectedModels.includes(m.fullModel)
+  const filteredLeaderboard = leaderboardData.filter(
+    (m) =>
+      selectedModels.includes(m.fullModel) &&
+      (modelTypeFilter === "all" || m.modelType === modelTypeFilter)
   );
 
   const isMobile = useIsMobile();
@@ -324,6 +345,12 @@ export default function BenchmarkVisualizer() {
               >
                 <AlertCircle className="h-4 w-4" /> Errors
               </TabsTrigger>
+              <TabsTrigger
+                value="shoes"
+                className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-pink-600 data-[state=active]:text-white"
+              >
+                <Footprints className="h-4 w-4" /> Shoes
+              </TabsTrigger>
             </TabsList>
 
             <DropdownMenu>
@@ -394,6 +421,58 @@ export default function BenchmarkVisualizer() {
                 </ScrollArea>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Model Type Filter */}
+            <div className="flex gap-1 rounded-lg border border-neutral-700 bg-neutral-900/60 p-1">
+              <Button
+                size="sm"
+                variant={modelTypeFilter === "all" ? "default" : "ghost"}
+                onClick={() => setModelTypeFilter("all")}
+                className={
+                  modelTypeFilter === "all"
+                    ? "bg-neutral-700 text-white"
+                    : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+                }
+              >
+                All ({modelTypeCounts.all})
+              </Button>
+              <Button
+                size="sm"
+                variant={modelTypeFilter === "closed" ? "default" : "ghost"}
+                onClick={() => setModelTypeFilter("closed")}
+                className={
+                  modelTypeFilter === "closed"
+                    ? "bg-blue-600 text-white"
+                    : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+                }
+              >
+                Closed ({modelTypeCounts.closed})
+              </Button>
+              <Button
+                size="sm"
+                variant={modelTypeFilter === "open" ? "default" : "ghost"}
+                onClick={() => setModelTypeFilter("open")}
+                className={
+                  modelTypeFilter === "open"
+                    ? "bg-green-600 text-white"
+                    : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+                }
+              >
+                Open ({modelTypeCounts.open})
+              </Button>
+              <Button
+                size="sm"
+                variant={modelTypeFilter === "free" ? "default" : "ghost"}
+                onClick={() => setModelTypeFilter("free")}
+                className={
+                  modelTypeFilter === "free"
+                    ? "bg-purple-600 text-white"
+                    : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+                }
+              >
+                Free ({modelTypeCounts.free})
+              </Button>
+            </div>
           </div>
 
           {/* Leaderboard Tab */}
@@ -416,6 +495,7 @@ export default function BenchmarkVisualizer() {
                         Rank
                       </TableHead>
                       <TableHead className="text-neutral-400">Model</TableHead>
+                      <TableHead className="text-neutral-400">Type</TableHead>
                       <TableHead className="text-neutral-400 text-right">
                         Accuracy
                       </TableHead>
@@ -466,6 +546,14 @@ export default function BenchmarkVisualizer() {
                               {entry.model}
                             </span>
                           </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge
+                            variant="outline"
+                            className={getModelTypeColor(entry.modelType)}
+                          >
+                            {getModelTypeLabel(entry.modelType)}
+                          </Badge>
                         </TableCell>
                         <TableCell className="text-right">
                           <span
@@ -827,6 +915,247 @@ export default function BenchmarkVisualizer() {
                 />
               </CardContent>
             </Card>
+          </TabsContent>
+
+          {/* Shoes Tab */}
+          <TabsContent value="shoes">
+            <div className="grid gap-6 lg:grid-cols-2">
+              {/* Hardest Shoes */}
+              <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+                <CardHeader className="pb-2">
+                  <CardTitle className="flex items-center gap-2 text-white">
+                    <AlertCircle className="h-5 w-5 text-red-400" /> Hardest to Identify
+                  </CardTitle>
+                  <CardDescription className="text-neutral-400">
+                    Shoes with lowest accuracy across all models
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer
+                    config={{
+                      accuracy: {
+                        label: "Accuracy",
+                        color: "hsl(0, 75%, 60%)",
+                      },
+                    }}
+                    className="h-[400px] w-full"
+                  >
+                    <BarChart
+                      data={(shoeMetrics || []).slice(0, 10).map(s => ({
+                        name: s.displayName.length > 20
+                          ? s.displayName.slice(0, 20) + '...'
+                          : s.displayName,
+                        fullName: s.displayName,
+                        accuracy: s.accuracy,
+                        brand: s.brand,
+                        avgScore: s.avgScore,
+                      }))}
+                      layout="vertical"
+                      margin={{ top: 10, right: 30, left: 120, bottom: 10 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
+                      <XAxis
+                        type="number"
+                        domain={[0, 100]}
+                        stroke="#9ca3af"
+                        label={{
+                          value: "Accuracy %",
+                          position: "insideBottom",
+                          offset: -5,
+                          fill: "#9ca3af",
+                        }}
+                      />
+                      <YAxis
+                        type="category"
+                        dataKey="name"
+                        width={110}
+                        tick={{ fontSize: 11, fill: "#9ca3af" }}
+                        stroke="#9ca3af"
+                      />
+                      <ChartTooltip
+                        content={<ChartTooltipContent />}
+                        formatter={(value: any, _name: any, props: any) => [
+                          `${value}% accuracy (${props.payload.avgScore} avg score)`,
+                          props.payload.brand
+                        ]}
+                        labelFormatter={(label, payload) =>
+                          payload?.[0]?.payload?.fullName || label
+                        }
+                      />
+                      <Bar dataKey="accuracy" radius={[0, 4, 4, 0]}>
+                        {(shoeMetrics || []).slice(0, 10).map((entry) => (
+                          <Cell
+                            key={entry.shoeId}
+                            fill={`hsl(${entry.accuracy * 1.2}, 70%, 50%)`}
+                          />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+
+              {/* Easiest Shoes */}
+              <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+                <CardHeader className="pb-2">
+                  <CardTitle className="flex items-center gap-2 text-white">
+                    <Trophy className="h-5 w-5 text-green-400" /> Easiest to Identify
+                  </CardTitle>
+                  <CardDescription className="text-neutral-400">
+                    Shoes with highest accuracy across all models
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ChartContainer
+                    config={{
+                      accuracy: {
+                        label: "Accuracy",
+                        color: "hsl(142, 76%, 36%)",
+                      },
+                    }}
+                    className="h-[400px] w-full"
+                  >
+                    <BarChart
+                      data={(shoeMetrics || []).slice(-10).reverse().map(s => ({
+                        name: s.displayName.length > 20
+                          ? s.displayName.slice(0, 20) + '...'
+                          : s.displayName,
+                        fullName: s.displayName,
+                        accuracy: s.accuracy,
+                        brand: s.brand,
+                        avgScore: s.avgScore,
+                      }))}
+                      layout="vertical"
+                      margin={{ top: 10, right: 30, left: 120, bottom: 10 }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
+                      <XAxis
+                        type="number"
+                        domain={[0, 100]}
+                        stroke="#9ca3af"
+                        label={{
+                          value: "Accuracy %",
+                          position: "insideBottom",
+                          offset: -5,
+                          fill: "#9ca3af",
+                        }}
+                      />
+                      <YAxis
+                        type="category"
+                        dataKey="name"
+                        width={110}
+                        tick={{ fontSize: 11, fill: "#9ca3af" }}
+                        stroke="#9ca3af"
+                      />
+                      <ChartTooltip
+                        content={<ChartTooltipContent />}
+                        formatter={(value: any, _name: any, props: any) => [
+                          `${value}% accuracy (${props.payload.avgScore} avg score)`,
+                          props.payload.brand
+                        ]}
+                        labelFormatter={(label, payload) =>
+                          payload?.[0]?.payload?.fullName || label
+                        }
+                      />
+                      <Bar dataKey="accuracy" radius={[0, 4, 4, 0]}>
+                        {(shoeMetrics || []).slice(-10).reverse().map((entry) => (
+                          <Cell
+                            key={entry.shoeId}
+                            fill={`hsl(${entry.accuracy * 1.2}, 70%, 50%)`}
+                          />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ChartContainer>
+                </CardContent>
+              </Card>
+
+              {/* Full Shoe List Table */}
+              <Card className="lg:col-span-2 border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
+                <CardHeader className="pb-2">
+                  <CardTitle className="flex items-center gap-2 text-white">
+                    <Footprints className="h-5 w-5 text-pink-400" /> All Shoes
+                  </CardTitle>
+                  <CardDescription className="text-neutral-400">
+                    Complete breakdown by shoe (sorted by difficulty)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="border-neutral-800 hover:bg-transparent">
+                        <TableHead className="text-neutral-400">Shoe</TableHead>
+                        <TableHead className="text-neutral-400">Brand</TableHead>
+                        <TableHead className="text-neutral-400">Difficulty</TableHead>
+                        <TableHead className="text-neutral-400 text-right">Accuracy</TableHead>
+                        <TableHead className="text-neutral-400 text-right">Avg Score</TableHead>
+                        <TableHead className="text-neutral-400 text-right">Exact</TableHead>
+                        <TableHead className="text-neutral-400 text-right">Variant</TableHead>
+                        <TableHead className="text-neutral-400 text-right">Brand Only</TableHead>
+                        <TableHead className="text-neutral-400 text-right">Wrong</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {(shoeMetrics || []).map((shoe) => (
+                        <TableRow
+                          key={shoe.shoeId}
+                          className="border-neutral-800 hover:bg-neutral-800/50"
+                        >
+                          <TableCell className="font-medium text-neutral-100">
+                            {shoe.displayName}
+                          </TableCell>
+                          <TableCell className="text-neutral-300">
+                            {shoe.brand}
+                          </TableCell>
+                          <TableCell>
+                            <Badge
+                              variant="outline"
+                              className={
+                                shoe.difficulty === 'hard'
+                                  ? 'border-red-600 text-red-400'
+                                  : shoe.difficulty === 'medium'
+                                    ? 'border-yellow-600 text-yellow-400'
+                                    : 'border-green-600 text-green-400'
+                              }
+                            >
+                              {shoe.difficulty}
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="text-right">
+                            <span
+                              className={`font-semibold ${
+                                shoe.accuracy >= 80
+                                  ? "text-green-400"
+                                  : shoe.accuracy >= 60
+                                    ? "text-yellow-400"
+                                    : "text-red-400"
+                              }`}
+                            >
+                              {shoe.accuracy}%
+                            </span>
+                          </TableCell>
+                          <TableCell className="text-right text-neutral-300">
+                            {shoe.avgScore}
+                          </TableCell>
+                          <TableCell className="text-right text-green-400">
+                            {shoe.exactCount}
+                          </TableCell>
+                          <TableCell className="text-right text-blue-400">
+                            {shoe.variantCount}
+                          </TableCell>
+                          <TableCell className="text-right text-yellow-400">
+                            {shoe.brandOnlyCount}
+                          </TableCell>
+                          <TableCell className="text-right text-red-400">
+                            {shoe.wrongCount}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </main>

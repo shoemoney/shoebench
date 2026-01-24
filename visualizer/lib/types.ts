@@ -133,6 +133,26 @@ export type TierAccuracy = {
 };
 
 /**
+ * Per-shoe aggregated metrics
+ */
+export type ShoeMetric = {
+  shoeId: string;
+  displayName: string;
+  brand: string;
+  model: string;
+  difficulty: DifficultyTier;
+  accuracy: number; // (exact + variant) / total * 100
+  avgScore: number;
+  exactCount: number;
+  variantCount: number;
+  brandOnlyCount: number;
+  wrongCount: number;
+  totalTests: number;
+  modelsTestedCount: number;
+  imagePath: string;
+};
+
+/**
  * Individual error case for error analysis
  */
 export type ErrorCase = {
@@ -163,6 +183,7 @@ export type BenchmarkData = {
   modelMetrics: ModelMetrics[];
   tierAccuracy: TierAccuracy[];
   errors: ErrorCase[];
+  shoeMetrics?: ShoeMetric[];
 };
 
 // === File Format Types ===
