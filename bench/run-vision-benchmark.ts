@@ -15,8 +15,8 @@
 import { config } from 'dotenv';
 import { resolve } from 'path';
 
-// Load .env from project root
-config({ path: resolve(__dirname, '../.env') });
+// Load .env from project root (override existing env vars)
+config({ path: resolve(__dirname, '../.env'), override: true });
 
 import { readFile, writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
@@ -95,9 +95,11 @@ async function main() {
   const startTime = Date.now();
 
   // Run benchmark
+  const projectRoot = join(__dirname, '..');
   const results = await runVisionBatch({
     models,
     shoes: selectedShoes,
+    projectRoot,
     concurrency: VISION_CONCURRENCY,
     cache,
     onProgress: (result, completed, total) => {

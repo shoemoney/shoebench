@@ -6,6 +6,7 @@
 import { generateText } from 'ai';
 import { openrouter } from '@openrouter/ai-sdk-provider';
 import { readFile } from 'fs/promises';
+import { join } from 'path';
 import pLimit from 'p-limit';
 import { VisionCache, computeCacheKey } from './cache';
 import { type VisionTestResult, type TestStatus, type Shoe } from './vision-types';
@@ -242,6 +243,7 @@ export async function runVisionTestWithCache(params: {
 export type VisionBatchOptions = {
   models: string[];
   shoes: Shoe[];
+  projectRoot: string; // Required: project root for resolving image paths
   concurrency?: number; // default 5
   cache?: VisionCache;
   onProgress?: (result: VisionTestResult, completed: number, total: number) => void;
@@ -254,6 +256,7 @@ export async function runVisionBatch(options: VisionBatchOptions): Promise<Visio
   const {
     models,
     shoes,
+    projectRoot,
     concurrency = 5,
     cache,
     onProgress
@@ -271,7 +274,7 @@ export async function runVisionBatch(options: VisionBatchOptions): Promise<Visio
     const modelResults = await Promise.all(
       shoes.map(shoe =>
         limit(async () => {
-          const imagePath = shoe.images[0].localPath;
+          const imagePath = join(projectRoot, shoe.images[0].localPath);
 
           try {
             const result = cache

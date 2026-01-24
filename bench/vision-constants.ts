@@ -17,8 +17,8 @@ export const visionModelsToRun = [
   'anthropic/claude-3-haiku',
 
   // Google vision models
-  'google/gemini-pro-vision',
-  'google/gemini-1.5-flash',
+  'google/gemini-2.0-flash-001',
+  'google/gemini-3-flash-preview',
 
   // Open source vision models (via OpenRouter)
   'meta-llama/llama-3.2-11b-vision-instruct',
@@ -30,5 +30,5 @@ export type VisionModel = typeof visionModelsToRun[number];
 export const visionModelsForQuickTest = [
   'openai/gpt-4o-mini',
   'anthropic/claude-3-haiku',
-  'google/gemini-1.5-flash',
+  'google/gemini-2.0-flash-001',
 ] as const;
