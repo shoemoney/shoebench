@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, type ComponentPropsWithoutRef } from "react";
+import { useState } from "react";
 import {
   Trophy,
   DollarSign,
   Clock,
-  Target,
   TrendingUp,
   Filter,
   ChevronDown,
@@ -187,16 +186,6 @@ export default function BenchmarkVisualizer() {
   const mobileBarHeight = Math.max(320, filteredLeaderboard.length * 36 + 120);
 
   const totalTestsPerModel = leaderboardData[0]?.totalTests ?? 0;
-
-  const successRateData = filteredLeaderboard
-    .map((m) => ({
-      model: m.model,
-      fullModel: m.fullModel,
-      successRate: Number(m.accuracy.toFixed(1)),
-      correct: m.exactMatches + m.variantMatches,
-      total: m.totalTests,
-    }))
-    .sort((a, b) => b.successRate - a.successRate);
 
   const costData = filteredLeaderboard
     .map((m) => ({
@@ -605,7 +594,7 @@ export default function BenchmarkVisualizer() {
                     <ChartTooltip
                       content={<ChartTooltipContent />}
                       formatter={(value: any) => [`Total cost: $${value}`]}
-                      labelFormatter={(label: string) => `Model: ${label}`}
+                      labelFormatter={(label) => `Model: ${label}`}
                     />
                     <Bar
                       dataKey="totalCost"
@@ -738,7 +727,7 @@ export default function BenchmarkVisualizer() {
                       formatter={(value: any) => [
                         `Average response time: ${value} seconds`,
                       ]}
-                      labelFormatter={(label: string) => `Model: ${label}`}
+                      labelFormatter={(label) => `Model: ${label}`}
                     />
                     <Bar
                       dataKey="duration"
@@ -875,7 +864,7 @@ export default function BenchmarkVisualizer() {
                                 x={nx + 10}
                                 y={ny}
                                 dy={4}
-                                textAnchor="left"
+                                textAnchor="start"
                                 className="pointer-events-none text-xs font-medium fill-neutral-200"
                                 style={{
                                   textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
