@@ -511,7 +511,7 @@ export default function BenchmarkVisualizer() {
                         Avg Score
                       </TableHead>
                       <TableHead className="text-neutral-400 text-right">
-                        Cost
+                        Cost per Run
                       </TableHead>
                       <TableHead className="text-neutral-400 text-right">
                         Response Time
