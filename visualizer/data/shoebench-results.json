@@ -1,0 +1,148 @@
+{
+  "metadata": {
+    "timestamp": "2026-01-24T10:49:57.601Z",
+    "visionResultsFile": "vision-results-2026-01-24T09-55-56-373Z.json",
+    "judgeResultsFile": "judge-results-2026-01-24T10-05-12-796Z.json",
+    "totalModels": 3,
+    "totalShoes": 5,
+    "totalTests": 15
+  },
+  "modelMetrics": [
+    {
+      "modelName": "anthropic/claude-3.5-haiku",
+      "totalTests": 5,
+      "exactMatches": 3,
+      "variantMatches": 2,
+      "brandOnlyMatches": 0,
+      "wrongMatches": 0,
+      "overallAccuracy": 100,
+      "avgScore": 90,
+      "totalCost": 0.007516,
+      "avgLatency": 0
+    },
+    {
+      "modelName": "openai/gpt-4o-mini",
+      "totalTests": 5,
+      "exactMatches": 1,
+      "variantMatches": 2,
+      "brandOnlyMatches": 2,
+      "wrongMatches": 0,
+      "overallAccuracy": 60,
+      "avgScore": 70,
+      "totalCost": 0.019215,
+      "avgLatency": 0
+    },
+    {
+      "modelName": "google/gemini-2.0-flash-001",
+      "totalTests": 5,
+      "exactMatches": 2,
+      "variantMatches": 1,
+      "brandOnlyMatches": 1,
+      "wrongMatches": 1,
+      "overallAccuracy": 60,
+      "avgScore": 65,
+      "totalCost": 0.000699,
+      "avgLatency": 0
+    }
+  ],
+  "tierAccuracy": [
+    {
+      "tier": "easy",
+      "modelName": "anthropic/claude-3.5-haiku",
+      "totalShoes": 4,
+      "correctCount": 4,
+      "accuracyPercent": 100,
+      "avgScore": 87.5
+    },
+    {
+      "tier": "medium",
+      "modelName": "anthropic/claude-3.5-haiku",
+      "totalShoes": 1,
+      "correctCount": 1,
+      "accuracyPercent": 100,
+      "avgScore": 100
+    },
+    {
+      "tier": "easy",
+      "modelName": "google/gemini-2.0-flash-001",
+      "totalShoes": 4,
+      "correctCount": 2,
+      "accuracyPercent": 50,
+      "avgScore": 56.3
+    },
+    {
+      "tier": "medium",
+      "modelName": "google/gemini-2.0-flash-001",
+      "totalShoes": 1,
+      "correctCount": 1,
+      "accuracyPercent": 100,
+      "avgScore": 100
+    },
+    {
+      "tier": "easy",
+      "modelName": "openai/gpt-4o-mini",
+      "totalShoes": 4,
+      "correctCount": 3,
+      "accuracyPercent": 75,
+      "avgScore": 75
+    },
+    {
+      "tier": "medium",
+      "modelName": "openai/gpt-4o-mini",
+      "totalShoes": 1,
+      "correctCount": 0,
+      "accuracyPercent": 0,
+      "avgScore": 50
+    }
+  ],
+  "errors": [
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-chicago",
+      "shoeBrand": "Jordan",
+      "shoeModel": "Air Jordan 1 Retro High OG Chicago",
+      "difficultyTier": "easy",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-chicago.jpg",
+      "modelName": "google/gemini-2.0-flash-001",
+      "visionResponse": "Here's the identification of the shoe:\n\n*   **Brand:** Nike\n*   **Model:** Air Jordan 1 Retro High OG \"Origin Story\"",
+      "judgeReasoning": "The model incorrectly identified the brand as Nike instead of Jordan, and specified the wrong model name (Origin Story instead of Chicago), resulting in a complete mismatch to the ground truth.",
+      "errorType": "wrong",
+      "score": 0
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-bred-toe",
+      "shoeBrand": "Jordan",
+      "shoeModel": "Air Jordan 1 Retro High OG Bred Toe",
+      "difficultyTier": "easy",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-bred-toe.jpg",
+      "modelName": "google/gemini-2.0-flash-001",
+      "visionResponse": "Here's the breakdown of the shoe:\n\n*   **Brand:** Nike (Air Jordan)\n*   **Model:** Air Jordan 1 High \"Black Toe\"",
+      "judgeReasoning": "The model correctly identified the Jordan/Nike brand, but misidentified the specific Air Jordan 1 model as 'Black Toe' instead of the correct 'Bred Toe' variant.",
+      "errorType": "brand_only",
+      "score": 50
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-bred-toe",
+      "shoeBrand": "Jordan",
+      "shoeModel": "Air Jordan 1 Retro High OG Bred Toe",
+      "difficultyTier": "easy",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-bred-toe.jpg",
+      "modelName": "openai/gpt-4o-mini",
+      "visionResponse": "The shoe shown in the image is an Air Jordan 1 Retro High OG \"Chicago.\"",
+      "judgeReasoning": "The response correctly identifies the brand (Jordan/Air Jordan) but misidentifies the specific model as 'Chicago' when the ground truth is 'Bred Toe', resulting in a brand_only score.",
+      "errorType": "brand_only",
+      "score": 50
+    },
+    {
+      "shoeId": "stockx-jordan-air-jordan-1-retro-high-og-unc-toe",
+      "shoeBrand": "Jordan",
+      "shoeModel": "Air Jordan 1 Retro High OG UNC Toe",
+      "difficultyTier": "medium",
+      "imagePath": "dataset/images/stockx/jordan-air-jordan-1-retro-high-og-unc-toe.jpg",
+      "modelName": "openai/gpt-4o-mini",
+      "visionResponse": "The shoe in the image is a Nike Air Jordan 1 Retro High OG in the \"Fragment Blue\" colorway.",
+      "judgeReasoning": "The model correctly identified the brand as Nike/Jordan but misidentified the specific model as 'Fragment Blue' instead of the UNC Toe variant of the Air Jordan 1 Retro High OG.",
+      "errorType": "brand_only",
+      "score": 50
+    }
+  ]
+}
