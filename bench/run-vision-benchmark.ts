@@ -138,7 +138,11 @@ async function main() {
     onProgress: (result, completed, total) => {
       const pct = Math.round((completed / total) * 100);
       const status = result.fromCache ? '(cached)' : result.status;
-      console.log(`[${pct}%] ${result.model} | ${result.shoeId} | ${status}`);
+      if (result.status === 'error') {
+        console.log(`[${pct}%] ${result.model} | ${result.shoeId} | ERROR: ${result.responseText.slice(0, 100)}`);
+      } else {
+        console.log(`[${pct}%] ${result.model} | ${result.shoeId} | ${status}`);
+      }
     }
   });
 
