@@ -13,9 +13,9 @@ import {
   ChartContainer,
   ChartTooltip,
 } from "@/components/ui/chart";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 import type { TierAccuracy } from "@/lib/types";
+import { formatModelName } from "@/lib/modelUtils";
 
 interface TierAccuracyChartProps {
   data: TierAccuracy[];
@@ -23,10 +23,11 @@ interface TierAccuracyChartProps {
   getModelColor: (modelName: string) => string;
 }
 
-type TierChartData = {
-  tier: string;
-  tierLabel: string;
-  [modelName: string]: number | string;
+type SingleTierChartData = {
+  modelName: string;
+  shortName: string;
+  accuracy: number;
+  color: string;
 };
 
 function withAlpha(color: string, alpha: number) {
@@ -49,64 +50,25 @@ const TIER_LABELS: Record<string, string> = {
 
 const TIER_ORDER = ["easy", "medium", "hard"];
 
-export function TierAccuracyChart({
+function SingleTierChart({
+  tier,
+  tierLabel,
   data,
-  selectedModels,
-  getModelColor,
-}: TierAccuracyChartProps) {
-  const isMobile = useIsMobile();
+}: {
+  tier: string;
+  tierLabel: string;
+  data: SingleTierChartData[];
+}) {
+  // Sort by accuracy descending
+  const sortedData = [...data].sort((a, b) => b.accuracy - a.accuracy);
 
-  // Filter data by selected models
-  const filteredData = data.filter((d) => selectedModels.includes(d.modelName));
+  const chartHeight = Math.max(200, sortedData.length * 40 + 60);
 
-  // Get unique models from filtered data
-  const models = [...new Set(filteredData.map((d) => d.modelName))];
-
-  // Transform data for grouped bar chart
-  // Structure: [{ tier: 'easy', tierLabel: 'Easy', 'model1': 80, 'model2': 75, ... }]
-  const chartData: TierChartData[] = TIER_ORDER.filter((tier) =>
-    filteredData.some((d) => d.tier === tier)
-  ).map((tier) => {
-    const row: TierChartData = {
-      tier,
-      tierLabel: TIER_LABELS[tier] || tier,
-    };
-
-    models.forEach((modelName) => {
-      const entry = filteredData.find(
-        (d) => d.tier === tier && d.modelName === modelName
-      );
-      // Use short model name for data key
-      const shortName = modelName
-        .replace("openai/", "")
-        .replace("anthropic/", "")
-        .replace("google/", "")
-        .replace("meta-llama/", "");
-      row[shortName] = entry ? entry.accuracyPercent : 0;
-    });
-
-    return row;
-  });
-
-  // Get short model names for bars
-  const modelBars = models.map((fullName) => ({
-    fullName,
-    shortName: fullName
-      .replace("openai/", "")
-      .replace("anthropic/", "")
-      .replace("google/", "")
-      .replace("meta-llama/", ""),
-    color: getModelColor(fullName),
-  }));
-
-  const mobileBarHeight = Math.max(320, chartData.length * 100 + 120);
-
-  // Create chart config for shadcn ChartContainer
-  const chartConfig = modelBars.reduce(
-    (acc, m) => {
-      acc[m.shortName] = {
-        label: m.shortName,
-        color: m.color,
+  const chartConfig = sortedData.reduce(
+    (acc, d) => {
+      acc[d.shortName] = {
+        label: d.shortName,
+        color: d.color,
       };
       return acc;
     },
@@ -114,141 +76,141 @@ export function TierAccuracyChart({
   );
 
   return (
-    <ChartContainer
-      config={chartConfig}
-      className="h-[420px] sm:h-[520px] w-full"
-      style={isMobile ? { height: mobileBarHeight } : undefined}
-    >
-      <BarChart
-        data={chartData}
-        layout={isMobile ? "vertical" : "horizontal"}
-        margin={
-          isMobile
-            ? { top: 10, right: 24, left: 70, bottom: 24 }
-            : { top: 10, right: 24, left: 12, bottom: 24 }
-        }
+    <div className="w-full">
+      <h3 className="text-lg font-semibold text-neutral-200 mb-2 px-1">{tierLabel}</h3>
+      <ChartContainer
+        config={chartConfig}
+        className="w-full"
+        style={{ height: chartHeight }}
       >
-        <defs>
-          {modelBars.map((m) => {
-            const id = getGradientId("tier", m.shortName);
-            return (
-              <linearGradient
-                key={id}
-                id={id}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop offset="0%" stopColor={withAlpha(m.color, 0.95)} />
-                <stop offset="100%" stopColor={withAlpha(m.color, 0.55)} />
-              </linearGradient>
-            );
-          })}
-        </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
-        {isMobile ? (
-          <>
-            <XAxis
-              type="number"
-              domain={[0, 100]}
-              label={{
-                value: "Accuracy (%)",
-                position: "insideBottom",
-                offset: -10,
-                fill: "#9ca3af",
-              }}
-              stroke="#9ca3af"
-            />
-            <YAxis
-              type="category"
-              dataKey="tierLabel"
-              width={60}
-              tick={{ fontSize: 12, fill: "#9ca3af" }}
-              stroke="#9ca3af"
-            />
-          </>
-        ) : (
-          <>
-            <XAxis
-              dataKey="tierLabel"
-              tick={{ fontSize: 12, fill: "#9ca3af" }}
-              stroke="#9ca3af"
-            />
-            <YAxis
-              domain={[0, 100]}
-              label={{
-                value: "Accuracy (%)",
-                angle: -90,
-                position: "insideLeft",
-                fill: "#9ca3af",
-              }}
-              stroke="#9ca3af"
-            />
-          </>
-        )}
-        <ChartTooltip
-          content={({ active, payload, label }) => {
-            if (active && payload && payload.length) {
+        <BarChart
+          data={sortedData}
+          layout="vertical"
+          margin={{ top: 5, right: 60, left: 140, bottom: 5 }}
+        >
+          <defs>
+            {sortedData.map((d) => {
+              const id = getGradientId(`tier-${tier}`, d.shortName);
               return (
-                <div className="rounded-lg border border-white/10 bg-neutral-900/95 p-3 text-neutral-100 shadow-xl">
-                  <p className="font-semibold mb-2">{label}</p>
-                  {payload.map((entry: any) => (
-                    <div key={entry.dataKey} className="flex items-center gap-2 text-sm">
-                      <div
-                        className="h-2.5 w-2.5 rounded-full"
-                        style={{ backgroundColor: entry.color }}
-                      />
-                      <span className="text-neutral-300">{entry.dataKey}:</span>
-                      <span className="font-medium">{entry.value.toFixed(1)}%</span>
-                    </div>
-                  ))}
-                </div>
+                <linearGradient
+                  key={id}
+                  id={id}
+                  x1="0"
+                  y1="0"
+                  x2="1"
+                  y2="0"
+                >
+                  <stop offset="0%" stopColor={withAlpha(d.color, 0.95)} />
+                  <stop offset="100%" stopColor={withAlpha(d.color, 0.75)} />
+                </linearGradient>
               );
-            }
-            return null;
-          }}
-        />
-        {modelBars.map((m) => (
+            })}
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="#303341" horizontal={false} />
+          <XAxis
+            type="number"
+            domain={[0, 100]}
+            tick={{ fontSize: 11, fill: "#9ca3af" }}
+            stroke="#9ca3af"
+            tickFormatter={(value) => `${value}%`}
+          />
+          <YAxis
+            type="category"
+            dataKey="shortName"
+            width={130}
+            tick={{ fontSize: 12, fill: "#d1d5db" }}
+            stroke="#9ca3af"
+            tickLine={false}
+            axisLine={false}
+          />
+          <ChartTooltip
+            content={({ active, payload }) => {
+              if (active && payload && payload.length) {
+                const d = payload[0].payload as SingleTierChartData;
+                return (
+                  <div className="rounded-lg border border-white/10 bg-neutral-900/95 p-3 text-neutral-100 shadow-xl">
+                    <p className="font-semibold mb-1">{d.shortName}</p>
+                    <p className="text-sm">
+                      <span className="text-neutral-400">Accuracy:</span>{" "}
+                      <span className="font-medium">{d.accuracy.toFixed(1)}%</span>
+                    </p>
+                  </div>
+                );
+              }
+              return null;
+            }}
+          />
           <Bar
-            key={m.shortName}
-            dataKey={m.shortName}
-            fill={`url(#${getGradientId("tier", m.shortName)})`}
-            radius={isMobile ? [0, 4, 4, 0] : [4, 4, 0, 0]}
+            dataKey="accuracy"
+            radius={[0, 4, 4, 0]}
           >
-            {!isMobile && (
-              <LabelList
-                dataKey={m.shortName}
-                position="top"
-                content={(props: any) => {
-                  const x = Number(props?.x ?? 0);
-                  const y = Number(props?.y ?? 0);
-                  const width = Number(props?.width ?? 0);
-                  const value = Number(props?.value ?? 0);
-                  const cx = x + width / 2;
-                  const cy = y - 6;
-                  return (
-                    <text
-                      x={cx}
-                      y={cy}
-                      textAnchor="middle"
-                      className="pointer-events-none text-[10px] font-medium fill-neutral-300"
-                    >
-                      {value.toFixed(0)}%
-                    </text>
-                  );
-                }}
-              />
-            )}
-            {chartData.map((entry, index) => (
+            <LabelList
+              dataKey="accuracy"
+              position="right"
+              content={(props: any) => {
+                const x = Number(props?.x ?? 0);
+                const y = Number(props?.y ?? 0);
+                const width = Number(props?.width ?? 0);
+                const height = Number(props?.height ?? 0);
+                const value = Number(props?.value ?? 0);
+                return (
+                  <text
+                    x={x + width + 8}
+                    y={y + height / 2 + 4}
+                    className="text-xs font-medium fill-neutral-300"
+                  >
+                    {value.toFixed(1)}%
+                  </text>
+                );
+              }}
+            />
+            {sortedData.map((d, index) => (
               <Cell
-                key={`${m.shortName}-${index}`}
-                fill={`url(#${getGradientId("tier", m.shortName)})`}
+                key={`${d.shortName}-${index}`}
+                fill={`url(#${getGradientId(`tier-${tier}`, d.shortName)})`}
               />
             ))}
           </Bar>
-        ))}
-      </BarChart>
-    </ChartContainer>
+        </BarChart>
+      </ChartContainer>
+    </div>
+  );
+}
+
+export function TierAccuracyChart({
+  data,
+  selectedModels,
+  getModelColor,
+}: TierAccuracyChartProps) {
+  // Filter data by selected models
+  const filteredData = data.filter((d) => selectedModels.includes(d.modelName));
+
+  // Group data by tier
+  const tierData = TIER_ORDER.map((tier) => {
+    const tierEntries = filteredData.filter((d) => d.tier === tier);
+    const chartData: SingleTierChartData[] = tierEntries.map((entry) => ({
+      modelName: entry.modelName,
+      shortName: formatModelName(entry.modelName),
+      accuracy: entry.accuracyPercent,
+      color: getModelColor(entry.modelName),
+    }));
+    return {
+      tier,
+      tierLabel: TIER_LABELS[tier] || tier,
+      data: chartData,
+    };
+  }).filter((t) => t.data.length > 0);
+
+  return (
+    <div className="flex flex-col gap-6 w-full">
+      {tierData.map((t) => (
+        <SingleTierChart
+          key={t.tier}
+          tier={t.tier}
+          tierLabel={t.tierLabel}
+          data={t.data}
+        />
+      ))}
+    </div>
   );
 }

@@ -70,6 +70,7 @@ import {
   getModelTypeColor,
   type ModelType,
 } from "@/lib/modelClassification";
+import { formatModelName } from "@/lib/modelUtils";
 
 // Type-safe data access
 const typedBenchmarkData = benchmarkData as BenchmarkData;
@@ -91,11 +92,7 @@ interface LeaderboardEntry {
 
 const leaderboardData: LeaderboardEntry[] = modelMetrics
   .map((m: ModelMetrics) => ({
-    model: m.modelName
-      .replace("openai/", "")
-      .replace("anthropic/", "")
-      .replace("google/", "")
-      .replace("meta-llama/", ""),
+    model: formatModelName(m.modelName),
     fullModel: m.modelName,
     accuracy: m.overallAccuracy,
     avgScore: m.avgScore,
@@ -129,17 +126,39 @@ function getGradientId(prefix: string, model: string) {
 }
 
 function currency(n: number) {
-  return `$${n.toFixed(4)}`;
+  // Round up to 2 decimal places
+  const rounded = Math.ceil(n * 100) / 100;
+  return `$${rounded.toFixed(2)}`;
 }
 
-function barValueLabel(suffix: string, decimals: number) {
+function barValueLabel(suffix: string, decimals: number, withBackground = false) {
   return (props: any) => {
     const x = Number(props?.x ?? 0);
     const y = Number(props?.y ?? 0);
     const width = Number(props?.width ?? 0);
     const value = Number(props?.value ?? 0);
     const cx = x + width / 2;
-    const cy = y - 6;
+    const cy = y - 8;
+    const text = `$${value.toFixed(decimals)}${suffix}`;
+
+    if (withBackground) {
+      // Rotated 90 degrees clockwise, positioned above bar
+      return (
+        <g className="pointer-events-none">
+          <text
+            x={cx}
+            y={cy - 4}
+            textAnchor="start"
+            transform={`rotate(90, ${cx}, ${cy - 4})`}
+            className="text-[11px] font-bold"
+            fill="#ffffff"
+          >
+            {text}
+          </text>
+        </g>
+      );
+    }
+
     return (
       <text
         x={cx}
@@ -194,9 +213,9 @@ function truncateLabel(input: unknown, max = 14) {
 }
 
 export default function BenchmarkVisualizer() {
-  const [selectedModels, setSelectedModels] = useState<string[]>(
-    leaderboardData.map((m) => m.fullModel)
-  );
+  // Default to top 10 models by accuracy
+  const top10Models = leaderboardData.slice(0, 10).map((m) => m.fullModel);
+  const [selectedModels, setSelectedModels] = useState<string[]>(top10Models);
   const [modelTypeFilter, setModelTypeFilter] = useState<ModelType | "all">(
     "all"
   );
@@ -212,13 +231,22 @@ export default function BenchmarkVisualizer() {
 
   const totalTestsPerModel = leaderboardData[0]?.totalTests ?? 0;
 
-  const costData = filteredLeaderboard
+  // Cost tab: show 10 cheapest + 10 most expensive (ignores global filter)
+  const allCostData = leaderboardData
     .map((m) => ({
       model: m.model,
       fullModel: m.fullModel,
-      totalCost: Number(m.totalCost.toFixed(6)),
+      totalCost: Math.ceil(m.totalCost * 100) / 100, // Round up to 2 decimals
     }))
     .sort((a, b) => a.totalCost - b.totalCost);
+
+  const cheapest10 = allCostData.slice(0, 10);
+  const mostExpensive10 = allCostData.slice(-10).reverse();
+  const costModelsSet = new Set([
+    ...cheapest10.map((m) => m.fullModel),
+    ...mostExpensive10.map((m) => m.fullModel),
+  ]);
+  const costData = allCostData.filter((m) => costModelsSet.has(m.fullModel));
 
   const speedData = filteredLeaderboard
     .map((m) => ({
@@ -258,6 +286,7 @@ export default function BenchmarkVisualizer() {
   const handleSelectAll = () =>
     setSelectedModels(leaderboardData.map((m) => m.fullModel));
   const handleDeselectAll = () => setSelectedModels([]);
+  const handleSelectTop10 = () => setSelectedModels(top10Models);
 
   const costMax = Math.max(0, ...costData.map((d) => d.totalCost));
   const speedMax = Math.max(0, ...speedData.map((d) => d.duration));
@@ -381,10 +410,18 @@ export default function BenchmarkVisualizer() {
                   <Button
                     size="sm"
                     variant="outline"
+                    onClick={handleSelectTop10}
+                    className="flex-1 border-neutral-600 bg-neutral-800 hover:bg-neutral-700"
+                  >
+                    Top 10
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
                     onClick={handleSelectAll}
                     className="flex-1 border-neutral-600 bg-neutral-800 hover:bg-neutral-700"
                   >
-                    Select all
+                    All
                   </Button>
                   <Button
                     size="sm"
@@ -699,11 +736,13 @@ export default function BenchmarkVisualizer() {
                       <>
                         <XAxis
                           dataKey="model"
-                          angle={-45}
-                          textAnchor="end"
-                          height={100}
-                          fontSize={12}
+                          angle={0}
+                          textAnchor="middle"
+                          height={50}
+                          fontSize={10}
                           stroke="#9ca3af"
+                          interval={0}
+                          tick={{ fill: "#d1d5db" }}
                         />
                         <YAxis
                           label={{
@@ -718,7 +757,7 @@ export default function BenchmarkVisualizer() {
                     )}
                     <ChartTooltip
                       content={<ChartTooltipContent />}
-                      formatter={(value: any) => [`Total cost: $${value}`]}
+                      formatter={(value: any) => [`Total cost: $${Number(value).toFixed(2)}`]}
                       labelFormatter={(label) => `Model: ${label}`}
                     />
                     <Bar
@@ -730,8 +769,8 @@ export default function BenchmarkVisualizer() {
                         position={isMobile ? "right" : "top"}
                         content={
                           isMobile
-                            ? barValueLabelHorizontalSmart("", 4, costMax || 1)
-                            : barValueLabel("", 4)
+                            ? barValueLabelHorizontalSmart("", 2, costMax || 1)
+                            : barValueLabel("", 2, true)
                         }
                       />
                       {costData.map((entry) => (

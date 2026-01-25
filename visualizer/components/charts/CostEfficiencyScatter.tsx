@@ -17,6 +17,7 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 
 import type { ModelMetrics } from "@/lib/types";
+import { formatModelName } from "@/lib/modelUtils";
 
 interface CostEfficiencyScatterProps {
   data: ModelMetrics[];
@@ -48,11 +49,7 @@ export function CostEfficiencyScatter({
 
   // Transform for scatter chart
   const scatterData: ScatterDataPoint[] = filteredData.map((m) => {
-    const shortName = m.modelName
-      .replace("openai/", "")
-      .replace("anthropic/", "")
-      .replace("google/", "")
-      .replace("meta-llama/", "");
+    const shortName = formatModelName(m.modelName);
 
     const accuracyPerDollar = m.totalCost > 0
       ? m.overallAccuracy / m.totalCost
