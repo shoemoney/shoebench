@@ -115,11 +115,20 @@ async function main() {
     'openai/gpt-4-vision-preview', // Deprecated, 100% error rate
     'openai/gpt-4.5-preview', // 100% error rate
     'openai/codex-mini', // No endpoints found
+    'sourceful/riverflow-v2-fast-preview', // Broken
+    'sourceful/riverflow-v2-standard-preview', // Broken
+    'sourceful/riverflow-v2-max-preview', // Broken
+  ];
+
+  // Prefixes to exclude (matches any model starting with these)
+  const excludedPrefixes = [
+    'sourceful/riverflow',
   ];
 
   // Filter out non-vision models
   const visionResults = visionData.results.filter(
-    (r) => !excludedModels.includes(r.model)
+    (r) => !excludedModels.includes(r.model) &&
+           !excludedPrefixes.some(prefix => r.model.startsWith(prefix))
   );
   const judgeEvaluations = judgeData.evaluations;
   const catalog = catalogData.shoes;

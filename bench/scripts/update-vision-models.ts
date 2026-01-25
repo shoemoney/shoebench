@@ -29,6 +29,9 @@ const EXCLUDED_MODELS = [
   'openai/gpt-4o:extended',
   'openai/gpt-4.5-preview',
   'openai/codex-mini',
+
+  // Broken/problematic models
+  'sourceful/riverflow',
 ];
 
 interface OpenRouterModel {
