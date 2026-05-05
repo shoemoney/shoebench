@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-01-24T20:51:06.010Z
+ * Last updated: 2026-05-05T22:52:30.753Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -13,9 +13,6 @@ export const VISION_CONCURRENCY = 50;
 /** All vision-capable models from OpenRouter */
 export const visionModelsToRun = [
 
-  // ============ Allenai ============
-  'allenai/molmo-2-8b:free',
-
   // ============ Amazon ============
   'amazon/nova-2-lite-v1',
   'amazon/nova-lite-v1',
@@ -25,15 +22,18 @@ export const visionModelsToRun = [
   // ============ Anthropic ============
   'anthropic/claude-3-haiku',
   'anthropic/claude-3.5-haiku',
-  'anthropic/claude-3.5-sonnet',
   'anthropic/claude-3.7-sonnet',
   'anthropic/claude-3.7-sonnet:thinking',
   'anthropic/claude-haiku-4.5',
   'anthropic/claude-opus-4',
   'anthropic/claude-opus-4.1',
   'anthropic/claude-opus-4.5',
+  'anthropic/claude-opus-4.6',
+  'anthropic/claude-opus-4.6-fast',
+  'anthropic/claude-opus-4.7',
   'anthropic/claude-sonnet-4',
   'anthropic/claude-sonnet-4.5',
+  'anthropic/claude-sonnet-4.6',
 
   // ============ Arcee-ai ============
   'arcee-ai/spotlight',
@@ -41,6 +41,7 @@ export const visionModelsToRun = [
   // ============ Baidu ============
   'baidu/ernie-4.5-vl-28b-a3b',
   'baidu/ernie-4.5-vl-424b-a47b',
+  'baidu/qianfan-ocr-fast:free',
 
   // ============ Bytedance ============
   'bytedance/ui-tars-1.5-7b',
@@ -48,31 +49,34 @@ export const visionModelsToRun = [
   // ============ Bytedance-seed ============
   'bytedance-seed/seed-1.6',
   'bytedance-seed/seed-1.6-flash',
-
-  // ============ Deepcogito ============
-  'deepcogito/cogito-v2-preview-llama-109b-moe',
+  'bytedance-seed/seed-2.0-lite',
+  'bytedance-seed/seed-2.0-mini',
 
   // ============ Google ============
   'google/gemini-2.0-flash-001',
-  'google/gemini-2.0-flash-exp:free',
   'google/gemini-2.0-flash-lite-001',
   'google/gemini-2.5-flash',
   'google/gemini-2.5-flash-image',
   'google/gemini-2.5-flash-lite',
   'google/gemini-2.5-flash-lite-preview-09-2025',
-  'google/gemini-2.5-flash-preview-09-2025',
   'google/gemini-2.5-pro',
   'google/gemini-2.5-pro-preview',
   'google/gemini-2.5-pro-preview-05-06',
   'google/gemini-3-flash-preview',
   'google/gemini-3-pro-image-preview',
-  'google/gemini-3-pro-preview',
+  'google/gemini-3.1-flash-image-preview',
+  'google/gemini-3.1-flash-lite-preview',
+  'google/gemini-3.1-pro-preview',
+  'google/gemini-3.1-pro-preview-customtools',
   'google/gemma-3-12b-it',
-  'google/gemma-3-12b-it:free',
   'google/gemma-3-27b-it',
-  'google/gemma-3-27b-it:free',
   'google/gemma-3-4b-it',
-  'google/gemma-3-4b-it:free',
+  'google/gemma-4-26b-a4b-it',
+  'google/gemma-4-26b-a4b-it:free',
+  'google/gemma-4-31b-it',
+  'google/gemma-4-31b-it:free',
+  'google/lyria-3-clip-preview',
+  'google/lyria-3-pro-preview',
 
   // ============ Meta-llama ============
   'meta-llama/llama-3.2-11b-vision-instruct',
@@ -88,19 +92,23 @@ export const visionModelsToRun = [
   'mistralai/ministral-8b-2512',
   'mistralai/mistral-large-2512',
   'mistralai/mistral-medium-3',
+  'mistralai/mistral-medium-3-5',
   'mistralai/mistral-medium-3.1',
+  'mistralai/mistral-small-2603',
   'mistralai/mistral-small-3.1-24b-instruct',
-  'mistralai/mistral-small-3.1-24b-instruct:free',
   'mistralai/mistral-small-3.2-24b-instruct',
-  'mistralai/pixtral-12b',
   'mistralai/pixtral-large-2411',
 
+  // ============ Moonshotai ============
+  'moonshotai/kimi-k2.5',
+  'moonshotai/kimi-k2.6',
+
   // ============ Nvidia ============
+  'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
   'nvidia/nemotron-nano-12b-v2-vl',
   'nvidia/nemotron-nano-12b-v2-vl:free',
 
   // ============ Openai ============
-  'openai/chatgpt-4o-latest',
   'openai/gpt-4-turbo',
   'openai/gpt-4.1',
   'openai/gpt-4.1-mini',
@@ -128,6 +136,16 @@ export const visionModelsToRun = [
   'openai/gpt-5.2-chat',
   'openai/gpt-5.2-codex',
   'openai/gpt-5.2-pro',
+  'openai/gpt-5.3-chat',
+  'openai/gpt-5.3-codex',
+  'openai/gpt-5.4',
+  'openai/gpt-5.4-image-2',
+  'openai/gpt-5.4-mini',
+  'openai/gpt-5.4-nano',
+  'openai/gpt-5.4-pro',
+  'openai/gpt-5.5',
+  'openai/gpt-5.5-pro',
+  'openai/gpt-chat-latest',
   'openai/o1',
   'openai/o1-pro',
   'openai/o3',
@@ -137,8 +155,9 @@ export const visionModelsToRun = [
   'openai/o4-mini-deep-research',
   'openai/o4-mini-high',
 
-  // ============ Opengvlab ============
-  'opengvlab/internvl3-78b',
+  // ============ Openrouter ============
+  'openrouter/auto',
+  'openrouter/free',
 
   // ============ Perplexity ============
   'perplexity/sonar',
@@ -147,11 +166,8 @@ export const visionModelsToRun = [
   'perplexity/sonar-reasoning-pro',
 
   // ============ Qwen ============
-  'qwen/qwen-2.5-vl-7b-instruct',
-  'qwen/qwen-2.5-vl-7b-instruct:free',
   'qwen/qwen-vl-max',
   'qwen/qwen-vl-plus',
-  'qwen/qwen2.5-vl-32b-instruct',
   'qwen/qwen2.5-vl-72b-instruct',
   'qwen/qwen3-vl-235b-a22b-instruct',
   'qwen/qwen3-vl-235b-a22b-thinking',
@@ -160,24 +176,45 @@ export const visionModelsToRun = [
   'qwen/qwen3-vl-32b-instruct',
   'qwen/qwen3-vl-8b-instruct',
   'qwen/qwen3-vl-8b-thinking',
+  'qwen/qwen3.5-122b-a10b',
+  'qwen/qwen3.5-27b',
+  'qwen/qwen3.5-35b-a3b',
+  'qwen/qwen3.5-397b-a17b',
+  'qwen/qwen3.5-9b',
+  'qwen/qwen3.5-flash-02-23',
+  'qwen/qwen3.5-plus-02-15',
+  'qwen/qwen3.5-plus-20260420',
+  'qwen/qwen3.6-27b',
+  'qwen/qwen3.6-35b-a3b',
+  'qwen/qwen3.6-flash',
+  'qwen/qwen3.6-plus',
 
-  // ============ Stepfun-ai ============
-  'stepfun-ai/step3',
+  // ============ Rekaai ============
+  'rekaai/reka-edge',
 
   // ============ X-ai ============
   'x-ai/grok-4',
   'x-ai/grok-4-fast',
   'x-ai/grok-4.1-fast',
+  'x-ai/grok-4.20',
+  'x-ai/grok-4.20-multi-agent',
+  'x-ai/grok-4.3',
+
+  // ============ Xiaomi ============
+  'xiaomi/mimo-v2-omni',
+  'xiaomi/mimo-v2.5',
 
   // ============ Z-ai ============
   'z-ai/glm-4.5v',
   'z-ai/glm-4.6v',
+  'z-ai/glm-5v-turbo',
 ] as const;
 
 /** Type for valid model names */
 export type VisionModel = typeof visionModelsToRun[number];
 
 // === Tier-based exports for selective testing ===
+// NOTE: These are manually curated lists - update when new flagship models release
 
 /** Quick test: 3 fast, cheap models */
 export const visionModelsForQuickTest = [
