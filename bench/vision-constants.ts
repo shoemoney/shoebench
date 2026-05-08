@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-06T23:49:12.346Z
+ * Last updated: 2026-05-08T08:00:01.730Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -65,6 +65,7 @@ export const visionModelsToRun = [
   'google/gemini-3-flash-preview',
   'google/gemini-3-pro-image-preview',
   'google/gemini-3.1-flash-image-preview',
+  'google/gemini-3.1-flash-lite',
   'google/gemini-3.1-flash-lite-preview',
   'google/gemini-3.1-pro-preview',
   'google/gemini-3.1-pro-preview-customtools',
@@ -105,7 +106,6 @@ export const visionModelsToRun = [
 
   // ============ Nvidia ============
   'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
-  'nvidia/nemotron-nano-12b-v2-vl',
   'nvidia/nemotron-nano-12b-v2-vl:free',
 
   // ============ Openai ============
