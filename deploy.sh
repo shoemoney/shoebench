@@ -42,10 +42,18 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
   exit 1
 fi
 
-# Detect dep changes so we know whether to re-install.
+# Detect what changed so we know which builds to re-run.
 BENCH_DEPS_CHANGED=0
+VIZ_DEPS_CHANGED=0
+VIZ_CHANGED=0
 if ! git diff --quiet "$BEFORE" "$TARGET" -- bench/package.json bench/bun.lock; then
   BENCH_DEPS_CHANGED=1
+fi
+if ! git diff --quiet "$BEFORE" "$TARGET" -- visualizer/package.json visualizer/bun.lock visualizer/package-lock.json; then
+  VIZ_DEPS_CHANGED=1
+fi
+if ! git diff --quiet "$BEFORE" "$TARGET" -- visualizer/; then
+  VIZ_CHANGED=1
 fi
 
 if ! git pull --ff-only --quiet origin main; then
@@ -59,6 +67,16 @@ echo "after:  $AFTER"
 if [ "$BENCH_DEPS_CHANGED" = "1" ]; then
   echo "bench deps changed — bun install"
   (cd bench && bun install) || { echo "ABORT: bun install failed"; exit 1; }
+fi
+
+if [ "$VIZ_CHANGED" = "1" ]; then
+  if [ "$VIZ_DEPS_CHANGED" = "1" ]; then
+    echo "visualizer deps changed — bun install"
+    (cd visualizer && bun install) || { echo "ABORT: visualizer bun install failed"; exit 1; }
+  fi
+  echo "visualizer files changed — rebuilding static export"
+  (cd visualizer && bun run build) || { echo "ABORT: visualizer build failed"; exit 1; }
+  # nginx serves visualizer/out/ directly; no reload needed for file changes.
 fi
 
 # Local-only deploy tag for easy rollback. Not pushed.
