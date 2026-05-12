@@ -184,3 +184,5 @@ bench/cache/*.db-shm
 # GSD planning docs (local only)
 .planning/
 .env
+
+bench/logs/
