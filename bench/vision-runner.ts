@@ -8,9 +8,38 @@ import { openrouter } from '@openrouter/ai-sdk-provider';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 import pLimit from 'p-limit';
-import { VisionCache, computeCacheKey } from './cache';
+import { computeCacheKey } from './cache';
+import type { VisionCacheBackend } from './cache-types';
 import { type VisionTestResult, type TestStatus, type Shoe } from './vision-types';
 import { SYSTEM_PROMPT, USER_PROMPT } from './prompts';
+
+/**
+ * Classify an error message as permanent (capability/availability) or
+ * transient (rate limit, intermittent provider failure). Permanent
+ * errors poison the cache and cause the model to be excluded on future
+ * runs. Transient errors are not cached so they retry next time.
+ */
+export type ErrorClass = 'rate_limit' | 'permanent' | 'transient';
+
+export function classifyError(text: string): ErrorClass {
+  const t = text.toLowerCase();
+  if (t.includes('rate limit') || t.includes('rate-limit') || t.includes('429') || t.includes('too many requests')) {
+    return 'rate_limit';
+  }
+  if (
+    t.includes('no endpoints found') ||
+    t.includes('alpha period for this model has ended') ||
+    t.includes('were stealth models') ||
+    t.includes('not a vision') ||
+    t.includes('does not support image') ||
+    t.includes('model not found') ||
+    t.includes('404') ||
+    t.includes('provider returned error')
+  ) {
+    return 'permanent';
+  }
+  return 'transient';
+}
 
 /**
  * Refusal detection keywords
@@ -68,30 +97,36 @@ export async function runWithRetry<T>(
   maxRetries = 3
 ): Promise<T> {
   let lastError: Error | undefined;
+  // For rate-limit errors we extend the retry budget significantly and
+  // back off harder; transient/permanent errors use the normal budget.
+  let attempt = 0;
+  let rateLimitAttempts = 0;
+  const maxRateLimitAttempts = 6;
 
-  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+  while (true) {
     try {
       return await fn();
     } catch (error: any) {
       lastError = error;
+      const cls = classifyError(error?.message ?? String(error));
 
-      // Check for Retry-After header
-      const retryAfter = error.response?.headers?.['retry-after'];
-      if (retryAfter) {
-        const delayMs = parseInt(retryAfter) * 1000;
+      if (cls === 'rate_limit') {
+        if (rateLimitAttempts >= maxRateLimitAttempts) throw lastError;
+        const retryAfter = error.response?.headers?.['retry-after'];
+        const delayMs = retryAfter
+          ? parseInt(retryAfter) * 1000
+          : Math.min(60_000, Math.pow(2, rateLimitAttempts) * 2000); // 2,4,8,16,32,60s
         await new Promise(r => setTimeout(r, delayMs));
+        rateLimitAttempts++;
         continue;
       }
 
-      // Exponential backoff: 1s, 2s, 4s
-      if (attempt < maxRetries) {
-        const backoffMs = Math.pow(2, attempt) * 1000;
-        await new Promise(r => setTimeout(r, backoffMs));
-      }
+      if (attempt >= maxRetries) throw lastError;
+      const backoffMs = Math.pow(2, attempt) * 1000;
+      await new Promise(r => setTimeout(r, backoffMs));
+      attempt++;
     }
   }
-
-  throw lastError!;
 }
 
 /**
@@ -171,7 +206,7 @@ export async function runVisionTestWithCache(params: {
   model: string;
   shoe: Shoe;
   imagePath: string;
-  cache: VisionCache;
+  cache: VisionCacheBackend;
   systemPrompt?: string;
   userPrompt?: string;
 }): Promise<VisionTestResult> {
@@ -187,16 +222,20 @@ export async function runVisionTestWithCache(params: {
   const fullPrompt = systemPrompt + userPrompt;
   const cacheKey = computeCacheKey(model, shoe.id, fullPrompt);
 
-  // Check cache first
-  const cached = cache.get(cacheKey);
-  if (cached) {
-    // Check if this was a cached error (prefixed with __ERROR__:)
-    const isError = cached.response_text.startsWith('__ERROR__:');
+  // Check cache first.
+  // Permanent errors stay cached (model is structurally unreachable).
+  // Transient errors are not written to cache going forward, and any
+  // legacy unclassified __ERROR__ rows from older runs are treated as
+  // a cache miss so they get retried.
+  const cached = await cache.get(cacheKey);
+  const isPerm = cached?.response_text.startsWith('__ERROR_PERM__:');
+  const isLegacyErr = cached?.response_text.startsWith('__ERROR__:');
+  if (cached && !isLegacyErr) {
     return {
       shoeId: shoe.id,
       model,
-      status: isError ? 'error' : 'success',
-      responseText: isError ? cached.response_text.slice(10) : cached.response_text,
+      status: isPerm ? 'error' : 'success',
+      responseText: isPerm ? cached.response_text.slice(15) : cached.response_text,
       inputTokens: cached.input_tokens,
       outputTokens: cached.output_tokens,
       totalTokens: cached.total_tokens,
@@ -215,14 +254,12 @@ export async function runVisionTestWithCache(params: {
     runVisionTest({ model, shoe, imagePath, systemPrompt, userPrompt })
   );
 
-  // Cache successful responses and errors (so errors don't retry endlessly)
-  // Errors are prefixed with __ERROR__: to distinguish them
-  if (result.status === 'success' || result.status === 'error') {
+  // Cache only successful responses. Errors are never written as rows;
+  // permanent ones are recorded by exclude_models via the batch runner.
+  if (result.status === 'success') {
     const promptHash = cacheKey.split(':')[2];
-    const responseText = result.status === 'error'
-      ? `__ERROR__:${result.responseText}`
-      : result.responseText;
-    cache.set({
+    const responseText = result.responseText;
+    await cache.set({
       cache_key: cacheKey,
       model,
       shoe_id: shoe.id,
@@ -251,7 +288,7 @@ export type VisionBatchOptions = {
   shoes: Shoe[];
   projectRoot: string; // Required: project root for resolving image paths
   concurrency?: number; // default 5
-  cache?: VisionCache;
+  cache?: VisionCacheBackend;
   onProgress?: (result: VisionTestResult, completed: number, total: number) => void;
   errorThreshold?: number; // default 0.5 - skip models with error rate above this
 };
@@ -275,96 +312,104 @@ export async function runVisionBatch(options: VisionBatchOptions): Promise<Visio
   let completed = 0;
   const total = models.length * shoes.length;
 
-  // Get list of models to skip (high error rate from previous runs)
-  const skippedModels = cache ? cache.getSkippedModels(errorThreshold) : [];
+  // Models excluded from previous runs (capability/availability errors)
+  const skippedModels = cache ? await cache.getSkippedModels() : [];
   if (skippedModels.length > 0) {
-    console.log(`\nSkipping ${skippedModels.length} models with >${errorThreshold * 100}% error rate:`);
+    console.log(`\nSkipping ${skippedModels.length} previously excluded models:`);
     skippedModels.forEach(m => console.log(`  - ${m}`));
     console.log('');
   }
 
   // Process one model at a time (per CONTEXT.md decision)
   for (const model of models) {
-    // Skip models with high error rate
     if (skippedModels.includes(model)) {
-      console.log(`Skipping model (high error rate): ${model}`);
+      console.log(`Skipping excluded model: ${model}`);
       completed += shoes.length;
       continue;
     }
 
     console.log(`Starting model: ${model}`);
+    let excluded = false;
+    let exclusionError = '';
 
-    const modelResults = await Promise.all(
-      shoes.map(shoe =>
-        limit(async () => {
-          const imagePath = join(projectRoot, shoe.images[0].localPath);
-
-          try {
-            const result = cache
-              ? await runVisionTestWithCache({ model, shoe, imagePath, cache })
-              : await runWithRetry(() => runVisionTest({ model, shoe, imagePath }));
-
-            completed++;
-            onProgress?.(result, completed, total);
-            return result;
-          } catch (error: any) {
-            completed++;
-            const errorResult: VisionTestResult = {
-              shoeId: shoe.id,
-              model,
-              status: 'error',
-              responseText: error.message || String(error),
-              inputTokens: 0,
-              outputTokens: 0,
-              totalTokens: 0,
-              cost: 0,
-              latencyMs: 0,
-              imageWidth: shoe.images[0].width,
-              imageHeight: shoe.images[0].height,
-              imageSizeBytes: shoe.images[0].sizeBytes,
-              fromCache: false,
-              createdAt: Date.now()
-            };
-            onProgress?.(errorResult, completed, total);
-            return errorResult;
+    // Probe-then-fan-out: run one shoe alone first so a permanent
+    // failure short-circuits the rest of the batch instead of racing
+    // 50 parallel calls before the first error lands.
+    const runOne = async (shoe: Shoe): Promise<VisionTestResult> => {
+      const imagePath = join(projectRoot, shoe.images[0].localPath);
+      try {
+        const result = cache
+          ? await runVisionTestWithCache({ model, shoe, imagePath, cache })
+          : await runWithRetry(() => runVisionTest({ model, shoe, imagePath }));
+        completed++;
+        onProgress?.(result, completed, total);
+        if (result.status === 'error' && !result.fromCache) {
+          const cls = classifyError(result.responseText);
+          if (cls === 'permanent' && !excluded) {
+            excluded = true;
+            exclusionError = result.responseText;
           }
-        })
-      )
-    );
+        }
+        return result;
+      } catch (error: any) {
+        completed++;
+        const message = error.message || String(error);
+        const cls = classifyError(message);
+        if (cls === 'permanent' && !excluded) {
+          excluded = true;
+          exclusionError = message;
+        }
+        const errorResult: VisionTestResult = {
+          shoeId: shoe.id,
+          model,
+          status: 'error',
+          responseText: message,
+          inputTokens: 0,
+          outputTokens: 0,
+          totalTokens: 0,
+          cost: 0,
+          latencyMs: 0,
+          imageWidth: shoe.images[0].width,
+          imageHeight: shoe.images[0].height,
+          imageSizeBytes: shoe.images[0].sizeBytes,
+          fromCache: false,
+          createdAt: Date.now()
+        };
+        onProgress?.(errorResult, completed, total);
+        return errorResult;
+      }
+    };
+
+    const modelResults: VisionTestResult[] = [];
+
+    // Probe with first shoe
+    modelResults.push(await runOne(shoes[0]));
+
+    if (excluded) {
+      // Mark the rest as skipped (no API calls)
+      for (let i = 1; i < shoes.length; i++) {
+        completed++;
+      }
+    } else {
+      const rest = await Promise.all(
+        shoes.slice(1).map(shoe =>
+          limit(async (): Promise<VisionTestResult | null> => {
+            if (excluded) {
+              completed++;
+              return null;
+            }
+            return runOne(shoe);
+          })
+        )
+      );
+      for (const r of rest) if (r) modelResults.push(r);
+    }
 
     results.push(...modelResults);
 
-    // Check error rate for this model and purge if too high
-    const errorCount = modelResults.filter(r => r.status === 'error').length;
-    const errorRate = errorCount / modelResults.length;
-
-    if (errorRate >= errorThreshold && cache) {
-      console.log(`⚠️  Model ${model} has ${Math.round(errorRate * 100)}% error rate - purging from cache`);
-      const purged = cache.purgeModel(model);
-      console.log(`   Purged ${purged} entries. Model will be skipped on future runs.`);
-
-      // Re-cache with error markers so it stays skipped
-      for (const result of modelResults.filter(r => r.status === 'error')) {
-        const fullPrompt = SYSTEM_PROMPT + USER_PROMPT;
-        const cacheKey = computeCacheKey(model, result.shoeId, fullPrompt);
-        const promptHash = cacheKey.split(':')[2];
-        cache.set({
-          cache_key: cacheKey,
-          model,
-          shoe_id: result.shoeId,
-          prompt_hash: promptHash,
-          response_text: `__ERROR__:${result.responseText}`,
-          input_tokens: 0,
-          output_tokens: 0,
-          total_tokens: 0,
-          cost: 0,
-          latency_ms: 0,
-          created_at: Date.now(),
-          image_width: result.imageWidth,
-          image_height: result.imageHeight,
-          image_size_bytes: result.imageSizeBytes
-        });
-      }
+    if (excluded && cache) {
+      console.log(`⛔  Excluding model ${model} permanently: ${exclusionError.slice(0, 120)}`);
+      await cache.excludeModel(model, 'permanent_error', exclusionError);
     } else {
       console.log(`Completed model: ${model}`);
     }

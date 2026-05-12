@@ -1,13 +1,17 @@
 /**
- * SQLite cache layer for judge evaluation responses
- * Uses bun:sqlite with WAL mode for concurrent access
+ * Judge evaluation cache — dispatches to SQLite or MySQL backend.
+ *
+ * Backend selected by CACHE_BACKEND env var (sqlite default, mysql for EC2).
  */
 
 import { Database } from 'bun:sqlite';
 import { createHash } from 'crypto';
 import { type JudgeEvaluation } from './judge-types';
 import { existsSync, mkdirSync } from 'fs';
-import { dirname } from 'path';
+import { dirname, join } from 'path';
+import type { JudgeCacheBackend } from './cache-types';
+
+const DEFAULT_DB_PATH = join(__dirname, 'cache', 'judge-cache.db');
 
 /**
  * Compute deterministic cache key from vision response, ground truth, aliases, and versions
@@ -27,35 +31,38 @@ export function computeJudgeCacheKey(params: {
     judgePromptVersion: params.judgePromptVersion,
     rubricVersion: params.rubricVersion,
   });
-
   return createHash('sha256').update(deterministic).digest('hex');
 }
 
 /**
- * SQLite cache for judge evaluation responses
- * Prevents redundant API calls on re-runs
+ * Pick a backend implementation based on CACHE_BACKEND env var.
  */
-export class JudgeCache {
+export async function createJudgeCache(): Promise<JudgeCacheBackend> {
+  if (process.env.CACHE_BACKEND === 'mysql') {
+    const { MysqlJudgeCache } = await import('./judge-cache-mysql');
+    return new MysqlJudgeCache();
+  }
+  return new SqliteJudgeCache();
+}
+
+/**
+ * SQLite-backed judge cache.
+ */
+export class SqliteJudgeCache implements JudgeCacheBackend {
   private db: InstanceType<typeof Database>;
   private insertStmt: ReturnType<InstanceType<typeof Database>['prepare']>;
   private getStmt: ReturnType<InstanceType<typeof Database>['prepare']>;
 
-  constructor(dbPath: string = 'bench/cache/judge-cache.db') {
-    // Ensure cache directory exists
+  constructor(dbPath: string = DEFAULT_DB_PATH) {
     const dir = dirname(dbPath);
-    if (!existsSync(dir)) {
-      mkdirSync(dir, { recursive: true });
-    }
+    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 
-    // Initialize database
     this.db = new Database(dbPath);
+    const runSql = (sql: string) => this.db.exec(sql);
+    runSql('PRAGMA journal_mode = WAL');
+    runSql('PRAGMA synchronous = NORMAL');
 
-    // Enable WAL mode for better concurrency
-    this.db.exec('PRAGMA journal_mode = WAL');
-    this.db.exec('PRAGMA synchronous = NORMAL');
-
-    // Create table if not exists
-    this.db.exec(`
+    runSql(`
       CREATE TABLE IF NOT EXISTS judge_evaluations (
         cache_key TEXT PRIMARY KEY,
         vision_response_text TEXT NOT NULL,
@@ -83,35 +90,22 @@ export class JudgeCache {
       CREATE INDEX IF NOT EXISTS idx_tier ON judge_evaluations(tier);
     `);
 
-    // Prepare statements for reuse
     this.insertStmt = this.db.prepare(`
       INSERT OR REPLACE INTO judge_evaluations (
         cache_key, vision_response_text, ground_truth_brand, ground_truth_model, aliases,
         tier, score, confidence, reasoning, brand_match, model_match,
         judge_model, judge_prompt_version, rubric_version, raw_judge_response,
         input_tokens, output_tokens, total_tokens, cost, latency_ms, created_at
-      ) VALUES (
-        ?, ?, ?, ?, ?,
-        ?, ?, ?, ?, ?, ?,
-        ?, ?, ?, ?,
-        ?, ?, ?, ?, ?, ?
-      )
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
-    this.getStmt = this.db.prepare(`
-      SELECT * FROM judge_evaluations WHERE cache_key = ?
-    `);
+    this.getStmt = this.db.prepare(`SELECT * FROM judge_evaluations WHERE cache_key = ?`);
   }
 
-  /**
-   * Get cached entry by cache key
-   */
-  get(cacheKey: string): JudgeEvaluation | undefined {
+  async get(cacheKey: string): Promise<JudgeEvaluation | undefined> {
     try {
       const row = this.getStmt.get(cacheKey) as any;
       if (!row) return undefined;
-
-      // Parse JSON aliases and convert booleans
       return {
         ...row,
         aliases: JSON.parse(row.aliases),
@@ -124,44 +118,21 @@ export class JudgeCache {
     }
   }
 
-  /**
-   * Store entry in cache
-   */
-  set(entry: JudgeEvaluation): void {
+  async set(entry: JudgeEvaluation): Promise<void> {
     try {
       this.insertStmt.run(
-        entry.cache_key,
-        entry.vision_response_text,
-        entry.ground_truth_brand,
-        entry.ground_truth_model,
-        JSON.stringify(entry.aliases),
-        entry.tier,
-        entry.score,
-        entry.confidence,
-        entry.reasoning,
-        entry.brand_match ? 1 : 0,
-        entry.model_match ? 1 : 0,
-        entry.judge_model,
-        entry.judge_prompt_version,
-        entry.rubric_version,
-        entry.raw_judge_response,
-        entry.input_tokens,
-        entry.output_tokens,
-        entry.total_tokens,
-        entry.cost,
-        entry.latency_ms,
-        entry.created_at
+        entry.cache_key, entry.vision_response_text, entry.ground_truth_brand, entry.ground_truth_model,
+        JSON.stringify(entry.aliases), entry.tier, entry.score, entry.confidence, entry.reasoning,
+        entry.brand_match ? 1 : 0, entry.model_match ? 1 : 0,
+        entry.judge_model, entry.judge_prompt_version, entry.rubric_version, entry.raw_judge_response,
+        entry.input_tokens, entry.output_tokens, entry.total_tokens, entry.cost, entry.latency_ms, entry.created_at
       );
     } catch (error) {
       console.error('Cache set error:', error);
-      // Cache errors are non-fatal - continue execution
     }
   }
 
-  /**
-   * Purge all entries from cache (for methodology changes)
-   */
-  purge(): void {
+  async purge(): Promise<void> {
     try {
       this.db.exec('DELETE FROM judge_evaluations');
       console.log('Judge cache purged');
@@ -170,14 +141,11 @@ export class JudgeCache {
     }
   }
 
-  /**
-   * Close database connection
-   */
-  close(): void {
-    try {
-      this.db.close();
-    } catch (error) {
-      console.error('Cache close error:', error);
-    }
+  async close(): Promise<void> {
+    try { this.db.close(); } catch (error) { console.error('Cache close error:', error); }
   }
 }
+
+/** @deprecated Use createJudgeCache() factory. Kept for `new JudgeCache()` callers. */
+export const JudgeCache = SqliteJudgeCache;
+export type JudgeCache = SqliteJudgeCache;

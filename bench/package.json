@@ -14,6 +14,9 @@
     "vision:mid": "bun run ./run-vision-benchmark.ts --tier=mid",
     "vision:premium": "bun run ./run-vision-benchmark.ts --tier=premium",
     "vision:free": "bun run ./run-vision-benchmark.ts --tier=free",
+    "cache:wipe": "rm -f ./cache/vision-cache.db ./cache/vision-cache.db-wal ./cache/vision-cache.db-shm",
+    "cache:backfill": "bun run ./scripts/backfill-results.ts",
+    "vision:fresh": "bun run cache:wipe && bun run vision:all",
     "judge": "bun run ./run-judge-benchmark.ts",
     "export": "bun run ../visualizer/scripts/export-results.ts",
     "all": "bun run vision:all && bun run judge && bun run export",
@@ -21,7 +24,10 @@
     "quick": "bun run vision:quick && bun run judge && bun run export",
     "free": "bun run vision:free && bun run judge && bun run export",
     "update-models": "bun run ./scripts/update-vision-models.ts",
-    "update-models:dry": "bun run ./scripts/update-vision-models.ts --dry-run"
+    "update-models:dry": "bun run ./scripts/update-vision-models.ts --dry-run",
+    "db:migrate": "mysql --defaults-extra-file=<(printf '[client]\\nuser=%s\\npassword=%s\\nhost=%s\\nport=%s\\n' \"$MYSQL_USER\" \"$MYSQL_PASSWORD\" \"$MYSQL_HOST\" \"${MYSQL_PORT:-3306}\") \"$MYSQL_DB\" < ./migrations/001_init.sql",
+    "db:import": "bun run ./scripts/migrate-sqlite-to-mysql.ts",
+    "db:import:dry": "bun run ./scripts/migrate-sqlite-to-mysql.ts --dry-run"
   },
   "devDependencies": {
     "@types/bun": "latest",
@@ -39,6 +45,7 @@
     "ink": "^6.5.1",
     "ink-select-input": "^6.2.0",
     "ink-text-input": "^6.0.0",
+    "mysql2": "^3.11.5",
     "openai": "^6.10.0",
     "p-limit": "^7.2.0",
     "react": "^19.2.1"

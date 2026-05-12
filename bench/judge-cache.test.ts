@@ -82,8 +82,8 @@ const entry = {
   created_at: Date.now()
 };
 
-cache.set(entry);
-const retrieved = cache.get(key1);
+await cache.set(entry);
+const retrieved = await cache.get(key1);
 
 if (!retrieved) {
   console.error('✗ Failed to retrieve entry!');
@@ -119,8 +119,8 @@ console.log('✓ Tier matches:', retrieved.tier);
 
 // Test 6: Purge functionality
 console.log('\nTest 6: Purge functionality');
-cache.purge();
-const afterPurge = cache.get(key1);
+await cache.purge();
+const afterPurge = await cache.get(key1);
 if (afterPurge) {
   console.error('✗ Entry still exists after purge!');
   process.exit(1);
@@ -128,7 +128,7 @@ if (afterPurge) {
 console.log('✓ Cache purged successfully');
 
 // Cleanup
-cache.close();
+await cache.close();
 unlinkSync(testDb);
 if (existsSync(testDb + '-shm')) unlinkSync(testDb + '-shm');
 if (existsSync(testDb + '-wal')) unlinkSync(testDb + '-wal');

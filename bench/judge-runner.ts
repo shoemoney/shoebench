@@ -8,7 +8,8 @@ import { openrouter } from '@openrouter/ai-sdk-provider';
 import { z } from 'zod';
 import { type JudgeEvaluation } from './judge-types';
 import { type VisionTestResult, type Shoe } from './vision-types';
-import { JudgeCache, computeJudgeCacheKey } from './judge-cache';
+import { computeJudgeCacheKey } from './judge-cache';
+import type { JudgeCacheBackend } from './cache-types';
 import { JUDGE_SYSTEM_PROMPT, buildJudgePrompt, JUDGE_PROMPT_VERSION, SCORING_RUBRIC_VERSION } from './judge-prompts';
 
 /**
@@ -191,7 +192,7 @@ export async function runJudge(params: {
 export async function runJudgeWithCache(params: {
   visionResult: VisionTestResult;
   shoe: Shoe;
-  cache: JudgeCache;
+  cache: JudgeCacheBackend;
 }): Promise<JudgeEvaluation> {
   const { visionResult, shoe, cache } = params;
 
@@ -206,7 +207,7 @@ export async function runJudgeWithCache(params: {
   });
 
   // Check cache first
-  const cached = cache.get(cacheKey);
+  const cached = await cache.get(cacheKey);
   if (cached) {
     return cached;
   }
@@ -216,7 +217,7 @@ export async function runJudgeWithCache(params: {
 
   // Set cache key and store
   result.cache_key = cacheKey;
-  cache.set(result);
+  await cache.set(result);
 
   return result;
 }

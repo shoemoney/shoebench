@@ -24,7 +24,9 @@ import { readFile, writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { runJudgeWithCache } from './judge-runner';
-import { JudgeCache } from './judge-cache';
+import { createJudgeCache, computeJudgeCacheKey } from './judge-cache';
+import { JUDGE_PROMPT_VERSION, SCORING_RUBRIC_VERSION } from './judge-prompts';
+import type { JudgeCacheBackend } from './cache-types';
 import type { ShoeCatalog, VisionTestResult } from './vision-types';
 import type { JudgeEvaluation } from './judge-types';
 import pLimit from 'p-limit';
@@ -115,10 +117,10 @@ async function main() {
 
   // Initialize cache (unless --no-cache)
   const useCache = !hasFlag('no-cache');
-  let cache: JudgeCache | undefined;
+  let cache: JudgeCacheBackend | undefined;
   if (useCache) {
-    cache = new JudgeCache();
-    console.log('Cache enabled');
+    cache = await createJudgeCache();
+    console.log(`Cache enabled (${process.env.CACHE_BACKEND === 'mysql' ? 'mysql' : 'sqlite'})`);
   } else {
     console.log('Cache disabled');
   }
@@ -142,14 +144,14 @@ async function main() {
       }
 
       // Check if cached (to track cache hits)
-      const wasCached = cache ? Boolean(cache.get(
-        require('./judge-cache').computeJudgeCacheKey({
+      const wasCached = cache ? Boolean(await cache.get(
+        computeJudgeCacheKey({
           visionResponse: visionResult.responseText,
           groundTruthBrand: shoe.brand,
           groundTruthModel: shoe.model,
           aliases: shoe.aliases || [],
-          judgePromptVersion: require('./judge-prompts').JUDGE_PROMPT_VERSION,
-          rubricVersion: require('./judge-prompts').SCORING_RUBRIC_VERSION,
+          judgePromptVersion: JUDGE_PROMPT_VERSION,
+          rubricVersion: SCORING_RUBRIC_VERSION,
         })
       )) : false;
 
@@ -174,7 +176,11 @@ async function main() {
   await Promise.all(judgePromises);
 
   // Close cache
-  cache?.close();
+  await cache?.close();
+  if (process.env.CACHE_BACKEND === 'mysql') {
+    const { closePool } = await import('./db');
+    await closePool();
+  }
 
   const duration = Date.now() - startTime;
 

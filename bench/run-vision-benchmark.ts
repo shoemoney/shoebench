@@ -23,7 +23,8 @@ import { readFile, writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { runVisionBatch } from './vision-runner';
-import { VisionCache } from './cache';
+import { createVisionCache } from './cache';
+import type { VisionCacheBackend } from './cache-types';
 import {
   visionModelsToRun,
   visionModelsForQuickTest,
@@ -113,10 +114,10 @@ async function main() {
 
   // Initialize cache (unless --no-cache)
   const useCache = !hasFlag('no-cache');
-  let cache: VisionCache | undefined;
+  let cache: VisionCacheBackend | undefined;
   if (useCache) {
-    cache = new VisionCache();
-    console.log('Cache enabled');
+    cache = await createVisionCache();
+    console.log(`Cache enabled (${process.env.CACHE_BACKEND === 'mysql' ? 'mysql' : 'sqlite'})`);
   } else {
     console.log('Cache disabled');
   }
@@ -147,7 +148,11 @@ async function main() {
   });
 
   // Close cache
-  cache?.close();
+  await cache?.close();
+  if (process.env.CACHE_BACKEND === 'mysql') {
+    const { closePool } = await import('./db');
+    await closePool();
+  }
 
   const duration = Date.now() - startTime;
 
