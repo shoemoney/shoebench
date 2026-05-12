@@ -186,3 +186,4 @@ bench/cache/*.db-shm
 .env
 
 bench/logs/
+visualizer/out/
