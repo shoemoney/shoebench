@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/chart";
 
 import type { TierAccuracy } from "@/lib/types";
-import { formatModelName } from "@/lib/modelUtils";
+import { getShortName, getProviderFromModel, PROVIDER_LOGOS } from "@/lib/modelUtils";
 
 interface TierAccuracyChartProps {
   data: TierAccuracy[];
@@ -26,6 +26,7 @@ interface TierAccuracyChartProps {
 type SingleTierChartData = {
   modelName: string;
   shortName: string;
+  provider: string;
   accuracy: number;
   color: string;
 };
@@ -49,6 +50,39 @@ const TIER_LABELS: Record<string, string> = {
 };
 
 const TIER_ORDER = ["easy", "medium", "hard"];
+
+// Custom Y-axis tick with provider icon
+function CustomYAxisTick({ x, y, payload, data }: any) {
+  const entry = data.find((d: SingleTierChartData) => d.shortName === payload.value);
+  const provider = entry?.provider || "other";
+  const logoUrl = PROVIDER_LOGOS[provider];
+
+  return (
+    <g transform={`translate(${x},${y})`}>
+      {logoUrl && (
+        <image
+          href={logoUrl}
+          x={-205}
+          y={-10}
+          width={20}
+          height={20}
+        />
+      )}
+      <text
+        x={-5}
+        y={0}
+        dy={5}
+        textAnchor="end"
+        fill="#ffffff"
+        fontSize={14}
+        fontWeight={600}
+        style={{ whiteSpace: "nowrap" }}
+      >
+        {payload.value}
+      </text>
+    </g>
+  );
+}
 
 function SingleTierChart({
   tier,
@@ -86,7 +120,7 @@ function SingleTierChart({
         <BarChart
           data={sortedData}
           layout="vertical"
-          margin={{ top: 5, right: 60, left: 140, bottom: 5 }}
+          margin={{ top: 5, right: 60, left: 200, bottom: 5 }}
         >
           <defs>
             {sortedData.map((d) => {
@@ -117,8 +151,8 @@ function SingleTierChart({
           <YAxis
             type="category"
             dataKey="shortName"
-            width={130}
-            tick={{ fontSize: 12, fill: "#d1d5db" }}
+            width={190}
+            tick={(props: any) => <CustomYAxisTick {...props} data={sortedData} />}
             stroke="#9ca3af"
             tickLine={false}
             axisLine={false}
@@ -190,7 +224,8 @@ export function TierAccuracyChart({
     const tierEntries = filteredData.filter((d) => d.tier === tier);
     const chartData: SingleTierChartData[] = tierEntries.map((entry) => ({
       modelName: entry.modelName,
-      shortName: formatModelName(entry.modelName),
+      shortName: getShortName(entry.modelName),
+      provider: getProviderFromModel(entry.modelName),
       accuracy: entry.accuracyPercent,
       color: getModelColor(entry.modelName),
     }));

@@ -4,13 +4,11 @@ import { useState } from "react";
 import {
   Trophy,
   DollarSign,
-  Clock,
   TrendingUp,
   Filter,
   ChevronDown,
   Calendar,
   Footprints,
-  Layers,
   AlertCircle,
 } from "lucide-react";
 import benchmarkData from "../data/shoebench-results.json";
@@ -59,7 +57,6 @@ import {
 } from "@/components/ui/table";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import { TierAccuracyChart } from "@/components/charts/TierAccuracyChart";
 import { CostEfficiencyScatter } from "@/components/charts/CostEfficiencyScatter";
 import { ErrorAnalysisTable } from "@/components/tables/ErrorAnalysisTable";
 
@@ -74,7 +71,7 @@ import { formatModelName } from "@/lib/modelUtils";
 
 // Type-safe data access
 const typedBenchmarkData = benchmarkData as BenchmarkData;
-const { modelMetrics, tierAccuracy, errors, metadata, shoeMetrics } = typedBenchmarkData;
+const { modelMetrics, errors, metadata, shoeMetrics } = typedBenchmarkData;
 
 // Leaderboard data derived from modelMetrics
 interface LeaderboardEntry {
@@ -142,14 +139,13 @@ function barValueLabel(suffix: string, decimals: number, withBackground = false)
     const text = `$${value.toFixed(decimals)}${suffix}`;
 
     if (withBackground) {
-      // Rotated 90 degrees clockwise, positioned above bar
+      // Horizontal text above bar, bright white
       return (
         <g className="pointer-events-none">
           <text
             x={cx}
             y={cy - 4}
-            textAnchor="start"
-            transform={`rotate(90, ${cx}, ${cy - 4})`}
+            textAnchor="middle"
             className="text-[11px] font-bold"
             fill="#ffffff"
           >
@@ -213,9 +209,10 @@ function truncateLabel(input: unknown, max = 14) {
 }
 
 export default function BenchmarkVisualizer() {
-  // Default to top 10 models by accuracy
+  // Default to all models selected
+  const allModels = leaderboardData.map((m) => m.fullModel);
   const top10Models = leaderboardData.slice(0, 10).map((m) => m.fullModel);
-  const [selectedModels, setSelectedModels] = useState<string[]>(top10Models);
+  const [selectedModels, setSelectedModels] = useState<string[]>(allModels);
   const [modelTypeFilter, setModelTypeFilter] = useState<ModelType | "all">(
     "all"
   );
@@ -247,15 +244,6 @@ export default function BenchmarkVisualizer() {
     ...mostExpensive10.map((m) => m.fullModel),
   ]);
   const costData = allCostData.filter((m) => costModelsSet.has(m.fullModel));
-
-  const speedData = filteredLeaderboard
-    .map((m) => ({
-      model: m.model,
-      fullModel: m.fullModel,
-      duration: Number((m.avgLatency / 1000).toFixed(2)),
-      durationMs: m.avgLatency,
-    }))
-    .sort((a, b) => a.duration - b.duration);
 
   const getModelColor = (modelName: string) => {
     const colors = [
@@ -289,7 +277,6 @@ export default function BenchmarkVisualizer() {
   const handleSelectTop10 = () => setSelectedModels(top10Models);
 
   const costMax = Math.max(0, ...costData.map((d) => d.totalCost));
-  const speedMax = Math.max(0, ...speedData.map((d) => d.duration));
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-neutral-950 text-neutral-100">
@@ -353,22 +340,10 @@ export default function BenchmarkVisualizer() {
                 <Trophy className="h-4 w-4" /> Leaderboard
               </TabsTrigger>
               <TabsTrigger
-                value="tiers"
-                className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-amber-600 data-[state=active]:text-white"
-              >
-                <Layers className="h-4 w-4" /> Tiers
-              </TabsTrigger>
-              <TabsTrigger
                 value="cost"
                 className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
               >
                 <DollarSign className="h-4 w-4" /> Cost
-              </TabsTrigger>
-              <TabsTrigger
-                value="speed"
-                className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-purple-600 data-[state=active]:text-white"
-              >
-                <Clock className="h-4 w-4" /> Speed
               </TabsTrigger>
               <TabsTrigger
                 value="combined"
@@ -632,27 +607,6 @@ export default function BenchmarkVisualizer() {
             </Card>
           </TabsContent>
 
-          {/* Tiers Tab */}
-          <TabsContent value="tiers">
-            <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <Layers className="h-5 w-5 text-amber-400" /> Accuracy by Difficulty Tier
-                </CardTitle>
-                <CardDescription className="text-neutral-400">
-                  How models perform on Easy, Medium, and Hard shoes
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <TierAccuracyChart
-                  data={tierAccuracy}
-                  selectedModels={selectedModels}
-                  getModelColor={getModelColor}
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
           {/* Cost Tab */}
           <TabsContent value="cost">
             <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
@@ -682,7 +636,7 @@ export default function BenchmarkVisualizer() {
                     margin={
                       isMobile
                         ? { top: 10, right: 24, left: 140, bottom: 24 }
-                        : { top: 10, right: 24, left: 12, bottom: 64 }
+                        : { top: 30, right: 24, left: 12, bottom: 130 }
                     }
                   >
                     <defs>
@@ -736,13 +690,13 @@ export default function BenchmarkVisualizer() {
                       <>
                         <XAxis
                           dataKey="model"
-                          angle={0}
-                          textAnchor="middle"
-                          height={50}
-                          fontSize={10}
+                          angle={-90}
+                          textAnchor="end"
+                          height={120}
+                          fontSize={11}
                           stroke="#9ca3af"
                           interval={0}
-                          tick={{ fill: "#d1d5db" }}
+                          tick={{ fill: "#d1d5db", dy: -5 }}
                         />
                         <YAxis
                           label={{
@@ -777,143 +731,6 @@ export default function BenchmarkVisualizer() {
                         <Cell
                           key={entry.model}
                           fill={`url(#${getGradientId("ct", entry.model)})`}
-                        />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Speed Tab */}
-          <TabsContent value="speed">
-            <Card className="border-neutral-800 bg-neutral-900/70 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <Clock className="h-5 w-5 text-purple-400" /> Response speed
-                  by model
-                </CardTitle>
-                <CardDescription className="text-neutral-400">
-                  Average response time in seconds (lower is better)
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ChartContainer
-                  config={{
-                    duration: {
-                      label: "Response Time",
-                      color: "hsl(262, 83%, 58%)",
-                    },
-                  }}
-                  className="h-[420px] sm:h-[520px] w-full"
-                  style={isMobile ? { height: mobileBarHeight } : undefined}
-                >
-                  <BarChart
-                    data={speedData}
-                    layout={isMobile ? "vertical" : "horizontal"}
-                    margin={
-                      isMobile
-                        ? { top: 10, right: 24, left: 140, bottom: 24 }
-                        : { top: 10, right: 24, left: 12, bottom: 64 }
-                    }
-                  >
-                    <defs>
-                      {speedData.map((d) => {
-                        const base = getModelColor(d.fullModel);
-                        const id = getGradientId("sp", d.model);
-                        return (
-                          <linearGradient
-                            key={id}
-                            id={id}
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
-                          >
-                            <stop
-                              offset="0%"
-                              stopColor={withAlpha(base, 0.95)}
-                            />
-                            <stop
-                              offset="100%"
-                              stopColor={withAlpha(base, 0.55)}
-                            />
-                          </linearGradient>
-                        );
-                      })}
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
-                    {isMobile ? (
-                      <>
-                        <XAxis
-                          type="number"
-                          label={{
-                            value: "Response Time (s)",
-                            position: "insideBottom",
-                            offset: -10,
-                            fill: "#9ca3af",
-                          }}
-                          stroke="#9ca3af"
-                        />
-                        <YAxis
-                          type="category"
-                          dataKey="model"
-                          width={12}
-                          tick={{ fontSize: 12, fill: "#9ca3af" }}
-                          tickFormatter={(v: string) => truncateLabel(v)}
-                          stroke="#9ca3af"
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <XAxis
-                          dataKey="model"
-                          angle={-45}
-                          textAnchor="end"
-                          height={100}
-                          fontSize={12}
-                          stroke="#9ca3af"
-                        />
-                        <YAxis
-                          label={{
-                            value: "Response Time (s)",
-                            angle: -90,
-                            position: "insideLeft",
-                            fill: "#9ca3af",
-                          }}
-                          stroke="#9ca3af"
-                        />
-                      </>
-                    )}
-                    <ChartTooltip
-                      content={<ChartTooltipContent />}
-                      formatter={(value: any) => [
-                        `Average response time: ${value} seconds`,
-                      ]}
-                      labelFormatter={(label) => `Model: ${label}`}
-                    />
-                    <Bar
-                      dataKey="duration"
-                      radius={isMobile ? [0, 6, 6, 0] : [6, 6, 0, 0]}
-                    >
-                      <LabelList
-                        dataKey="duration"
-                        position={isMobile ? "right" : "top"}
-                        content={
-                          isMobile
-                            ? barValueLabelHorizontalSmart(
-                                "s",
-                                2,
-                                speedMax || 1
-                              )
-                            : barValueLabel("s", 2)
-                        }
-                      />
-                      {speedData.map((entry) => (
-                        <Cell
-                          key={entry.model}
-                          fill={`url(#${getGradientId("sp", entry.model)})`}
                         />
                       ))}
                     </Bar>
@@ -989,8 +806,8 @@ export default function BenchmarkVisualizer() {
                   >
                     <BarChart
                       data={(shoeMetrics || []).slice(0, 10).map(s => ({
-                        name: s.displayName.length > 20
-                          ? s.displayName.slice(0, 20) + '...'
+                        name: s.displayName.length > 25
+                          ? s.displayName.slice(0, 25) + '...'
                           : s.displayName,
                         fullName: s.displayName,
                         accuracy: s.accuracy,
@@ -998,7 +815,7 @@ export default function BenchmarkVisualizer() {
                         avgScore: s.avgScore,
                       }))}
                       layout="vertical"
-                      margin={{ top: 10, right: 30, left: 120, bottom: 10 }}
+                      margin={{ top: 10, right: 30, left: 160, bottom: 10 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
                       <XAxis
@@ -1015,9 +832,10 @@ export default function BenchmarkVisualizer() {
                       <YAxis
                         type="category"
                         dataKey="name"
-                        width={110}
-                        tick={{ fontSize: 11, fill: "#9ca3af" }}
+                        width={150}
+                        tick={{ fontSize: 13, fill: "#ffffff", style: { whiteSpace: "nowrap" } }}
                         stroke="#9ca3af"
+                        tickLine={false}
                       />
                       <ChartTooltip
                         content={<ChartTooltipContent />}
@@ -1064,8 +882,8 @@ export default function BenchmarkVisualizer() {
                   >
                     <BarChart
                       data={(shoeMetrics || []).slice(-10).reverse().map(s => ({
-                        name: s.displayName.length > 20
-                          ? s.displayName.slice(0, 20) + '...'
+                        name: s.displayName.length > 25
+                          ? s.displayName.slice(0, 25) + '...'
                           : s.displayName,
                         fullName: s.displayName,
                         accuracy: s.accuracy,
@@ -1073,7 +891,7 @@ export default function BenchmarkVisualizer() {
                         avgScore: s.avgScore,
                       }))}
                       layout="vertical"
-                      margin={{ top: 10, right: 30, left: 120, bottom: 10 }}
+                      margin={{ top: 10, right: 30, left: 160, bottom: 10 }}
                     >
                       <CartesianGrid strokeDasharray="3 3" stroke="#303341" />
                       <XAxis
@@ -1090,9 +908,10 @@ export default function BenchmarkVisualizer() {
                       <YAxis
                         type="category"
                         dataKey="name"
-                        width={110}
-                        tick={{ fontSize: 11, fill: "#9ca3af" }}
+                        width={150}
+                        tick={{ fontSize: 13, fill: "#ffffff", style: { whiteSpace: "nowrap" } }}
                         stroke="#9ca3af"
+                        tickLine={false}
                       />
                       <ChartTooltip
                         content={<ChartTooltipContent />}
