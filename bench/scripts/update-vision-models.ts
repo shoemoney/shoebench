@@ -209,10 +209,13 @@ async function main() {
     );
     console.log(`Vision-capable models: ${visionModels.length}`);
 
-    // Exclude known broken/non-vision models
-    const filteredModels = visionModels.filter(model =>
-      !EXCLUDED_MODELS.some(excluded => model.id.startsWith(excluded))
-    );
+    // Exclude known broken/non-vision models and ~-prefixed "latest"
+    // aliases (they duplicate concrete models and are unstable references).
+    const filteredModels = visionModels.filter(model => {
+      if (model.id.startsWith('~')) return false;
+      if (EXCLUDED_MODELS.some(excluded => model.id.startsWith(excluded))) return false;
+      return true;
+    });
     console.log(`After exclusions: ${filteredModels.length}`);
 
     const content = generateConstantsFile(filteredModels);
