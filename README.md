@@ -2,7 +2,7 @@
 
 > 🎯 An open source benchmark for vision-capable LLMs that tests shoe brand and model identification ability! 🔥
 
-## 🌐 [View Live Results →](https://shoemoneybench.vercel.app) 🌐
+## 🌐 [View Live Results →](https://vision-bench.shoemoney.com) 🌐
 
 Models are shown images of shoes 📸 and asked to identify the brand and model name. Results are scored by an LLM-as-judge ⚖️ and ranked across accuracy, cost efficiency, and speed metrics! 📊🚀
 
@@ -265,7 +265,7 @@ Contributions welcome! 🎉 Please open an issue or PR! 🙌💪
 
 ## 🔗 Links
 
-- 🏆 **Live Results**: [shoemoneybench.vercel.app](https://shoemoneybench.vercel.app) 📊✨
+- 🏆 **Live Results**: [vision-bench.shoemoney.com](https://vision-bench.shoemoney.com) 📊✨
 - 🐦 **Theo's Twitter**: [@t3dotgg](https://twitter.com/t3dotgg)
 - 📺 **Theo's YouTube**: [youtube.com/@t3dotgg](https://youtube.com/@t3dotgg)
 - 💬 **T3 Chat**: [t3.chat](https://t3.chat)

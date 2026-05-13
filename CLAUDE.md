@@ -37,7 +37,7 @@ shoebench/
 - Meta/Llama: `🦙`
 
 ## Live Dashboard
-https://shoemoneybench.vercel.app
+https://vision-bench.shoemoney.com
 
 ## Development
 ```bash
