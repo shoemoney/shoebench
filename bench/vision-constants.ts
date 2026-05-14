@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-10T08:20:13.462Z
+ * Last updated: 2026-05-14T08:00:01.241Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -22,8 +22,6 @@ export const visionModelsToRun = [
   // ============ Anthropic ============
   'anthropic/claude-3-haiku',
   'anthropic/claude-3.5-haiku',
-  'anthropic/claude-3.7-sonnet',
-  'anthropic/claude-3.7-sonnet:thinking',
   'anthropic/claude-haiku-4.5',
   'anthropic/claude-opus-4',
   'anthropic/claude-opus-4.1',
@@ -31,6 +29,7 @@ export const visionModelsToRun = [
   'anthropic/claude-opus-4.6',
   'anthropic/claude-opus-4.6-fast',
   'anthropic/claude-opus-4.7',
+  'anthropic/claude-opus-4.7-fast',
   'anthropic/claude-sonnet-4',
   'anthropic/claude-sonnet-4.5',
   'anthropic/claude-sonnet-4.6',
@@ -159,6 +158,9 @@ export const visionModelsToRun = [
   'openrouter/auto',
   'openrouter/free',
 
+  // ============ Perceptron ============
+  'perceptron/perceptron-mk1',
+
   // ============ Perplexity ============
   'perplexity/sonar',
   'perplexity/sonar-pro',
@@ -166,8 +168,6 @@ export const visionModelsToRun = [
   'perplexity/sonar-reasoning-pro',
 
   // ============ Qwen ============
-  'qwen/qwen-vl-max',
-  'qwen/qwen-vl-plus',
   'qwen/qwen2.5-vl-72b-instruct',
   'qwen/qwen3-vl-235b-a22b-instruct',
   'qwen/qwen3-vl-235b-a22b-thinking',
