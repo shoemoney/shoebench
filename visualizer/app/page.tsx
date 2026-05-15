@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Trophy,
   DollarSign,
@@ -59,6 +59,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 import { CostEfficiencyScatter } from "@/components/charts/CostEfficiencyScatter";
 import { ErrorAnalysisTable } from "@/components/tables/ErrorAnalysisTable";
+import { ResultsTable } from "@/components/tables/ResultsTable";
+import { buildModelRows } from "@/lib/buildModelRows";
 
 import type { BenchmarkData, ModelMetrics } from "@/lib/types";
 import {
@@ -226,6 +228,14 @@ export default function BenchmarkVisualizer() {
   const isMobile = useIsMobile();
   const mobileBarHeight = Math.max(320, filteredLeaderboard.length * 36 + 120);
 
+  // Phase 6: memoize the ModelRow[] feeding the new sortable Results table.
+  // useMemo keeps the array reference stable so TanStack does not rebuild
+  // its internal row models on unrelated parent re-renders (PITFALLS Pitfall 6).
+  const resultsRows = useMemo(
+    () => buildModelRows(typedBenchmarkData),
+    []
+  );
+
   const totalTestsPerModel = leaderboardData[0]?.totalTests ?? 0;
 
   // Cost tab: show 10 cheapest + 10 most expensive (ignores global filter)
@@ -362,6 +372,12 @@ export default function BenchmarkVisualizer() {
                 className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-pink-600 data-[state=active]:text-white"
               >
                 <Footprints className="h-4 w-4" /> Shoes
+              </TabsTrigger>
+              <TabsTrigger
+                value="results"
+                className="flex items-center gap-2 rounded-md px-4 py-2 text-neutral-300 data-[state=active]:bg-emerald-600 data-[state=active]:text-white"
+              >
+                Results (new)
               </TabsTrigger>
             </TabsList>
 
@@ -1022,6 +1038,10 @@ export default function BenchmarkVisualizer() {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="results">
+            <ResultsTable rows={resultsRows} />
           </TabsContent>
         </Tabs>
       </main>
