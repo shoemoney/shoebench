@@ -283,6 +283,19 @@ export function ResultsTable({ rows }: { rows: ModelRow[] }) {
                   const isModel = header.column.id === "modelName";
                   const canSort = header.column.getCanSort();
                   const sortDir = header.column.getIsSorted();
+                  // PITFALLS Pitfall 4 — sticky layering:
+                  // - Every header cell: sticky top-0 z-20 bg-neutral-900
+                  //   (opaque background REQUIRED — without it rows scroll
+                  //   visibly through the header in dark mode).
+                  // - Model column's header is ALSO the corner cell at the
+                  //   header × first-column intersection: sticky left-0 z-30
+                  //   (z-30 overrides the z-20 so the corner sits above both
+                  //   sticky surfaces).
+                  const stickyBase =
+                    "sticky top-0 z-20 bg-neutral-900";
+                  const stickyCorner = isModel
+                    ? " left-0 z-30 border-r border-neutral-800"
+                    : "";
                   const baseClass = isModel
                     ? "text-neutral-300"
                     : align === "right"
@@ -300,7 +313,9 @@ export function ResultsTable({ rows }: { rows: ModelRow[] }) {
                   return (
                     <TableHead
                       key={header.id}
-                      className={baseClass + sortClass}
+                      className={
+                        stickyBase + stickyCorner + " " + baseClass + sortClass
+                      }
                       onClick={
                         canSort
                           ? header.column.getToggleSortingHandler()
@@ -359,8 +374,13 @@ export function ResultsTable({ rows }: { rows: ModelRow[] }) {
                       | undefined;
                     const align = meta?.align;
                     const isModel = cell.column.id === "modelName";
+                    // PITFALLS Pitfall 4 — sticky first column:
+                    // Model body cells stick left with z-10 over an opaque
+                    // bg-neutral-900 (so cells from columns to the right
+                    // don't bleed through during horizontal scroll). Right
+                    // border provides visual separation.
                     const cellClass = isModel
-                      ? "text-white"
+                      ? "sticky left-0 z-10 bg-neutral-900 border-r border-neutral-800 text-white"
                       : align === "right"
                       ? "text-right tabular-nums text-white"
                       : "text-white";
