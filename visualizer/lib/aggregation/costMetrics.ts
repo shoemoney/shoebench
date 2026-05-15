@@ -25,19 +25,33 @@ function buildVisionResponseMap(
 }
 
 /**
+ * Creates a lookup map from shoe ID to catalog shoe.
+ * Inlined here (instead of imported from tierMetrics.ts) to keep this
+ * module self-contained per ARCHITECTURE.md decision 4.
+ */
+function buildCatalogMap(catalog: CatalogShoe[]): Map<string, CatalogShoe> {
+  const map = new Map<string, CatalogShoe>();
+  for (const shoe of catalog) {
+    map.set(shoe.id, shoe);
+  }
+  return map;
+}
+
+/**
  * Calculates model metrics from vision and judge results
  *
  * @param visionResults - Vision test results from bench/results/vision/*.json
  * @param judgeEvaluations - Judge evaluations from bench/results/judge/*.json
- * @param _catalog - Shoe catalog (unused but kept for consistent API)
+ * @param catalog - Shoe catalog (used to join evaluations → difficulty tier)
  * @returns Array of ModelMetrics objects (one per model)
  */
 export function calculateModelMetrics(
   visionResults: VisionResult[],
   judgeEvaluations: JudgeEvaluation[],
-  _catalog: CatalogShoe[]
+  catalog: CatalogShoe[]
 ): ModelMetrics[] {
   const visionMap = buildVisionResponseMap(visionResults);
+  const catalogMap = buildCatalogMap(catalog);
 
   // Group by model
   const groups = new Map<
@@ -52,6 +66,12 @@ export function calculateModelMetrics(
       scores: number[];
       totalCost: number;
       latencies: number[];
+      easyCorrect: number;
+      easyTotal: number;
+      mediumCorrect: number;
+      mediumTotal: number;
+      hardCorrect: number;
+      hardTotal: number;
     }
   >();
 
@@ -135,6 +155,12 @@ export function calculateModelMetrics(
         scores: [],
         totalCost: visionData.totalCost,
         latencies: visionData.latencies,
+        easyCorrect: 0,
+        easyTotal: 0,
+        mediumCorrect: 0,
+        mediumTotal: 0,
+        hardCorrect: 0,
+        hardTotal: 0,
       };
       groups.set(modelName, group);
     }
@@ -155,6 +181,28 @@ export function calculateModelMetrics(
       case 'wrong':
         group.wrongMatches++;
         break;
+    }
+
+    // Per-tier accuracy: look up shoe difficulty and bump counters.
+    // Skip if shoe not in catalog (matches tierMetrics.ts behavior at line 84-87).
+    const shoe = catalogMap.get(visionResult.shoeId);
+    if (shoe) {
+      const isCorrect =
+        evaluation.tier === 'exact' || evaluation.tier === 'variant';
+      switch (shoe.difficultyTier) {
+        case 'easy':
+          group.easyTotal++;
+          if (isCorrect) group.easyCorrect++;
+          break;
+        case 'medium':
+          group.mediumTotal++;
+          if (isCorrect) group.mediumCorrect++;
+          break;
+        case 'hard':
+          group.hardTotal++;
+          if (isCorrect) group.hardCorrect++;
+          break;
+      }
     }
   }
 
