@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-14T08:00:01.241Z
+ * Last updated: 2026-05-15T08:00:01.323Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -40,7 +40,7 @@ export const visionModelsToRun = [
   // ============ Baidu ============
   'baidu/ernie-4.5-vl-28b-a3b',
   'baidu/ernie-4.5-vl-424b-a47b',
-  'baidu/qianfan-ocr-fast:free',
+  'baidu/qianfan-ocr-fast',
 
   // ============ Bytedance ============
   'bytedance/ui-tars-1.5-7b',
