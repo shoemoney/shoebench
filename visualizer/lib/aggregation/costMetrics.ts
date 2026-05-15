@@ -171,6 +171,24 @@ export function calculateModelMetrics(
         ? group.latencies.reduce((sum, l) => sum + l, 0) / group.latencies.length
         : 0;
 
+    // Token totals: null when no contributing rows had token data
+    // (per D-old-cache-tokens / METR-09 null semantics). Denominator for
+    // tokensPerShoe is group.totalTests (locked formula in CONTEXT.md),
+    // not tokenRowsCounted.
+    const tokenData = visionByModel.get(group.modelName);
+    const hasTokens =
+      tokenData !== undefined && tokenData.tokenRowsCounted > 0;
+    const inputTokensTotal = hasTokens ? tokenData.inputTokensSum : null;
+    const outputTokensTotal = hasTokens ? tokenData.outputTokensSum : null;
+    const tokensPerShoe =
+      hasTokens && group.totalTests > 0
+        ? Math.round(
+            ((tokenData.inputTokensSum + tokenData.outputTokensSum) /
+              group.totalTests) *
+              10
+          ) / 10
+        : null;
+
     result.push({
       modelName: group.modelName,
       totalTests: group.totalTests,
@@ -185,6 +203,16 @@ export function calculateModelMetrics(
       avgScore: Math.round(avgScore * 10) / 10,
       totalCost: Math.round(group.totalCost * 1000000) / 1000000, // Round to 6 decimals
       avgLatency: Math.round(avgLatency),
+      // v1.1: Plan 03 will fill in costPerCorrect + per-tier accuracy.
+      // Placeholders kept here only so the contract from Plan 01 typechecks
+      // for the token-field-only intermediate state of this plan.
+      costPerCorrect: null,
+      easyAccuracy: null,
+      mediumAccuracy: null,
+      hardAccuracy: null,
+      inputTokensTotal,
+      outputTokensTotal,
+      tokensPerShoe,
     });
   }
 
