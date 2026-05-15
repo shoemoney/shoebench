@@ -251,13 +251,25 @@ export function calculateModelMetrics(
       avgScore: Math.round(avgScore * 10) / 10,
       totalCost: Math.round(group.totalCost * 1000000) / 1000000, // Round to 6 decimals
       avgLatency: Math.round(avgLatency),
-      // v1.1: Plan 03 will fill in costPerCorrect + per-tier accuracy.
-      // Placeholders kept here only so the contract from Plan 01 typechecks
-      // for the token-field-only intermediate state of this plan.
-      costPerCorrect: null,
-      easyAccuracy: null,
-      mediumAccuracy: null,
-      hardAccuracy: null,
+      // v1.1 derived fields. Explicit null per METR-09 (never NaN, never 0).
+      costPerCorrect:
+        correctMatches === 0
+          ? null
+          : Math.round((group.totalCost / correctMatches) * 1_000_000) /
+            1_000_000, // 6 decimals, mirrors totalCost
+      easyAccuracy:
+        group.easyTotal === 0
+          ? null
+          : Math.round((group.easyCorrect / group.easyTotal) * 100 * 10) / 10,
+      mediumAccuracy:
+        group.mediumTotal === 0
+          ? null
+          : Math.round((group.mediumCorrect / group.mediumTotal) * 100 * 10) /
+            10,
+      hardAccuracy:
+        group.hardTotal === 0
+          ? null
+          : Math.round((group.hardCorrect / group.hardTotal) * 100 * 10) / 10,
       inputTokensTotal,
       outputTokensTotal,
       tokensPerShoe,
