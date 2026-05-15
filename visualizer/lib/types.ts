@@ -118,6 +118,15 @@ export type ModelMetrics = {
   avgScore: number; // Average of all scores (0-100)
   totalCost: number; // Vision cost only (what user pays)
   avgLatency: number; // Average latency in ms
+
+  // v1.1: derived fields precomputed at export time
+  costPerCorrect: number | null; // totalCost / (exact + variant); null when zero correct
+  easyAccuracy: number | null; // correct@easy / total@easy * 100; null when no easy shoes attempted
+  mediumAccuracy: number | null; // correct@medium / total@medium * 100; null when no medium shoes attempted
+  hardAccuracy: number | null; // correct@hard / total@hard * 100; null when no hard shoes attempted
+  inputTokensTotal: number | null; // sum of input tokens; null when no rows had token data
+  outputTokensTotal: number | null; // sum of output tokens; null when no rows had token data
+  tokensPerShoe: number | null; // (input + output) / totalTests; null when token totals are null
 };
 
 /**
