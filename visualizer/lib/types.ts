@@ -5,6 +5,8 @@
  * the aggregated structures for the dashboard.
  */
 
+import type { ModelType } from './modelClassification';
+
 // === Source Data Types (from bench/results/) ===
 
 /** Judge evaluation tier (4-tier scoring system) */
@@ -175,6 +177,23 @@ export type ErrorCase = {
   judgeReasoning: string;
   errorType: 'brand_only' | 'wrong';
   score: number;
+};
+
+/**
+ * Phase 6: One row in the sortable Results table.
+ *
+ * Extends ModelMetrics with display-only fields derived at row-build time:
+ * - displayName: humanized model name (provider prefix stripped)
+ * - providerIcon: unicode glyph from modelUtils.getProviderIcon (includes trailing space)
+ * - modelType: 'closed' | 'open' | 'free' classification used by filter pills
+ *
+ * All numeric/aggregate math lives at export time on the bench side;
+ * buildModelRows is a pure mapping with no arithmetic.
+ */
+export type ModelRow = ModelMetrics & {
+  displayName: string;
+  providerIcon: string;
+  modelType: ModelType;
 };
 
 /**
