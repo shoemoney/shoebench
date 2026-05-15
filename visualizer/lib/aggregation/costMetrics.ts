@@ -55,10 +55,16 @@ export function calculateModelMetrics(
     }
   >();
 
-  // First, aggregate vision results by model for cost and latency
+  // First, aggregate vision results by model for cost, latency, and tokens
   const visionByModel = new Map<
     string,
-    { totalCost: number; latencies: number[] }
+    {
+      totalCost: number;
+      latencies: number[];
+      inputTokensSum: number;
+      outputTokensSum: number;
+      tokenRowsCounted: number;
+    }
   >();
 
   for (const result of visionResults) {
@@ -68,7 +74,13 @@ export function calculateModelMetrics(
 
     let modelData = visionByModel.get(result.model);
     if (!modelData) {
-      modelData = { totalCost: 0, latencies: [] };
+      modelData = {
+        totalCost: 0,
+        latencies: [],
+        inputTokensSum: 0,
+        outputTokensSum: 0,
+        tokenRowsCounted: 0,
+      };
       visionByModel.set(result.model, modelData);
     }
 
@@ -76,6 +88,19 @@ export function calculateModelMetrics(
     // Only include non-cached latencies (cached results have 0 latency)
     if (!result.fromCache && result.latencyMs > 0) {
       modelData.latencies.push(result.latencyMs);
+    }
+
+    // Token aggregation: skip rows whose token fields are missing at runtime
+    // (old cached rows pre-date token tracking and have `undefined` even though
+    // the static VisionResult type claims `number`). Present-but-zero rows
+    // count as 0 — only missing rows skip.
+    if (
+      typeof result.inputTokens === 'number' &&
+      typeof result.outputTokens === 'number'
+    ) {
+      modelData.inputTokensSum += result.inputTokens;
+      modelData.outputTokensSum += result.outputTokens;
+      modelData.tokenRowsCounted++;
     }
   }
 
@@ -96,6 +121,9 @@ export function calculateModelMetrics(
       const visionData = visionByModel.get(modelName) || {
         totalCost: 0,
         latencies: [],
+        inputTokensSum: 0,
+        outputTokensSum: 0,
+        tokenRowsCounted: 0,
       };
       group = {
         modelName,
