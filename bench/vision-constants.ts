@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-15T08:00:01.323Z
+ * Last updated: 2026-05-16T08:00:01.372Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -193,9 +193,6 @@ export const visionModelsToRun = [
   'rekaai/reka-edge',
 
   // ============ X-ai ============
-  'x-ai/grok-4',
-  'x-ai/grok-4-fast',
-  'x-ai/grok-4.1-fast',
   'x-ai/grok-4.20',
   'x-ai/grok-4.20-multi-agent',
   'x-ai/grok-4.3',
