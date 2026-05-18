@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "timestamp": "2026-05-17T08:00:55.736Z",
-    "visionResultsFile": "vision-results-2026-05-17T08-00-52-714Z.json",
-    "judgeResultsFile": "judge-results-2026-05-17T08-00-55-377Z.json",
+    "timestamp": "2026-05-18T08:01:04.478Z",
+    "visionResultsFile": "vision-results-2026-05-18T08-01-03-043Z.json",
+    "judgeResultsFile": "judge-results-2026-05-18T08-01-04-054Z.json",
     "totalModels": 141,
     "totalShoes": 89,
     "totalTests": 12638
@@ -2640,7 +2640,7 @@
       "overallAccuracy": 29.1,
       "avgScore": 45.3,
       "totalCost": 0.164059,
-      "avgLatency": 3389,
+      "avgLatency": 0,
       "costPerCorrect": 0.006562,
       "easyAccuracy": 38.5,
       "mediumAccuracy": 37.1,
