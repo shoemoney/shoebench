@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-18T08:00:01.100Z
+ * Last updated: 2026-05-19T08:00:01.028Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
