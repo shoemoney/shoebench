@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-25T08:00:01.449Z
+ * Last updated: 2026-05-30T08:00:01.914Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -30,6 +30,8 @@ export const visionModelsToRun = [
   'anthropic/claude-opus-4.6-fast',
   'anthropic/claude-opus-4.7',
   'anthropic/claude-opus-4.7-fast',
+  'anthropic/claude-opus-4.8',
+  'anthropic/claude-opus-4.8-fast',
   'anthropic/claude-sonnet-4',
   'anthropic/claude-sonnet-4.5',
   'anthropic/claude-sonnet-4.6',
@@ -40,7 +42,6 @@ export const visionModelsToRun = [
   // ============ Baidu ============
   'baidu/ernie-4.5-vl-28b-a3b',
   'baidu/ernie-4.5-vl-424b-a47b',
-  'baidu/qianfan-ocr-fast',
 
   // ============ Bytedance ============
   'bytedance/ui-tars-1.5-7b',
@@ -103,6 +104,7 @@ export const visionModelsToRun = [
   // ============ Moonshotai ============
   'moonshotai/kimi-k2.5',
   'moonshotai/kimi-k2.6',
+  'moonshotai/kimi-k2.6:free',
 
   // ============ Nvidia ============
   'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
@@ -192,6 +194,9 @@ export const visionModelsToRun = [
 
   // ============ Rekaai ============
   'rekaai/reka-edge',
+
+  // ============ Stepfun ============
+  'stepfun/step-3.7-flash',
 
   // ============ X-ai ============
   'x-ai/grok-4.20',
