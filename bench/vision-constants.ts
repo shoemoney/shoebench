@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-05-31T08:00:02.306Z
+ * Last updated: 2026-06-01T08:00:02.128Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -87,6 +87,7 @@ export const visionModelsToRun = [
 
   // ============ Minimax ============
   'minimax/minimax-01',
+  'minimax/minimax-m3',
 
   // ============ Mistralai ============
   'mistralai/ministral-14b-2512',
@@ -99,7 +100,6 @@ export const visionModelsToRun = [
   'mistralai/mistral-small-2603',
   'mistralai/mistral-small-3.1-24b-instruct',
   'mistralai/mistral-small-3.2-24b-instruct',
-  'mistralai/pixtral-large-2411',
 
   // ============ Moonshotai ============
   'moonshotai/kimi-k2.5',
@@ -205,7 +205,6 @@ export const visionModelsToRun = [
   'x-ai/grok-build-0.1',
 
   // ============ Xiaomi ============
-  'xiaomi/mimo-v2-omni',
   'xiaomi/mimo-v2.5',
 
   // ============ Z-ai ============
