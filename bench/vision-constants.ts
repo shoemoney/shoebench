@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-01T08:00:02.128Z
+ * Last updated: 2026-06-02T08:00:01.149Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -53,8 +53,6 @@ export const visionModelsToRun = [
   'bytedance-seed/seed-2.0-mini',
 
   // ============ Google ============
-  'google/gemini-2.0-flash-001',
-  'google/gemini-2.0-flash-lite-001',
   'google/gemini-2.5-flash',
   'google/gemini-2.5-flash-image',
   'google/gemini-2.5-flash-lite',
