@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-06T08:00:00.801Z
+ * Last updated: 2026-06-07T08:00:01.003Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -36,11 +36,7 @@ export const visionModelsToRun = [
   'anthropic/claude-sonnet-4.5',
   'anthropic/claude-sonnet-4.6',
 
-  // ============ Arcee-ai ============
-  'arcee-ai/spotlight',
-
   // ============ Baidu ============
-  'baidu/ernie-4.5-vl-28b-a3b',
   'baidu/ernie-4.5-vl-424b-a47b',
 
   // ============ Bytedance ============
