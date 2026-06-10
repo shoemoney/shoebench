@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-08T08:00:01.748Z
+ * Last updated: 2026-06-10T08:00:01.952Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -22,6 +22,7 @@ export const visionModelsToRun = [
   // ============ Anthropic ============
   'anthropic/claude-3-haiku',
   'anthropic/claude-3.5-haiku',
+  'anthropic/claude-fable-5',
   'anthropic/claude-haiku-4.5',
   'anthropic/claude-opus-4',
   'anthropic/claude-opus-4.1',
@@ -99,6 +100,9 @@ export const visionModelsToRun = [
   'moonshotai/kimi-k2.5',
   'moonshotai/kimi-k2.6',
   'moonshotai/kimi-k2.6:free',
+
+  // ============ Nex-agi ============
+  'nex-agi/nex-n2-pro:free',
 
   // ============ Nvidia ============
   'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
@@ -206,7 +210,6 @@ export const visionModelsToRun = [
   // ============ Z-ai ============
   'z-ai/glm-4.5v',
   'z-ai/glm-4.6v',
-  'z-ai/glm-5v-turbo',
 ] as const;
 
 /** Type for valid model names */
