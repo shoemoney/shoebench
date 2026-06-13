@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-12T08:00:01.509Z
+ * Last updated: 2026-06-13T08:00:00.849Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -99,6 +99,7 @@ export const visionModelsToRun = [
   // ============ Moonshotai ============
   'moonshotai/kimi-k2.5',
   'moonshotai/kimi-k2.6',
+  'moonshotai/kimi-k2.7-code',
 
   // ============ Nex-agi ============
   'nex-agi/nex-n2-pro:free',
