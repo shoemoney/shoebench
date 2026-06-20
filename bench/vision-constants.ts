@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-17T08:00:03.503Z
+ * Last updated: 2026-06-20T08:00:00.911Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -58,7 +58,9 @@ export const visionModelsToRun = [
   'google/gemini-2.5-pro-preview',
   'google/gemini-2.5-pro-preview-05-06',
   'google/gemini-3-flash-preview',
+  'google/gemini-3-pro-image',
   'google/gemini-3-pro-image-preview',
+  'google/gemini-3.1-flash-image',
   'google/gemini-3.1-flash-image-preview',
   'google/gemini-3.1-flash-lite',
   'google/gemini-3.1-flash-lite-preview',
