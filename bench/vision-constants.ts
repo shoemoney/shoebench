@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-22T08:00:40.049Z
+ * Last updated: 2026-06-23T08:00:01.025Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -104,7 +104,6 @@ export const visionModelsToRun = [
 
   // ============ Nex-agi ============
   'nex-agi/nex-n2-pro',
-  'nex-agi/nex-n2-pro:free',
 
   // ============ Nvidia ============
   'nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free',
@@ -212,6 +211,7 @@ export const visionModelsToRun = [
   // ============ Z-ai ============
   'z-ai/glm-4.5v',
   'z-ai/glm-4.6v',
+  'z-ai/glm-5v-turbo',
 ] as const;
 
 /** Type for valid model names */
