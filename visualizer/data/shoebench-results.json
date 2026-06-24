@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "timestamp": "2026-06-23T08:06:02.811Z",
-    "visionResultsFile": "vision-results-2026-06-23T08-06-00-890Z.json",
-    "judgeResultsFile": "judge-results-2026-06-23T08-06-02-269Z.json",
+    "timestamp": "2026-06-24T08:06:28.573Z",
+    "visionResultsFile": "vision-results-2026-06-24T08-06-26-405Z.json",
+    "judgeResultsFile": "judge-results-2026-06-24T08-06-28-021Z.json",
     "totalModels": 134,
     "totalShoes": 89,
-    "totalTests": 13172
+    "totalTests": 13261
   },
   "modelMetrics": [
     {

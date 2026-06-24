@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-23T08:00:01.025Z
+ * Last updated: 2026-06-24T08:00:01.853Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -195,6 +195,9 @@ export const visionModelsToRun = [
 
   // ============ Rekaai ============
   'rekaai/reka-edge',
+
+  // ============ Sakana ============
+  'sakana/fugu-ultra',
 
   // ============ Stepfun ============
   'stepfun/step-3.7-flash',
