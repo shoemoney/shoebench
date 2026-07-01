@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-06-26T08:01:26.697Z
+ * Last updated: 2026-07-01T08:00:29.597Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -27,7 +27,6 @@ export const visionModelsToRun = [
   'anthropic/claude-opus-4.1',
   'anthropic/claude-opus-4.5',
   'anthropic/claude-opus-4.6',
-  'anthropic/claude-opus-4.6-fast',
   'anthropic/claude-opus-4.7',
   'anthropic/claude-opus-4.7-fast',
   'anthropic/claude-opus-4.8',
@@ -35,6 +34,7 @@ export const visionModelsToRun = [
   'anthropic/claude-sonnet-4',
   'anthropic/claude-sonnet-4.5',
   'anthropic/claude-sonnet-4.6',
+  'anthropic/claude-sonnet-5',
 
   // ============ Baidu ============
   'baidu/ernie-4.5-vl-424b-a47b',
@@ -62,6 +62,7 @@ export const visionModelsToRun = [
   'google/gemini-3.1-flash-image',
   'google/gemini-3.1-flash-image-preview',
   'google/gemini-3.1-flash-lite',
+  'google/gemini-3.1-flash-lite-image',
   'google/gemini-3.1-flash-lite-preview',
   'google/gemini-3.1-pro-preview',
   'google/gemini-3.1-pro-preview-customtools',
