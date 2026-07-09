@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-07-08T08:00:01.265Z
+ * Last updated: 2026-07-09T08:00:01.403Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -208,6 +208,7 @@ export const visionModelsToRun = [
   'x-ai/grok-4.20',
   'x-ai/grok-4.20-multi-agent',
   'x-ai/grok-4.3',
+  'x-ai/grok-4.5',
   'x-ai/grok-build-0.1',
 
   // ============ Xiaomi ============
