@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-07-16T08:00:01.015Z
+ * Last updated: 2026-07-17T08:00:01.001Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -76,6 +76,9 @@ export const visionModelsToRun = [
   'google/lyria-3-clip-preview',
   'google/lyria-3-pro-preview',
 
+  // ============ Meta ============
+  'meta/muse-spark-1.1',
+
   // ============ Meta-llama ============
   'meta-llama/llama-3.2-11b-vision-instruct',
   'meta-llama/llama-4-maverick',
@@ -101,6 +104,7 @@ export const visionModelsToRun = [
   'moonshotai/kimi-k2.5',
   'moonshotai/kimi-k2.6',
   'moonshotai/kimi-k2.7-code',
+  'moonshotai/kimi-k3',
 
   // ============ Nex-agi ============
   'nex-agi/nex-n2-mini',
