@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-07-17T08:00:01.001Z
+ * Last updated: 2026-07-18T08:00:01.688Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -80,7 +80,6 @@ export const visionModelsToRun = [
   'meta/muse-spark-1.1',
 
   // ============ Meta-llama ============
-  'meta-llama/llama-3.2-11b-vision-instruct',
   'meta-llama/llama-4-maverick',
   'meta-llama/llama-4-scout',
 
@@ -170,6 +169,7 @@ export const visionModelsToRun = [
 
   // ============ Openrouter ============
   'openrouter/auto',
+  'openrouter/auto-beta',
   'openrouter/free',
 
   // ============ Perceptron ============
@@ -212,6 +212,9 @@ export const visionModelsToRun = [
 
   // ============ Stepfun ============
   'stepfun/step-3.7-flash',
+
+  // ============ Thinkingmachines ============
+  'thinkingmachines/inkling',
 
   // ============ X-ai ============
   'x-ai/grok-4.20',
