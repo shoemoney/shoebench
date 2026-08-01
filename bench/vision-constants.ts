@@ -2,7 +2,7 @@
  * Vision model constants for benchmarking
  *
  * AUTO-GENERATED from OpenRouter API
- * Last updated: 2026-07-18T08:00:01.688Z
+ * Last updated: 2026-08-01T08:00:01.443Z
  *
  * To update: bun bench/scripts/update-vision-models.ts
  */
@@ -31,6 +31,8 @@ export const visionModelsToRun = [
   'anthropic/claude-opus-4.7-fast',
   'anthropic/claude-opus-4.8',
   'anthropic/claude-opus-4.8-fast',
+  'anthropic/claude-opus-5',
+  'anthropic/claude-opus-5-fast',
   'anthropic/claude-sonnet-4',
   'anthropic/claude-sonnet-4.5',
   'anthropic/claude-sonnet-4.6',
@@ -66,6 +68,8 @@ export const visionModelsToRun = [
   'google/gemini-3.1-pro-preview',
   'google/gemini-3.1-pro-preview-customtools',
   'google/gemini-3.5-flash',
+  'google/gemini-3.5-flash-lite',
+  'google/gemini-3.6-flash',
   'google/gemma-3-12b-it',
   'google/gemma-3-27b-it',
   'google/gemma-3-4b-it',
@@ -126,15 +130,12 @@ export const visionModelsToRun = [
   'openai/gpt-4o-mini',
   'openai/gpt-4o-mini-2024-07-18',
   'openai/gpt-5',
-  'openai/gpt-5-chat',
-  'openai/gpt-5-codex',
   'openai/gpt-5-image',
   'openai/gpt-5-image-mini',
   'openai/gpt-5-mini',
   'openai/gpt-5-nano',
   'openai/gpt-5-pro',
   'openai/gpt-5.1',
-  'openai/gpt-5.1-chat',
   'openai/gpt-5.1-codex',
   'openai/gpt-5.1-codex-max',
   'openai/gpt-5.1-codex-mini',
@@ -161,10 +162,8 @@ export const visionModelsToRun = [
   'openai/o1',
   'openai/o1-pro',
   'openai/o3',
-  'openai/o3-deep-research',
   'openai/o3-pro',
   'openai/o4-mini',
-  'openai/o4-mini-deep-research',
   'openai/o4-mini-high',
 
   // ============ Openrouter ============
@@ -202,6 +201,7 @@ export const visionModelsToRun = [
   'qwen/qwen3.6-35b-a3b',
   'qwen/qwen3.6-flash',
   'qwen/qwen3.6-plus',
+  'qwen/qwen3.7-flash',
   'qwen/qwen3.7-plus',
 
   // ============ Rekaai ============
@@ -215,6 +215,7 @@ export const visionModelsToRun = [
 
   // ============ Thinkingmachines ============
   'thinkingmachines/inkling',
+  'thinkingmachines/inkling-small',
 
   // ============ X-ai ============
   'x-ai/grok-4.20',
