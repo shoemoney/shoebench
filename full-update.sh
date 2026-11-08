@@ -34,8 +34,10 @@ fi
 trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT
 
 log() { echo "[$(date '+%H:%M:%S')] $*" | tee -a "$LOG_FILE"; }
-mtime() { stat -f %m "$1" 2>/dev/null || echo 0; }
-latest_mtime_in() { find "$1" -type f -name "$2" -print0 2>/dev/null | xargs -0 stat -f %m 2>/dev/null | sort -nr | head -1; }
+# BSD stat on macOS, GNU stat on Linux
+if [ "$(uname)" = "Darwin" ]; then STAT_MT=(stat -f %m); else STAT_MT=(stat -c %Y); fi
+mtime() { "${STAT_MT[@]}" "$1" 2>/dev/null || echo 0; }
+latest_mtime_in() { find "$1" -type f -name "$2" -print0 2>/dev/null | xargs -0 "${STAT_MT[@]}" 2>/dev/null | sort -nr | head -1; }
 
 # Build a transient settings file for the overseer claude -p calls so they
 # get a PreToolUse hook that hard-blocks vision:all / judge / export / git.
